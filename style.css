@@ -1,13 +1,9 @@
 .caixa-login{
-    width: 300px;
-    height: 100px;
-    margin-bottom: 15px;
-    border: 1px solid black;
+    display: block;
     position: absolute;
     right : 20px;
     top: 10px;
 }
-.caixa-login:hover{
-    background-color: rgb(228, 228, 228);
-
+.caixa-login:focus{
+    background-color: lightblue;
 }
