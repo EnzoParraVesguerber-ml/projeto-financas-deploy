@@ -1,9 +1,4 @@
-.caixa-login{
-    display: block;
-    position: absolute;
-    right : 20px;
-    top: 10px;
-}
-.caixa-login:focus{
-    background-color: lightblue;
+body{
+    background-color: #0f172a;
+    color: #cbd5e1;
 }
