@@ -1,6 +1,7 @@
 :root{
     --bg-color: #0f172a;
     --primary-color: #22d3ee;
+    --primary-hover: rgb(45, 223, 250);
     --card-bg-color: rgba(30, 41, 59, 0.6);
     --text-color: #cbd5e1;
     --heading-color: #f1f5f9;
@@ -13,7 +14,7 @@ body{
 
 .top-box{
     width: 100%;
-    padding: 20px 0;
+    padding: 15px 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -29,6 +30,7 @@ body{
     font-size: 1.5em;
     font-weight: bold;
     color: var(--heading-color);
+    margin-left: 15px;
 }
 .logo span{
     color: var(--primary-color);
@@ -51,10 +53,25 @@ body{
 .login-btn:hover{
     background-color: #141c30;
 }
+.login-btn:active{
+    background-color: #141c30;
+}
+.login-btn:focus{
+    background-color: #141c30;
+}
 
 .signup-btn{
     background-color: var(--primary-color);
     color: rgb(12, 12, 12);
     font-weight: bold;
     margin-right: 10px;
+}
+.signup-btn:hover{
+    background-color: rgb(45, 223, 250)
+}
+.signup-btn:active{
+    background-color: rgb(45, 223, 250)
+}
+.signup-btn:focus{
+    background-color: rgb(45, 223, 250)
 }
