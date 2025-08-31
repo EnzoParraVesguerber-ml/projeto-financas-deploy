@@ -86,6 +86,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;  
+    flex-direction: column;
     padding: 10% 0;  
 }
 
@@ -95,7 +96,7 @@ body{
 
 .first-section-heading{
     font-family: 'Poppins', sans-serif;
-    font-size: 72px;
+    font-size: 60px;
     color: #f1f5f9;
     margin-bottom: 0%;
     
@@ -106,7 +107,7 @@ body{
 
 .first-section-paragraph{
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     max-width: 640px;  /* largura máxima do texto */
     margin: 20px auto; /* centraliza horizontalmente */
     line-height: 1.6;  /* melhora a leitura */
@@ -126,14 +127,32 @@ body{
     text-decoration: none;
     padding: 2% 4%;
     border-radius: 15px;
-    
+}
 
- 
+.second-section {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 17%;
+    display: flex;              /* coloca os filhos lado a lado */
+    justify-content: space-between; /* distribui os itens com espaço entre eles */
+    align-items: flex-start;    /* alinha pelo topo (pode mudar p/ center se quiser centralizar) */
+    gap: 20px;                  /* espaço entre os blocos */
+}
+
+.second-section-opcions {
     
-    
-    /*padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: none;  */
-    
+    font-family: 'Poppins', sans-serif;
+    flex: 1;                    /* cada bloco ocupa o mesmo espaço */
+    max-width: 300px;           /* limite opcional p/ não ficar muito largo */
+    height: 200px; 
+    position: relative;             /* permite posicionar o conteúdo por cima */
+    background: rgba(72, 69, 69, 0.2); /* fundo preto opaco 60% */
+    padding: 29px;                  /* espaço interno */
+    border-radius: 12px;            /* cantos arredondados */
+}
+
+.footer{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    border-top: solid 1px rgb(45, 223, 250) 
 }
