@@ -8,6 +8,10 @@
     
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -25,6 +29,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    backdrop-filter: blur(5px);
 }
 
 .logo{
