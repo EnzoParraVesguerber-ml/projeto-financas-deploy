@@ -1,5 +1,6 @@
 :root{
     --bg-color: #0f172a;
+    --bg2-color: rgba(72, 69, 69, 0.2); /* fundo preto opaco 60% */
     --primary-color: #22d3ee;
     --primary-hover: rgb(45, 223, 250);
     --card-bg-color: rgba(30, 41, 59, 0.6);
@@ -73,13 +74,13 @@ body{
     margin-right: 20px;
 }
 .signup-btn:hover{
-    background-color: rgb(45, 223, 250)
+    background-color: var(--primary-hover)
 }
 .signup-btn:active{
-    background-color: rgb(45, 223, 250)
+    background-color: var(--primary-hover)
 }
 .signup-btn:focus{
-    background-color: rgb(45, 223, 250)
+    background-color: var(--primary-hover)
 }
 
 .major{
@@ -97,12 +98,12 @@ body{
 .first-section-heading{
     font-family: 'Poppins', sans-serif;
     font-size: 60px;
-    color: #f1f5f9;
+    color: var(--heading-color);
     margin-bottom: 0%;
     
 }
 .first-section-heading span{
-    color: rgb(45, 223, 250)
+    color: var(--primary-color);
 }
 
 .first-section-paragraph{
@@ -120,7 +121,7 @@ body{
 }
 
 .presentation-link{
-    background-color: rgb(45, 223, 250);
+    background-color: var(--primary-color);
     color: rgb(12, 12, 12);
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
@@ -140,13 +141,13 @@ body{
 }
 
 .second-section-opcions {
-    
+
     font-family: 'Poppins', sans-serif;
     flex: 1;                    /* cada bloco ocupa o mesmo espaço */
     max-width: 300px;           /* limite opcional p/ não ficar muito largo */
     height: 200px; 
     position: relative;             /* permite posicionar o conteúdo por cima */
-    background: rgba(72, 69, 69, 0.2); /* fundo preto opaco 60% */
+    background: var(--bg2-color); 
     padding: 29px;                  /* espaço interno */
     border-radius: 12px;            /* cantos arredondados */
 }
@@ -154,5 +155,6 @@ body{
 .footer{
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    border-top: solid 1px rgb(45, 223, 250) 
+    width: 100%;
+    border-top: solid 1px var(--primary-color);
 }
