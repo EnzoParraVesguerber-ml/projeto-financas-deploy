@@ -130,7 +130,7 @@ body{
     border-radius: 15px;
 }
 
-.second-section {
+.second-section { /* cartões de informações */
     text-align: center;
     font-family: 'Poppins', sans-serif;
     padding: 17%;
@@ -141,7 +141,6 @@ body{
 }
 
 .second-section-opcions {
-
     font-family: 'Poppins', sans-serif;
     flex: 1;                    /* cada bloco ocupa o mesmo espaço */
     max-width: 300px;           /* limite opcional p/ não ficar muito largo */
