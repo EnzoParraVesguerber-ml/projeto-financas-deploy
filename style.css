@@ -164,7 +164,6 @@ body{
 }
 
 .third-section-graphic {
-    
     background-color:#1e293b;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -207,7 +206,8 @@ body{
 }
 
 .graphic-item-header {
-    color: rgb(255, 255, 255);
+    color: var(--heading-color);
+    margin-bottom: 15px;
 }
 
 .graphic-item {
@@ -220,14 +220,37 @@ body{
 }
 
 .graphic {
-    position: left;
+    display: flex;
+    gap: 20px;
     width: 200px;
     margin-left: 600px;
-    margin-bottom: 40px
+    margin-bottom: 40px;
+    align-items: center;
 }
 
-.color-box { 
-    background-color: red;
+.graphic-chart{
+    flex: 1;
+}
+
+
+.graphic-pie {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(
+        red 0% 30%, 
+        yellow 30% 55%, 
+        blue 55% 75%,
+        green 75% 100%
+    );
+    animation: spin 10s linear infinite;
+}
+
+.graphic-data{
+    flex: 2;
+}
+
+.graphic-item .color-box { 
     width: 13px;
     height: 13px;
     margin-right: 10px;
@@ -239,4 +262,11 @@ body{
     font-family: 'Poppins', sans-serif;
     width: 100%;
     border-top: solid 1px var(--primary-color);
+}
+
+@media(max-width: 768px){
+    .graphic{
+        flex-direction: column;
+        align-items: center;
+        }
 }
