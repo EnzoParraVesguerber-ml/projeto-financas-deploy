@@ -222,9 +222,7 @@ body{
 .graphic {
     display: flex;
     gap: 20px;
-    width: 200px;
-    margin-left: 600px;
-    margin-bottom: 40px;
+    margin-left: 60px;
     align-items: center;
 }
 
@@ -238,10 +236,10 @@ body{
     height: 150px;
     border-radius: 50%;
     background: conic-gradient(
-        red 0% 30%, 
-        yellow 30% 55%, 
-        blue 55% 75%,
-        green 75% 100%
+        #22d3ee 0% 30%, 
+        #6366f1 30% 55%, 
+        #a855f7 55% 75%,
+        #ec4899 75% 100%
     );
     animation: spin 10s linear infinite;
 }
@@ -264,9 +262,10 @@ body{
     border-top: solid 1px var(--primary-color);
 }
 
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @media(max-width: 768px){
     .graphic{
-        flex-direction: column;
-        align-items: center;
-        }
+    flex-direction: column;
+    align-items: center;
+    }
 }
