@@ -6,6 +6,7 @@
     --card-bg-color: rgba(30, 41, 59, 0.6);
     --text-color: #cbd5e1;
     --heading-color: #f1f5f9;
+    
 }
 
 html {
@@ -157,18 +158,18 @@ body{
 
 .third-section-heading {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     color: rgb(255, 255, 255);
     font-size: 40px
 }
 
-.third-section-box {
+.third-section-graphic {
     background-color:#1e293b;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     height: 350px;
-    width:700px;
+    width:800px;
 }
 
 .graphic-header {
