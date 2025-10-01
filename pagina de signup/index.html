@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Financial Education Project</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header class="header-container">
+            <div class="logo"><span>JEBY </span>Finances</div>
+            <div class="log-buttons">
+                <button class="login-button">Login</button>
+                <button class="signup-button">Sign Up</button>
+            </div>
+        </header>
+        <main class="main-content">
+            <div id="signup-box" class="form-container">
+                <h2>Crie sua conta</h2>
+                <form id="signup-form" action="#" method="POST">
+                    
+                    <div class="input-group">
+                        <label for="name">Nome completo:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email-signup">E-mail:</label>
+                        <input type="email" id="email-signup" name="email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password-signup">Senha:</label>
+                        <input type="password" id="password-signup" name="password" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirm-password">Confirme a senha:</label>
+                        <input type="password" id="confirm-password" name="confirm_password" required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Eu concordo com os<a href="#"> termos e condições</a></label>
+                    </div>
+
+                    <button type="submit" class="submit-button">Cadastrar-se</button>
+                </form>
+                <p class="login-link">Já tem uma conta? <a href="#">Entre Aqui</a></p>
+            </div>
+            </main>
+        <footer class="site-footer">
+            <p>© 2025 JEBY - All rights reserved.</p>
+        </footer>
+            
+        <script src="script.js"></script>
+    </body>
+</html>
