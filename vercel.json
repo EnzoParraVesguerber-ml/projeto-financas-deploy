@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "C:\\Users\\bruno\\Documents\\Facens\\2° Semestre\\Web Design\\Codigos html\\Projeto Finanças\\pagina inicial\\index.html"
+    }
+  ]
+}
