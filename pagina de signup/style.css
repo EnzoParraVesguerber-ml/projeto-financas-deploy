@@ -19,7 +19,6 @@ html {
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Poppins', sans-serif; /* Assumindo que você usará a fonte Poppins */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -35,33 +34,27 @@ a:hover {
     color: var(--primary-hover);
 }
 
-button {
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-
 /* --- Header e Navegação --- */
 .header-container {
     width: 100%;
-    padding: 15px 20px;
+    padding: 15px 0;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
-    border-bottom: 1px solid var(--input-border-color); /* Borda mais sutil */
+    border-bottom: 1px solid var(--heading-color);
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     backdrop-filter: blur(5px);
-    background-color: rgba(15, 23, 42, 0.9); /* Cor de fundo semi-transparente */
 }
 
 .logo {
     font-size: 2em;
     font-weight: bold;
     color: var(--heading-color);
+    margin-left: 20px;
 }
 
 .logo span {
@@ -69,40 +62,50 @@ button {
 }
 
 .log-buttons button {
+    font-family: 'Poppins', sans-serif;
     font-size: 1em;
     padding: 10px 20px;
     border-radius: 5px;
-    margin-left: 30px;
-    font-weight: 500;
+    cursor: pointer;
+    border: none;
 }
 
 .login-button {
     color: var(--text-color);
     background: transparent;
-    border: 1px solid var(--input-border-color);
-}
-
-.log-buttons{
-    margin-right: 30px;
+    margin-right: 5px;
 }
 
 .login-button:hover {
     background-color: #141c30;
-    border-color: var(--primary-color);
+}
+.login-button:active {
+    background-color: #141c30;
+}
+.login-button:focus {
+    background-color: #141c30;
 }
 
 .signup-button {
     background-color: var(--primary-color);
-    color: var(--bg-color); /* Texto escuro no botão primário */
+    color: rgb(12, 12, 12);
     font-weight: bold;
+    margin-right: 20px;
 }
 
 .signup-button:hover {
     background-color: var(--primary-hover);
 }
+.signup-button:active {
+    background-color: var(--primary-hover);
+}
+.signup-button:focus {
+    background-color: var(--primary-hover);
+}
 
 /* --- Conteúdo Principal e Formulário --- */
 .main-content {
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,14 +230,9 @@ button {
 /* --- Footer --- */
 .site-footer {
     text-align: center;
-    padding: 15px 0;
+    font-family: 'Poppins', sans-serif;
     width: 100%;
-    border-top: solid 1px var(--input-border-color);
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    position: relative;
-    z-index: 99;
-    font-size: 0.9em;
+    border-top: solid 1px var(--primary-color);
 }
 
 /* Adicione isso ao seu style.css */

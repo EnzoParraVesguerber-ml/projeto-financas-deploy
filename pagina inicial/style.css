@@ -55,7 +55,7 @@ body{
 .login-btn{
     color: var(--text-color);
     background: transparent;
-    margin:right 5px;
+    margin-right: 5px;
 }
 .login-btn:hover{
     background-color: #141c30;
@@ -267,5 +267,93 @@ body{
     .graphic{
     flex-direction: column;
     align-items: center;
+    }
+}
+/* Responsividade para tablets */
+@media (max-width: 1024px) {
+    .second-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 5%;
+    }
+    .second-section-opcions {
+        max-width: 90%;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .third-section-graphic {
+        width: 100%;
+        max-width: 95vw;
+        min-width: 0;
+    }
+    .graphic {
+        margin-left: 0;
+        gap: 10px;
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 600px) {
+    .top-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 10px;
+    }
+    .logo {
+        font-size: 1.2em;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    .btns-log button {
+        font-size: 0.9em;
+        padding: 8px 12px;
+        margin-bottom: 5px;
+    }
+    .major {
+        padding: 20% 0 10% 0;
+    }
+    .first-section-heading {
+        font-size: 2em;
+    }
+    .first-section-paragraph {
+        font-size: 1em;
+        padding: 0 10px;
+    }
+    .presentation-link {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    .second-section {
+        flex-direction: column;
+        gap: 15px;
+        padding: 5%;
+    }
+    .second-section-opcions {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+    .third-section-heading {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
+    .third-section-graphic {
+        width: 100%;
+        min-width: 0;
+        height: 220px;
+    }
+    .graphic {
+        flex-direction: column;
+        margin-left: 0;
+        gap: 10px;
+    }
+    .graphic-pie {
+        width: 90px;
+        height: 90px;
+    }
+    .footer {
+        font-size: 0.9em;
+        padding: 10px 0;
     }
 }
