@@ -235,3 +235,22 @@ a:hover {
     width: 100%;
     border-top: solid 1px var(--primary-color);
 }
+
+ @media (max-width: 1100px) {
+            .form-group-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 900px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 500px) {
+            .form-group-grid {
+                grid-template-columns: 1fr;
+            }
+            .user-info span {
+                display: none;
+            }
+        }
