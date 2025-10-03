@@ -17,15 +17,83 @@
     <main>
         <div class="dashboard">
             <div class="dashboard-grid">
-                <section class="upload">
+                <section id="upload" class="upload-box">
                     <h2>📥 1. Análise de Extrato</h2>
                     <p>Envie seu extrato (.csv ou .xlsx) para que nossa I.A. categorize seus gastos.</p>
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <label for="file-upload" class="file-upload-label">
+                            Escolher arquivo
+                        </label>
+                        <input type="file" id="file-upload" name="file-upload" accept=".csv, .xlsx" required>
+                        <span id="file-name">Nenhum arquivo selecionado</span>
+                    </form>
+                </section>
+
+                <section class="upload-box">
+                    <h2>🎯 2. Suas Metas Mensais</h2>
+                    <p>Defina limites de gastos para as categorias do seu extrato e acompanhe seu progresso.</p>
+                    <form id="goals-form">
+                        <div class="form-group-grid">
+                            <div class="form-group">
+                                <label for="goal-casa" title="Casa e Vestuário">Casa e Vestuário</label>
+                                <input type="number" id="goal-casa" name="goal_casa_vestuario" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-veiculo" title="Veículo">Veículo</label>
+                                <input type="number" id="goal-veiculo" name="goal_veiculo" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-cuidados" title="Cuidados Pessoais">Cuidados Pessoais</label>
+                                <input type="number" id="goal-cuidados" name="goal_cuidados_pessoais" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-supermercado" title="Supermercado">Supermercado</label>
+                                <input type="number" id="goal-supermercado" name="goal_supermercado" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-alimentacao" title="Alimentação">Alimentação</label>
+                                <input type="number" id="goal-alimentacao" name="goal_alimentacao" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-outros" title="Outros">Outros</label>
+                                <input type="number" id="goal-outros" name="goal_outros" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-educacao" title="Educação">Educação</label>
+                                <input type="number" id="goal-educacao" name="goal_educacao" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-saude" title="Saúde">Saúde</label>
+                                <input type="number" id="goal-saude" name="goal_saude" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-lazer" title="Lazer e Eletrônicos">Lazer e Eletrônicos</label>
+                                <input type="number" id="goal-lazer" name="goal_lazer_eletronicos" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-pet" title="Pet">Pet</label>
+                                <input type="number" id="goal-pet" name="goal_pet" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-servicos" title="Serviços e Taxas">Serviços e Taxas</label>
+                                <input type="number" id="goal-servicos" name="goal_servicos_taxas" placeholder="R$ 0">
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-transporte" title="Transporte">Transporte</label>
+                                <input type="number" id="goal-transporte" name="goal_transporte" placeholder="R$ 0">
+                            </div>
+                        </div>
+                    </form>
                 </section>
 
             </div>
 
         </div>
     </main>
+
+    <footer class="footer">
+        <p>© 2025 JEBY-Todos os direitos reservados.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
