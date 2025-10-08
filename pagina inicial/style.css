@@ -325,11 +325,7 @@ body{
     }
 }
 
-.btns-log.active{
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+
 
 /* Responsividade para celulares */
 @media (max-width: 600px) {
@@ -397,3 +393,8 @@ body{
     }
 }
 
+.btns-log.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}

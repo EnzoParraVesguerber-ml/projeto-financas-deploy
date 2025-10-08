@@ -60,25 +60,53 @@ a:hover {
     color: var(--primary-color);
 }
 
+.menu-container {
+    position: relative; /* Essencial para o posicionamento dos botões */
+    text-align: center;
+}
+
+.trigger-box {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 2px solid var(--bg2-color);
+}
+
+.btns-log{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px); /* Começa um pouco para cima */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
 .user-info{
+    margin-top: 11%;
     display: flex;
     align-items: center;
-    gap: 20px;
     color: var(--heading-color);
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
+    position: absolute;
+    right: 10%;
+    
 }
 
 .logout-button {
+    display: flex;
     font-size: 1em;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     border: none;
     background-color: var(--primary-color);
-    color: rgb(12, 12, 12);
+    color: var(--bg-color);
     font-weight: bold;
-    margin-right: 20px;
+    
+    
 }
 
 .logout-button:hover {
@@ -145,4 +173,10 @@ a:hover {
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 25px;
+}
+
+.btns-log.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }

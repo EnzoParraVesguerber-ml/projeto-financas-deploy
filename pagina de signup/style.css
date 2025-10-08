@@ -35,7 +35,7 @@ a:hover {
 }
 
 /* --- Header e Navegação --- */
-.header-container {
+.top-box{
     width: 100%;
     padding: 15px 0;
     position: fixed;
@@ -50,57 +50,87 @@ a:hover {
     backdrop-filter: blur(5px);
 }
 
-.logo {
+.logo{
     font-size: 2em;
     font-weight: bold;
     color: var(--heading-color);
     margin-left: 20px;
 }
-
-.logo span {
+.logo span{
     color: var(--primary-color);
 }
 
-.log-buttons button {
+.menu-container {
+    position: relative; /* Essencial para o posicionamento dos botões */
+    text-align: center;
+}
+
+.trigger-box {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 2px solid var(--bg2-color);
+}
+
+.btns-log{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px); /* Começa um pouco para cima */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.btns-log button{
+    margin-top: 10%;
     font-family: 'Poppins', sans-serif;
     font-size: 1em;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    border: none;
+    border: none;  
+    display: flex;
+    flex-direction: column;
+
 }
 
-.login-button {
+.login-btn{
+    flex: 1;
     color: var(--text-color);
     background: transparent;
-    margin-right: 5px;
+    margin-right: 20px;
+    position: absolute;
+}
+.login-btn:hover{
+    background-color: #141c30;
+}
+.login-btn:active{
+    background-color: #141c30;
+}
+.login-btn:focus{
+    background-color: #141c30;
 }
 
-.login-button:hover {
-    background-color: #141c30;
-}
-.login-button:active {
-    background-color: #141c30;
-}
-.login-button:focus {
-    background-color: #141c30;
-}
-
-.signup-button {
+.signup-btn{
+    flex: 2;
     background-color: var(--primary-color);
     color: rgb(12, 12, 12);
     font-weight: bold;
     margin-right: 20px;
+    position: absolute;
+    right: 0;
+    
 }
-
-.signup-button:hover {
-    background-color: var(--primary-hover);
+.signup-btn:hover{
+    background-color: var(--primary-hover)
 }
-.signup-button:active {
-    background-color: var(--primary-hover);
+.signup-btn:active{
+    background-color: var(--primary-hover)
 }
-.signup-button:focus {
-    background-color: var(--primary-hover);
+.signup-btn:focus{
+    background-color: var(--primary-hover)
 }
 
 /* --- Conteúdo Principal e Formulário --- */
@@ -265,4 +295,10 @@ a:hover {
     .form-container h2 {
         font-size: 1.5em;
     }
+}
+
+.btns-log.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
