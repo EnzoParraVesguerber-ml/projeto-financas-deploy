@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Educação Financeira</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-input.css') }}">
 </head>
 <body>
      <header class="header-container">
-            <div class="logo"><span>JEBY </span>Finanças</div>
+            <div class="logo">
+                {% if session['usuario_logado'] %}
+                    <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
+                {% else %}
+                    <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
+                {% endif %}
+            </div>
             <div class="menu-container">
                 <div class="trigger-box">
                 Menu de Navegação
@@ -107,6 +113,6 @@
         <p>© 2025 JEBY-Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='js/script-input.js') }}"></script>
 </body>
 </html>

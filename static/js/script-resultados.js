@@ -9,11 +9,13 @@ menuContainer.addEventListener('mouseleave', function() {
     btnsLog.classList.remove('active');
 });
 
+// ALTERADO: Aponta para a rota /logout em vez de um ficheiro local
 document.getElementById("logout-btn").addEventListener("click", function( event ){
     event.preventDefault();
-    window.location.href = "C:\\Users\\bruno\\Documents\\Facens\\2° Semestre\\Web Design\\Codigos html\\Projeto Finanças\\pagina inicial\\index.html";
+    window.location.href = "/logout";
 }, false);
 
+// O seu código original para o gráfico permanece igual
 const labels= ['Casa e Vestuário', 'Veículo', 'Cuidados Pessoais', 'Supermercado', 'Alimentação', 'Educação', 'Saúde', 'Lazer e Eletrônicos', 'Pet', 'Serviços e Taxas', 'Transporte', 'Outros'];
 const data = {
     labels: labels,
@@ -43,3 +45,4 @@ const config = {
 const myChart = document.getElementById('resultsChart');
 
 new Chart(myChart, config);
+

@@ -1,0 +1,41 @@
+# Ambientes Virtuais
+# Ignora a pasta do ambiente virtual que contém as bibliotecas instaladas
+.venv/
+venv/
+env/
+
+# Arquivos de Bytecode e Cache do Python
+# Ignora as pastas de cache que o Python cria automaticamente
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Pasta de instância do Flask
+# Usada para arquivos de configuração locais e banco de dados SQLite, se aplicável
+instance/
+
+# Arquivos de variáveis de ambiente
+# Protege senhas e chaves de API. Crie um .env.example com as variáveis vazias.
+.env
+.env.*
+!.env.example
+
+# Bancos de dados locais
+*.sqlite3
+*.db
+
+# Arquivos gerados por editores de código e IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Arquivos gerados pelo Sistema Operacional
+# (macOS)
+.DS_Store
+# (Windows)
+Thumbs.db

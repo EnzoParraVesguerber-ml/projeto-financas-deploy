@@ -3,22 +3,24 @@
     <head>
         <title>Projeto Educação Financeira</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style-inicial.css') }}">
     </head>
     <body>
         <header class="top-box">
-            <div class="logo"><a href="index.html"><span>JEBY </span>Finanças</a></div>
+            <div class="logo">
+                {% if session['usuario_logado'] %}
+                    <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
+                {% else %}
+                    <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
+                {% endif %}
+            </div>
             <div class="menu-container">
                 <div class="trigger-box">
                 Menu de Navegação
                 </div>
 
-                <div id="trigger-box-phone" class="trigger-box"><img src="img/Menu Aberto.svg" alt="Menu Icone"></div>
+                <div id="trigger-box-phone" class="trigger-box"><img src="{{ url_for('static', filename='img/Menu Aberto.svg') }}" alt="Menu Icone"></div>
                 
-                
-                <!-- <img src="img/Menu Aberto.svg" alt="Menu Icone">-->
-                
-
                 <div class="btns-log">
                     <button id="login-btn" class="login-btn">Login</button>
                     <button id="signup-btn" class="signup-btn">Sign Up</button>
@@ -74,7 +76,6 @@
             <p>© 2025 JEBY-Todos os direitos reservados.</p>
         </footer>
             
-        
-        <script src="script.js"></script>
+        <script src="{{ url_for('static', filename='js/script-inicial.js') }}"></script>
     </body>
 </html>

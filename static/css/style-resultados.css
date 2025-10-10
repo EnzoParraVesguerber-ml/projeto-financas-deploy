@@ -56,6 +56,11 @@ a:hover {
     margin-left: 20px;
 }
 
+.logo a {
+    text-decoration: none;
+    color: var(--heading-color); /* Força a cor branca */
+}
+
 .logo span {
     color: var(--primary-color);
 }
@@ -121,6 +126,13 @@ a:hover {
     background-color: var(--primary-hover);
 }
 
+.footer{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    border-top: solid 1px var(--primary-color);
+}
+
 .dashboard {
     padding-top: 100px;
     padding-bottom: 60px;
@@ -134,154 +146,39 @@ a:hover {
     grid-template-columns: 1fr 1.5fr; /* Coluna da direita maior */
     gap: 30px;
     margin-bottom: 40px;
-    margin-left: 10%;
+    display: flex;
+    justify-content: center;
 }
 
-.upload-box{
+.results-box{
     background-color: var(--form-bg-color);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Sombra mais escura */
     width: 100%;
-    max-width: 550px; /* Limita a largura do formulário */
+    max-width: 550px; /* Limita a largura*/
     text-align: center;
     border: 1px solid var(--input-border-color);
     align-items: center;
 }
 
-#upload{
+#results{
     width: 90%;
 }
 
-.upload-box h2 {
+.results-box h2 {
     font-size: 1.5rem;
     color: var(--heading-color);
     margin-bottom: 15px;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
-.upload-box p {
+.results-box p {
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 25px;
 }
-
-.file-upload-label {
-    display: inline-block;
-    background: var(--primary-color);
-    color: #020617;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    text-align: center;
-    width: 85%;
-}
-
-.file-upload-label:hover { 
-    opacity: 0.9; 
-    transform: scale(1.05);
-}
-
-#file-upload { 
-    display: none; 
-}
-
-#file-name {
-    margin-top: 15px;
-    font-style: italic;
-    color: var(--text-color);
-    display: block;
-    text-align: center;
-}
-/* Grid de formulário ATUALIZADO para 3 colunas */
-.form-group-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    white-space: nowrap;      /* Impede que o texto quebre */
-    overflow: hidden;         /* Esconde o texto que transborda */
-    text-overflow: ellipsis;  /* Adiciona "..." ao final */
-}
-
-.form-group input {
-    width: 90%;
-    height: 40%;
-    padding: 12px;
-    background: var(--bg-color);
-    border: 1px solid #334155;
-    border-radius: 8px;
-    color: var(--heading-color);
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-
-#goals-form{
-    text-align: left;
-}
-
-.generate-button-wrapper {
-    text-align: center;
-}
-
-.generate-button{
-    display: inline-block;
-    background: var(--primary-color);
-    color: #020617;
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 15px 40px;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-}
-
-.generate-button:hover {
-    opacity: 0.9;
-    transform: scale(1.05);
-}
-
-.footer{
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    border-top: solid 1px var(--primary-color);
-}
-
- @media (max-width: 1100px) {
-            .form-group-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 900px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 500px) {
-            .form-group-grid {
-                grid-template-columns: 1fr;
-            }
-            .user-info span {
-                display: none;
-            }
-        }
 
 .btns-log.active{
     opacity: 1;

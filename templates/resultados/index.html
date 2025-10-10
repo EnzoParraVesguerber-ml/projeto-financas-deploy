@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Educação Financeira</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- ALTERAÇÃO 1: Caminho dinâmico para o CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-resultados.css') }}">
 </head>
 <body>
      <header class="header-container">
-            <div class="logo"><span>JEBY </span>Finanças</div>
+            <div class="logo">
+                {% if session['usuario_logado'] %}
+                    <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
+                {% else %}
+                    <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
+                {% endif %}
+            </div>
             <div class="menu-container">
                 <div class="trigger-box">
                 Menu de Navegação
@@ -27,22 +34,19 @@
                     <section id="results" class="results-box">
                         <h2>📊 Resultados da Análise</h2>
                         <canvas id="resultsChart" width="400" height="200">
-
-
                         </canvas>
-                        
                     </section>
                 </div>
             </div>
-
         </main>
 
         <footer class="footer">
             <p>© 2025 JEBY-Todos os direitos reservados.</p>
         </footer>
-
+        
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <script src="script.js"></script>
+        <!-- ALTERAÇÃO 2: Caminho dinâmico para o JavaScript -->
+        <script src="{{ url_for('static', filename='js/script-resultados.js') }}"></script>
     </body>
 </html>

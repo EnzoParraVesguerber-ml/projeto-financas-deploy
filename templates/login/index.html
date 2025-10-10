@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <title>Projeto Educação Financeira</title>
+        <meta charset="utf-8">
+        <!-- ALTERAÇÃO 1: Caminho dinâmico para o CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style-login.css') }}">
+    </head>
+    <body>
+        <header class="top-box">
+            <div class="logo">
+                {% if session['usuario_logado'] %}
+                    <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
+                {% else %}
+                    <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
+                {% endif %}
+            </div>
+            <div class="menu-container">
+                <div class="trigger-box">
+                Menu de Navegação
+                </div>
+
+                <div class="btns-log">
+                <button id="login-btn" class="login-btn">Login</button>
+                <button id="signup-btn" class="signup-btn">Sign Up</button>
+                </div>
+            </div>
+        </header>
+        <main class="major">
+            <div class="login-box">
+                <h2>Login para sua conta</h2>
+                <!-- ALTERAÇÃO 2: Ação do formulário aponta para a rota 'login' do Flask -->
+                <form action="{{ url_for('autenticar') }}" method="POST">
+                    <div class="input-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Senha:</label>
+                        <input type="password" id="password" name="senha" required>
+                    </div>
+                    <button type="submit" class="submit-button">Entrar</button>
+                </form>
+                <p class="forgot-password"><a href="#">Esqueceu sua senha?</a></p>
+            </div>
+            
+        </main>
+        <footer class="footer">
+            <p>© 2025 JEBY-Todos os direitos reservados.</p>
+        </footer>
+            
+        <!-- ALTERAÇÃO 3: Caminho dinâmico para o JavaScript -->
+        <script src="{{ url_for('static', filename='js/script-login.js') }}"></script>
+    </body>
+</html>
