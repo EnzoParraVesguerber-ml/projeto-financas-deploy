@@ -154,7 +154,10 @@ a:hover {
     align-items: center;
     justify-content: center;  
     flex-direction: column;
-    padding: 10% 0;  
+    /* PADDING CORRIGIDO PARA EMPURRAR O CONTEÚDO PARA BAIXO */
+    padding: 120px 20px 50px 20px; 
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 .footer{
@@ -248,13 +251,11 @@ a:hover {
         font-size: 0.9em;
     }
 
-    .login-box {
-        margin: 0 15px;
+    .login-box { 
+        width: 90%;
         padding: 30px 20px;
-    }
-
-    .login-box h2 {
-        font-size: 1.5em;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
 }
 
@@ -262,4 +263,21 @@ a:hover {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+#trigger-box-phone {
+    display: none;
+}
+
+/* Quando a tela for menor que 1024px */
+@media (max-width: 1024px) {
+    /* Escondemos o menu de texto */
+    .trigger-box {
+        display: none;
+    }
+
+    /* E mostramos o ícone do menu */
+    #trigger-box-phone {
+        display: block;
+    }
 }

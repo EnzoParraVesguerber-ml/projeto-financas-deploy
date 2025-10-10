@@ -159,9 +159,9 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Altura total da viewport */
-    padding-top: 80px; /* Para compensar o header fixo */
-    padding-bottom: 50px;
+    min-height: 100vh;
+    padding: 80px 20px 50px 20px; /* ALTERADO: Adiciona 20px de padding lateral */
+    box-sizing: border-box; /* Garante que o padding não cause problemas de layout */
 }
 
 .form-container {
@@ -308,13 +308,17 @@ a:hover {
     }
 
     .form-container {
-        margin: 0 15px;
-        padding: 30px 20px;
+        width: 90%; /* Faz a caixa ocupar 90% da largura da tela */
+        padding: 30px 20px; /* Reduz o espaçamento interno para telas menores */
+        margin: 0 auto; /* Remove as margens laterais e centraliza a caixa */
+        box-sizing: border-box; /* Garante que o padding não aumente a largura total */
     }
 
     .form-container h2 {
         font-size: 1.5em;
     }
+
+    
 }
 
 .btns-log.active{
@@ -323,9 +327,8 @@ a:hover {
     transform: translateY(0);
 }
 
-/* Por padrão (telas maiores), escondemos o ícone do menu de telemóvel */
 #trigger-box-phone {
-    display: none;
+        display: none;
 }
 
 /* Quando a tela for menor que 1024px (tablets e telemóveis) */

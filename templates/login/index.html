@@ -3,6 +3,7 @@
     <head>
         <title>Projeto Educação Financeira</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- ALTERAÇÃO 1: Caminho dinâmico para o CSS -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style-login.css') }}">
     </head>
@@ -19,6 +20,8 @@
                 <div class="trigger-box">
                 Menu de Navegação
                 </div>
+
+                <div id="trigger-box-phone" class="trigger-box"><img src="{{ url_for('static', filename='img/Menu Aberto.svg') }}" alt="Menu Icone"></div>
 
                 <div class="btns-log">
                 <button id="login-btn" class="login-btn">Login</button>
