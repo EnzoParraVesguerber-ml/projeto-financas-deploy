@@ -28,16 +28,27 @@
 
                 <div class="btns-log">
                 <button id="login-btn" class="login-btn">Login</button>
-                <button id="signup-btn" class="signup-btn">Sign Up</button>
+                <button id="signup-btn" class="signup-btn">Sign  Up</button>
                 </div>
             </div>
         </header>
         <main class="main-content">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
             <div id="signup-box" class="form-container">
                 <h2>Crie sua conta</h2>
                 <!-- ALTERAÇÃO 4: Ação do formulário aponta para a rota 'register' do Flask -->
                 <form id="signup-form" action="{{ url_for('registrar') }}" method="POST">
-                    
+                    {{ form.hidden_tag() }}
                     <div class="input-group">
                         <label for="name">Nome completo:</label>
                         <input type="text" id="name" name="nome" required>

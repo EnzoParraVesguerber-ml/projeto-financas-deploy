@@ -34,6 +34,7 @@
                 <h2>Login para sua conta</h2>
                 <!-- ALTERAÇÃO 2: Ação do formulário aponta para a rota 'login' do Flask -->
                 <form action="{{ url_for('autenticar') }}" method="POST">
+                    {{ form.hidden_tag() }}
                     <div class="input-group">
                         <label for="email">E-mail:</label>
                         <input type="email" id="email" name="email" required>

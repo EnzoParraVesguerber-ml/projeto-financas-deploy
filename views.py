@@ -16,28 +16,34 @@ import os
 @app.route('/login')
 def login_page():
     proxima = request.args.get('proxima')
+    form = FormularioLogin() # Cria uma instância do formulário
     if proxima is None:
         proxima = url_for('dashboard')
-    return render_template('login/index.html', proxima=proxima)
+    return render_template('login/index.html', proxima=proxima, form=form) # Envia para o template
+
+# No ficheiro: Projeto-Finan-as/views.py
 
 @app.route('/autenticar', methods=['POST',])
 def autenticar():
     form = FormularioLogin(request.form)
-    
-    # Procura o utilizador no banco de dados pelo email
     usuario = Usuario.query.filter_by(email=form.email.data).first()
 
-    # Verifica se o utilizador existe e se a senha está correta
-    if usuario and bcrypt.check_password_hash(usuario.senha, form.senha.data):
-        session['usuario_logado'] = usuario.id
-        session['usuario_nome'] = usuario.nome
-        flash(f'Bem-vindo(a) de volta, {usuario.nome}!', 'success')
-        
-        proxima_pagina = request.form.get('proxima')
-        return redirect(proxima_pagina or url_for('dashboard'))
-    else:
-        flash('Email ou senha incorretos. Tente novamente.', 'danger')
-        return redirect(url_for('login_page'))
+    # Passo 1: Verifica se o usuário existe
+    if usuario:
+        # Passo 2: Se existe, verifica a senha
+        senha_correta = bcrypt.check_password_hash(usuario.senha, form.senha.data)
+        if senha_correta:
+            # Login bem-sucedido
+            session['usuario_logado'] = usuario.id
+            session['usuario_nome'] = usuario.nome
+            flash(f'Bem-vindo(a) de volta, {usuario.nome}!', 'success')
+            
+            proxima_pagina = request.form.get('proxima')
+            return redirect(proxima_pagina or url_for('dashboard'))
+
+    # Se o usuário não existe OU a senha está incorreta, mostra o erro
+    flash('Email ou senha incorretos. Tente novamente.', 'danger')
+    return redirect(url_for('login_page'))
 
 @app.route('/registrar', methods=['POST',])
 def registrar():
@@ -82,7 +88,8 @@ def home():
 
 @app.route('/signup')
 def signup_page():
-    return render_template('signup/index.html')
+    form = FormularioRegisto() # Cria uma instância do formulário
+    return render_template('signup/index.html', form=form) # Envia para o template
 
 @app.route('/dashboard')
 def dashboard():
