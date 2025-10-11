@@ -1,90 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <title>Projeto Educação Financeira</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- ALTERAÇÃO 1: Caminho dinâmico para o CSS -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style-signup.css') }}">
-    </head>
-    <body>
-        <header class="top-box">
-            <!-- ALTERAÇÃO 2: Link do logo aponta para a rota inicial -->
-            <div class="logo">
-                {% if session['usuario_logado'] %}
-                    <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
-                {% else %}
-                    <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
-                {% endif %}
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-signup.css') }}">
+    <title>Crie sua Conta - JEBY Finanças</title>
+{% endblock %}
+{% block content %}
+<main class="main-content">
+    <div id="signup-box" class="form-container">
+        <h2>Crie sua conta</h2>
+        <!-- ALTERAÇÃO 4: Ação do formulário aponta para a rota 'register' do Flask -->
+        <form id="signup-form" action="{{ url_for('registrar') }}" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="input-group">
+                <label for="name">Nome completo:</label>
+                <input type="text" id="name" name="nome" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email-signup">E-mail:</label>
+                <input type="email" id="email-signup" name="email" required>
             </div>
             
-            <div class="menu-container">
-                <div class="trigger-box">
-                Menu de Navegação
-                </div>
-
-                <!-- ALTERAÇÃO 3: Caminho dinâmico para a imagem -->
-                <div id="trigger-box-phone" class="trigger-box"><img src="{{ url_for('static', filename='img/Menu Aberto.svg') }}" alt="Menu Icone"></div>
-
-                <div class="btns-log">
-                <button id="login-btn" class="login-btn">Login</button>
-                <button id="signup-btn" class="signup-btn">Sign  Up</button>
-                </div>
+            <div class="input-group">
+                <label for="password-signup">Senha:</label>
+                <input type="password" id="password-signup" name="senha" required>
             </div>
-        </header>
-        <main class="main-content">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    <div class="flash-messages">
-                        {% for category, message in messages %}
-                            <div class="alert alert-{{ category }}">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            {% endwith %}
-            <div id="signup-box" class="form-container">
-                <h2>Crie sua conta</h2>
-                <!-- ALTERAÇÃO 4: Ação do formulário aponta para a rota 'register' do Flask -->
-                <form id="signup-form" action="{{ url_for('registrar') }}" method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="input-group">
-                        <label for="name">Nome completo:</label>
-                        <input type="text" id="name" name="nome" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="email-signup">E-mail:</label>
-                        <input type="email" id="email-signup" name="email" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="password-signup">Senha:</label>
-                        <input type="password" id="password-signup" name="senha" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="confirm-password">Confirme a senha:</label>
-                        <input type="password" id="confirm-password" name="confirmar_senha" required>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">Eu concordo com os<a href="#"> termos e condições</a></label>
-                    </div>
-
-                    <button type="submit" class="submit-button">Cadastrar-se</button>
-                </form>
-                <!-- ALTERAÇÃO 5: Link aponta para a página de login -->
-                <p class="login-link">Já tem uma conta? <a href="{{ url_for('login_page') }}">Entre Aqui</a></p>
-            </div>
-            </main>
-        <footer class="site-footer">
-            <p>© 2025 JEBY-Todos os direitos reservados.</p>
-        </footer>
             
-        <!-- ALTERAÇÃO 6: Caminho dinâmico para o JavaScript -->
-        <script src="{{ url_for('static', filename='js/script-signup.js') }}"></script>
-    </body>
-</html>
+            <div class="input-group">
+                <label for="confirm-password">Confirme a senha:</label>
+                <input type="password" id="confirm-password" name="confirmar_senha" required>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">Eu concordo com os<a href="#"> termos e condições</a></label>
+            </div>
+
+            <button type="submit" class="submit-button">Cadastrar-se</button>
+        </form>
+        <!-- ALTERAÇÃO 5: Link aponta para a página de login -->
+        <p class="login-link">Já tem uma conta? <a href="{{ url_for('login_page') }}">Entre Aqui</a></p>
+    </div>
+</main>
+<!-- ALTERAÇÃO 6: Caminho dinâmico para o JavaScript -->
+<script src="{{ url_for('static', filename='js/script-signup.js') }}"></script>
+{% endblock %}

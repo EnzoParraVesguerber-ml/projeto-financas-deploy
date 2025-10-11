@@ -1,33 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Educação Financeira</title>
-    <!-- ALTERAÇÃO 1: Caminho dinâmico para o CSS -->
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style-resultados.css') }}">
-</head>
-<body>
-     <header class="header-container">
-            <div class="logo">
-                {% if session['usuario_logado'] %}
-                    <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
-                {% else %}
-                    <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
-                {% endif %}
-            </div>
-            <div class="menu-container">
-                <div class="trigger-box">
-                Menu de Navegação
-                </div>
-                <div class="btns-log">
-                    <div class="user-info">
-                    
-                    <button id="logout-btn" class="logout-button">Logout</button>
-                    </div>
-                </div>
-            </div>
-        </header>
+    <title>Resultados da Análise - JEBY Finanças</title>
+{% endblock %}
+{% block content %}
         <main>
             <div class="dashboard">
                 <div class="dashboard-grid">
@@ -39,14 +16,9 @@
                 </div>
             </div>
         </main>
-
-        <footer class="footer">
-            <p>© 2025 JEBY-Todos os direitos reservados.</p>
-        </footer>
         
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <!-- ALTERAÇÃO 2: Caminho dinâmico para o JavaScript -->
         <script src="{{ url_for('static', filename='js/script-resultados.js') }}"></script>
-    </body>
-</html>
+{% endblock %}

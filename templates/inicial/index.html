@@ -1,82 +1,54 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <title>Projeto Educação Financeira</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style-inicial.css') }}">
-    </head>
-    <body>
-        <header class="top-box">
-            <div class="logo">
-                {% if session['usuario_logado'] %}
-                    <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
-                {% else %}
-                    <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
-                {% endif %}
-            </div>
-            <div class="menu-container">
-                <div class="trigger-box">
-                Menu de Navegação
-                </div>
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-inicial.css') }}">
+    <title>Projeto Educação Financeira</title>
+{% endblock %}
 
-                <div id="trigger-box-phone" class="trigger-box"><img src="{{ url_for('static', filename='img/Menu Aberto.svg') }}" alt="Menu Icone"></div>
-                
-                <div class="btns-log">
-                    <button id="login-btn" class="login-btn">Login</button>
-                    <button id="signup-btn" class="signup-btn">Sign Up</button>
-                </div>
-            </div>
-        </header>
-        
-        <main class="major">
-            <section class="first-section">
-                <h1 class="first-section-heading">Entenda seus gastos com <br><span>Facilidade</span></h1>
-                <p class="first-section-paragraph">Faça o upload do seu extrato bancário e deixe nossa tecnologia classificar suas despesas automaticamente.<br>Tenha clareza sobre sua vida financeira e tome decisões mais inteligentes.</p>
-                <div class="first-section-start">
-                    <button id="start-btn" class="presentation-link" > Comece Agora (É Grátis)                    
-                    </button>
-                </div>
-            </section>
-            <section class="second-section">
-                <div class="second-section-opcions">
-                    <h2>📊​ ​1. Envie o seu Extrato</h2>
-                    <p>Exporte seu extrato bancário em formato .csv ou .xlsx e faça o upload de forma segura na nossa plataforma.</p>
-                </div>
-                <div class="second-section-opcions">
-                    <h2>🤖 2. Análise com I.A.</h2>
-                    <p>Nossa inteligência Artificial processa suas transações e as categoriza automaticamente em segundos.</p>
-                </div>
-                <div class="second-section-opcions">
-                    <h2>📊 3. Visualize seus Dados </h2>
-                    <p>Receba um dashboard interativo com gráficos e insights para entender para onde seu dinheiro está realmente indo.</p>
-                </div>
-            </section>
-            <section class="third-section">
-                    <h2 class="third-section-heading">Veja a Magia Acontecer</h2>
-                    <div class="third-section-graphic">
-                            <div class="graphic-header">
-                            <div class="color-circles">
-                            <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                        <div class="graphic">
-                            <div class='graphic-chart'><div class="graphic-pie"></div></div>
-                            <div class="graphic-data">
-                                <h4 class="graphic-item-header">Gastos por categoria:</h4>
-                                <div class="graphic-item"><span class="color-box" style="background-color: #22d3ee;"></span>Moradia - 30%</div>
-                                <div class="graphic-item"><span class="color-box" style="background-color: #6366f1;"></span>Alimentação - 25%</div>
-                                <div class="graphic-item"><span class="color-box" style="background-color: #a855f7"></span>Transporte - 20%</div>
-                                <div class="graphic-item"><span class="color-box" style="background-color: #ec4899"></span>Lazer - 25%</div>
-                            </div> 
-                        </div> 
+{% block content %}
+<main class="major">
+    <section class="first-section">
+        <h1 class="first-section-heading">Entenda seus gastos com <br><span>Facilidade</span></h1>
+        <p class="first-section-paragraph">Faça o upload do seu extrato bancário e deixe nossa tecnologia classificar suas despesas automaticamente.<br>Tenha clareza sobre sua vida financeira e tome decisões mais inteligentes.</p>
+        <div class="first-section-start">
+            <button id="start-btn" class="presentation-link" > Comece Agora (É Grátis)                    
+            </button>
+        </div>
+    </section>
+    <section class="second-section">
+        <div class="second-section-opcions">
+            <h2>📊​ ​1. Envie o seu Extrato</h2>
+            <p>Exporte seu extrato bancário em formato .csv ou .xlsx e faça o upload de forma segura na nossa plataforma.</p>
+        </div>
+        <div class="second-section-opcions">
+            <h2>🤖 2. Análise com I.A.</h2>
+            <p>Nossa inteligência Artificial processa suas transações e as categoriza automaticamente em segundos.</p>
+        </div>
+        <div class="second-section-opcions">
+            <h2>📊 3. Visualize seus Dados </h2>
+            <p>Receba um dashboard interativo com gráficos e insights para entender para onde seu dinheiro está realmente indo.</p>
+        </div>
+    </section>
+    <section class="third-section">
+            <h2 class="third-section-heading">Veja a Magia Acontecer</h2>
+            <div class="third-section-graphic">
+                    <div class="graphic-header">
+                    <div class="color-circles">
+                    <span></span><span></span><span></span>
                     </div>
-            </section>
-        </main>
-        <footer class="footer">
-            <p>© 2025 JEBY-Todos os direitos reservados.</p>
-        </footer>
-            
-        <script src="{{ url_for('static', filename='js/script-inicial.js') }}"></script>
-    </body>
-</html>
+                </div>
+                <div class="graphic">
+                    <div class='graphic-chart'><div class="graphic-pie"></div></div>
+                    <div class="graphic-data">
+                        <h4 class="graphic-item-header">Gastos por categoria:</h4>
+                        <div class="graphic-item"><span class="color-box" style="background-color: #22d3ee;"></span>Moradia - 30%</div>
+                        <div class="graphic-item"><span class="color-box" style="background-color: #6366f1;"></span>Alimentação - 25%</div>
+                        <div class="graphic-item"><span class="color-box" style="background-color: #a855f7"></span>Transporte - 20%</div>
+                        <div class="graphic-item"><span class="color-box" style="background-color: #ec4899"></span>Lazer - 25%</div>
+                    </div> 
+                </div> 
+            </div>
+    </section>
+</main>
+<script src="{{ url_for('static', filename='js/script-inicial.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style-inicial.css') }}">
+        <title>JEBY Finanças</title>
+    {% endblock %}
+</head>
+<body>
+    <header class="top-box">
+        <div class="logo">
+            {% if session['usuario_logado'] %}
+                <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
+            {% else %}
+                <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
+            {% endif %}
+        </div>
+        <div class="menu-container">
+            <div class="trigger-box">Menu de Navegação</div>
+            <div id="trigger-box-phone" class="trigger-box">
+                <img src="{{ url_for('static', filename='img/Menu Aberto.svg') }}" alt="Menu Icone">
+            </div>
+            <div class="btns-log">
+                <button id="login-btn" class="login-btn">Login</button>
+                <button id="signup-btn" class="signup-btn">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages-container">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                        <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 JEBY-Todos os direitos reservados.</p>
+    </footer>
+    
+    </body>
+</html>

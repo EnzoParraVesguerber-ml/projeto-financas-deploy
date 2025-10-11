@@ -1,29 +1,37 @@
 # Ambientes Virtuais
-# Ignora a pasta do ambiente virtual que contém as bibliotecas instaladas
+# Ignora a pasta do ambiente virtual que contém as bibliotecas instaladas.
 .venv/
 venv/
 env/
+ENV/
 
 # Arquivos de Bytecode e Cache do Python
-# Ignora as pastas de cache que o Python cria automaticamente
+# Ignora as pastas de cache e arquivos compilados que o Python cria automaticamente.
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
 # Pasta de instância do Flask
-# Usada para arquivos de configuração locais e banco de dados SQLite, se aplicável
+# Usada para arquivos de configuração locais e banco de dados SQLite, se aplicável.
+# É crucial ignorar esta pasta para não expor segredos.
 instance/
 
 # Arquivos de variáveis de ambiente
-# Protege senhas e chaves de API. Crie um .env.example com as variáveis vazias.
+# Protege senhas, chaves de API e configurações específicas do ambiente.
 .env
 .env.*
 !.env.example
 
 # Bancos de dados locais
+# Evita o versionamento do banco de dados de desenvolvimento.
 *.sqlite3
 *.db
+*.sqlite
+
+# Arquivos de upload
+# Ignora o diretório onde os arquivos enviados pelos usuários são temporariamente armazenados.
+uploads/
 
 # Arquivos gerados por editores de código e IDEs
 .vscode/
@@ -39,3 +47,14 @@ instance/
 .DS_Store
 # (Windows)
 Thumbs.db
+# (Linux)
+*~
+
+# Arquivos de pacotes e dependências do Python
+pip-wheel-metadata/
+dist/
+build/
+*.egg-info/
+
+# Arquivos de log
+*.log

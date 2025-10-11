@@ -1,0 +1,10 @@
+Flask
+Flask-SQLAlchemy
+Flask-Bcrypt
+Flask-WTF
+mysql-connector-python
+pandas
+joblib
+email_validator
+scikit-learn
+nltk

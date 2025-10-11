@@ -1,0 +1,36 @@
+/* static/css/base.css */
+
+/* --- ESTILOS PARA MENSAGENS FLASH (POP-UP) --- */
+.flash-messages-container {
+    position: fixed;
+    top: 80px; /* Abaixo do cabeçalho */
+    right: 20px;
+    z-index: 1050;
+    width: 100%;
+    max-width: 350px;
+}
+
+.alert {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: #f1f5f9; /* --heading-color */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+}
+
+.alert .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.alert-success { background-color: #166534; border-color: #22c55e; }
+.alert-danger { background-color: #991b1b; border-color: #ef4444; }
+.alert-info { background-color: #1e40af; border-color: #3b82f6; }
+.alert-warning { background-color: #b45309; border-color: #f59e0b; }

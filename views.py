@@ -10,6 +10,7 @@ from helpers import FormularioRegisto, FormularioLogin
 import pandas as pd
 import joblib
 import os
+from ml_model.predictor import classificar_despesas
 
 # --- ROTAS DE UTILIZADOR E AUTENTICAÇÃO ---
 
@@ -108,6 +109,8 @@ def resultados_page():
 
 # --- ROTA DE ANÁLISE (BACKEND) ---
 
+# --- ROTA DE ANÁLISE (BACKEND) ---
+
 @app.route('/upload', methods=['POST'])
 def upload():
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
@@ -122,13 +125,28 @@ def upload():
         return jsonify({'error': 'Nome de ficheiro inválido'}), 400
 
     try:
-        dados_analise = {
-            'labels': ['Moradia', 'Alimentação', 'Transporte', 'Lazer', 'Saúde', 'Outros'],
-            'data': [1250.50, 875.20, 310.00, 450.99, 200.00, 150.80]
-        }
+        # --- INTEGRAÇÃO DO MODELO DE NLP ---
         
+        # Cria uma pasta temporária para guardar os uploads, se não existir
+        temp_dir = 'uploads'
+        if not os.path.exists(temp_dir):
+            os.makedirs(temp_dir)
+        
+        # Salva o ficheiro temporariamente
+        caminho_arquivo = os.path.join(temp_dir, file.filename)
+        file.save(caminho_arquivo)
+
+        # Chama a função de classificação do seu modelo
+        dados_analise = classificar_despesas(caminho_arquivo)
+        
+        # Remove o ficheiro temporário depois de usar
+        os.remove(caminho_arquivo)
+        
+        # Retorna os dados classificados para o frontend
         return jsonify(dados_analise)
 
     except Exception as e:
+        # Retorna uma mensagem de erro mais informativa
+        print(f"Erro na rota /upload: {e}") # Para depuração no terminal
         return jsonify({'error': f'Ocorreu um erro ao processar o ficheiro: {str(e)}'}), 500
 
