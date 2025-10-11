@@ -81,51 +81,6 @@ a:hover {
     border: 2px solid var(--bg2-color);
 }
 
-.btns-log{
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px); /* Começa um pouco para cima */
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-}
-
-.user-info{
-    margin-top: 11%;
-    display: flex;
-    align-items: center;
-    color: var(--heading-color);
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    position: absolute;
-    right: 10%;
-    
-}
-
-.logout-button {
-    display: flex;
-    font-size: 1em;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: none;
-    background-color: var(--primary-color);
-    color: var(--bg-color);
-    font-weight: bold;
-    
-    
-}
-
-.logout-button:hover {
-    background-color: var(--primary-hover);
-}
-
-.logout-button:active {
-    background-color: var(--primary-hover);
-}
-
-.logout-button:focus {
-    background-color: var(--primary-hover);
-}
-
 .footer{
     text-align: center;
     font-family: 'Poppins', sans-serif;

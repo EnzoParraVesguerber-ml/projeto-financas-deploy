@@ -34,3 +34,92 @@
 .alert-danger { background-color: #991b1b; border-color: #ef4444; }
 .alert-info { background-color: #1e40af; border-color: #3b82f6; }
 .alert-warning { background-color: #b45309; border-color: #f59e0b; }
+
+/* ============================================= */
+/* --- ESTILOS UNIFICADOS PARA O MENU HEADER --- */
+/* ============================================= */
+
+/* Container principal do menu suspenso */
+.btns-log {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #1e293b;
+    border-radius: 8px;
+    border: 1px solid var(--input-border-color, #334155);
+    padding: 10px;
+    width: 200px; /* Aumentei um pouco a largura para caber o nome */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+/* Classe 'active' que o JavaScript adiciona */
+.btns-log.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Estilo para o container do usuário logado */
+.user-info {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    align-items: center; /* Centraliza os itens */
+    width: 100%;
+    gap: 8px; /* Espaço entre o nome e o botão logout */
+}
+
+/* Estilo para o texto "Olá, ..." */
+.user-info span {
+    color: var(--heading-color, #f1f5f9);
+    font-family: 'Poppins', sans-serif;
+    padding: 5px;
+    font-size: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+/* Estilo para TODOS os botões dentro do menu */
+.btns-log button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    box-sizing: border-box; /* Garante que o padding não estoure a largura */
+}
+
+.btns-log button:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilo do botão de Login */
+.login-btn {
+    color: var(--text-color, #cbd5e1);
+    background: transparent;
+}
+.login-btn:hover {
+    background-color: #141c30;
+}
+
+/* Estilo dos botões de Sign Up e Logout (botões de ação) */
+.signup-btn,
+.logout-button {
+    background-color: var(--primary-color, #22d3ee);
+    color: #0f172a;
+    font-weight: bold;
+}
+.signup-btn:hover,
+.logout-button:hover {
+    background-color: var(--primary-hover, rgb(45, 223, 250));
+}

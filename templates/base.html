@@ -14,11 +14,7 @@
 <body>
     <header class="top-box">
         <div class="logo">
-            {% if session['usuario_logado'] %}
-                <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
-            {% else %}
-                <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
-            {% endif %}
+            <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
         </div>
         <div class="menu-container">
             <div class="trigger-box">Menu de Navegação</div>
@@ -26,8 +22,15 @@
                 <img src="{{ url_for('static', filename='img/Menu Aberto.svg') }}" alt="Menu Icone">
             </div>
             <div class="btns-log">
-                <button id="login-btn" class="login-btn">Login</button>
-                <button id="signup-btn" class="signup-btn">Sign Up</button>
+                {% if session['usuario_logado'] %}
+                    <div class="user-info">
+                        <span>Olá, {{ session['usuario_nome'] }}</span>
+                        <button id="logout-btn" class="logout-button">Logout</button>
+                    </div>
+                {% else %}
+                    <button id="login-btn" class="login-btn">Login</button>
+                    <button id="signup-btn" class="signup-btn">Sign Up</button>
+                {% endif %}
             </div>
         </div>
     </header>
@@ -53,5 +56,6 @@
         <p>© 2025 JEBY-Todos os direitos reservados.</p>
     </footer>
     
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     </body>
 </html>
