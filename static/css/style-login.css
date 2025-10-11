@@ -216,16 +216,20 @@ a:hover {
 .submit-button {
     background-color: var(--primary-color);
     color: var(--bg-color);
-    padding: 12px 15px;
-    border-radius: 5px;
+    padding: 14px 20px; /* Mais preenchimento */
+    border-radius: 8px; /* Cantos mais suaves */
     font-size: 1.1em;
     font-weight: bold;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito suave */
 }
 
 .submit-button:hover {
     background-color: var(--primary-hover);
+    transform: translateY(-2px); /* Efeito de "levantar" */
 }
 
 .forgot-password {
