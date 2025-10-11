@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById('file-upload');
     const fileNameSpan = document.getElementById('file-name');
-    const generateBtn = document.getElementById('generate-analysis-btn'); // Corrigido para corresponder ao ID no seu HTML
+    const generateBtn = document.getElementById('generate-analysis'); // Corrigido para corresponder ao ID no seu HTML
     const resultsArea = document.getElementById('analysis-results');
 
     // Mostra o nome do ficheiro selecionado
