@@ -14,7 +14,12 @@
 <body>
     <header class="top-box">
         <div class="logo">
-            <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
+            {% if request.endpoint in ['dashboard', 'resultados_page'] %}
+                {# Se o usuário estiver no dashboard ou na página de resultados, o logo leva para o dashboard #}
+                <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
+            {% else %}
+                <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
+            {% endif %}
         </div>
         <div class="menu-container">
             <div class="trigger-box">Menu de Navegação</div>
