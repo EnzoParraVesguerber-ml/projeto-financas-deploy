@@ -10,8 +10,9 @@
                 <div class="dashboard-grid">
                     <section id="results" class="results-box">
                         <h2>📊 Resultados da Análise</h2>
-                        <canvas id="resultsChart" width="400" height="200">
-                        </canvas>
+                        <div class="chart-container">
+                            <canvas id="resultsChart"></canvas>
+                        </div>
                     </section>
                 </div>
             </div>
@@ -19,6 +20,5 @@
         
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <!-- ALTERAÇÃO 2: Caminho dinâmico para o JavaScript -->
         <script src="{{ url_for('static', filename='js/script-resultados.js') }}"></script>
 {% endblock %}

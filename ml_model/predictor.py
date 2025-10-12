@@ -22,6 +22,30 @@ except FileNotFoundError:
     model = None
     vectorizer = None
 
+# --- MAPA DE CORREÇÃO DE CARACTERES ---
+# ### ALTERAÇÃO ###: Movido para fora da função para ser uma constante global.
+# Este mapa corrige os rótulos que o modelo aprendeu de forma incorreta.
+# --- MAPA DE CORREÇÃO DE CARACTERES ---
+# ### ALTERAÇÃO ###: Corrigido o SyntaxError usando raw strings (prefixo 'r').
+# O 'r' antes da string faz com que o Python ignore as barras invertidas.
+CORRECTION_MAP = {
+    r'Alimenta\x80\x9co': 'Alimentação',
+    r'Alimenta\x8√\xdf\x8√\xdf£o': 'Alimentação',
+    r'Casa e Vestu\x80\x9 rio': 'Casa e Vestuário',
+    r'Casa e Vestu\x8√\xdf°rio': 'Casa e Vestuário',
+    r'Educa\x80\x9co': 'Educação',
+    r'Educa\x8√\xdf\x8√\xdf£o': 'Educação',
+    r'Lazer e Eletr\x80\x9 nicos': 'Lazer e Eletrônicos',
+    r'Lazer e Eletr\x8√\xdf¥nicos': 'Lazer e Eletrônicos',
+    r'Sa\x80\x9ade': 'Saúde',
+    r'Sa\x8√\xdf∫de': 'Saúde',
+    r'Servi\x80\x9os e Taxas': 'Serviços e Taxas',
+    r'Servi\x8√\xdf\x8√\xdfos e Taxas': 'Serviços e Taxas',
+    r'Ve\x80\x9 culo': 'Veículo',
+    r'Ve\x8√\xdf≠culo': 'Veículo'
+}
+
+
 # --- FUNÇÃO DE LIMPEZA DE TEXTO (DO SEU NOTEBOOK) ---
 
 def clean_text(text):
@@ -50,8 +74,8 @@ def classificar_despesas(caminho_do_arquivo_csv):
         raise RuntimeError("O modelo de NLP ou o vetorizador não puderam ser carregados.")
 
     try:
-        # Lê o CSV enviado pelo usuário. Assume que a primeira linha é o cabeçalho.
-        df = pd.read_csv(caminho_do_arquivo_csv, encoding='latin1', sep=';')
+        # Lê o CSV enviado pelo usuário.
+        df = pd.read_csv(caminho_do_arquivo_csv, encoding='utf-8', sep=';')
         
         # Garante que as colunas 'Descricao' e 'Valor' existem
         if 'Descricao' not in df.columns or 'Valor' not in df.columns:
@@ -63,23 +87,27 @@ def classificar_despesas(caminho_do_arquivo_csv):
         # Transforma as descrições limpas usando o vetorizador carregado
         descriptions_tfidf = vectorizer.transform(df['Description_Cleaned'])
         
-        # Usa o modelo para prever as categorias
-        categorias_preditas = model.predict(descriptions_tfidf)
+        # Usa o modelo para prever as categorias (com os rótulos quebrados)
+        categorias_preditas_quebradas = model.predict(descriptions_tfidf)
         
-        # Adiciona os resultados ao DataFrame
-        df['Categoria'] = categorias_preditas
+        # ### ALTERAÇÃO PRINCIPAL ###
+        # Corrigimos os rótulos quebrados que vieram do modelo usando o mapa.
+        # Usamos .get(label, label) para que, se um rótulo não estiver no mapa, ele seja mantido como está.
+        categorias_corrigidas = [CORRECTION_MAP.get(label, label) for label in categorias_preditas_quebradas]
+
+        # Adiciona os resultados JÁ CORRIGIDOS ao DataFrame
+        df['Categoria'] = categorias_corrigidas
 
         # Converte a coluna 'Valor' para numérico, tratando vírgulas e erros
         df['Valor'] = df['Valor'].str.replace(',', '.', regex=True)
         df['Valor'] = pd.to_numeric(df['Valor'], errors='coerce')
         df.dropna(subset=['Valor'], inplace=True) # Remove linhas onde o valor não pôde ser convertido
 
-        # Filtra apenas despesas (valores negativos) e torna-os positivos para somar
-        despesas_df = df[df['Valor'] < 0].copy()
-        despesas_df['Valor'] = despesas_df['Valor'].abs()
+        # Converte todos os valores para positivos (valor absoluto)
+        df['Valor'] = df['Valor'].abs()
 
         # Agrupa os gastos por categoria e soma os valores
-        resumo_gastos = despesas_df.groupby('Categoria')['Valor'].sum().round(2)
+        resumo_gastos = df.groupby('Categoria')['Valor'].sum().round(2)
         
         # Formata os dados para o gráfico (Chart.js)
         dados_formatados = {
@@ -101,26 +129,28 @@ def processar_pre_classificado(caminho_do_arquivo_csv):
     """
     try:
         # Lê o CSV enviado pelo usuário.
-        df = pd.read_csv(caminho_do_arquivo_csv, encoding='latin1', sep=';')
+        df = pd.read_csv(caminho_do_arquivo_csv, encoding='utf-8', sep=';')
 
         # Garante que as colunas 'Categoria' e 'Valor' existem
         if 'Categoria' not in df.columns or 'Valor' not in df.columns:
             raise ValueError("O ficheiro CSV para esta opção deve conter as colunas 'Categoria' e 'Valor'.")
 
+        # ### ALTERAÇÃO ###: Aplica a mesma correção aqui, caso o CSV de entrada
+        # também tenha os rótulos com codificação errada.
+        df['Categoria'] = df['Categoria'].replace(CORRECTION_MAP)
+
         # Converte a coluna 'Valor' para numérico, tratando vírgulas e erros
-        # (Reutilizando a mesma lógica da outra função)
         df['Valor'] = df['Valor'].str.replace(',', '.', regex=True)
         df['Valor'] = pd.to_numeric(df['Valor'], errors='coerce')
         df.dropna(subset=['Valor'], inplace=True)
 
-        # Filtra apenas despesas (valores negativos) e torna-os positivos para somar
-        despesas_df = df[df['Valor'] < 0].copy()
-        despesas_df['Valor'] = despesas_df['Valor'].abs()
+        # Converte todos os valores para positivos (valor absoluto)
+        df['Valor'] = df['Valor'].abs()
 
         # Agrupa os gastos por categoria e soma os valores
-        resumo_gastos = despesas_df.groupby('Categoria')['Valor'].sum().round(2)
+        resumo_gastos = df.groupby('Categoria')['Valor'].sum().round(2)
 
-        # Formata os dados para o gráfico (Chart.js), igual à outra função
+        # Formata os dados para o gráfico (Chart.js)
         dados_formatados = {
             'labels': resumo_gastos.index.tolist(),
             'data': resumo_gastos.values.tolist()

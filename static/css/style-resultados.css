@@ -98,7 +98,7 @@ a:hover {
     font-family: 'Poppins', sans-serif;
     color: var(--heading-color);
     display: grid;
-    grid-template-columns: 1fr 1.5fr; /* Coluna da direita maior */
+    grid-template-columns: 1fr; /* Alterado para 1 coluna para centralizar melhor */
     gap: 30px;
     margin-bottom: 40px;
     display: flex;
@@ -107,11 +107,11 @@ a:hover {
 
 .results-box{
     background-color: var(--form-bg-color);
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Sombra mais escura */
     width: 100%;
-    max-width: 550px; /* Limita a largura*/
+    max-width: 800px; /* AUMENTADO O TAMANHO */
     text-align: center;
     border: 1px solid var(--input-border-color);
     align-items: center;
@@ -124,7 +124,7 @@ a:hover {
 .results-box h2 {
     font-size: 1.5rem;
     color: var(--heading-color);
-    margin-bottom: 15px;
+    margin-bottom: 25px; /* Aumentado o espaço */
     display: flex;
     align-items: center;
 }
@@ -139,4 +139,11 @@ a:hover {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+/* NOVO ESTILO PARA O CONTAINER DO GRÁFICO */
+.chart-container {
+    position: relative;
+    height: 450px; /* AUMENTADO O TAMANHO */
+    width: 100%;
 }
