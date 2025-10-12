@@ -9,19 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const switchLabels = document.querySelectorAll('.switch-label');
 
     if (analysisSwitch) {
-        // Define o estado inicial (desmarcado = 'ai')
         analysisSwitch.checked = false; 
         document.querySelector('.switch-label[data-value="ai"]').classList.add('active');
         document.querySelector('.switch-label[data-value="labeled"]').classList.remove('active');
 
         analysisSwitch.addEventListener('change', () => {
-            // Alterna a classe 'active' nos labels para dar feedback visual
             switchLabels.forEach(label => label.classList.toggle('active'));
         });
     }
     // --- FIM DA LÓGICA DO SWITCH ---
 
-    // Mostra o nome do ficheiro selecionado
     if (fileInput) {
         fileInput.addEventListener('change', () => {
             if (fileInput.files.length > 0) {
@@ -32,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lógica para enviar o ficheiro para o backend
     if (generateBtn) {
         generateBtn.addEventListener('click', async () => {
             if (!fileInput.files || fileInput.files.length === 0) {
@@ -40,22 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // NOVO: Verifica se o switch está marcado ('checked') ou não
-            // Se estiver marcado, o valor é 'labeled'. Se não, é 'ai'.
             const analysisType = analysisSwitch.checked ? 'labeled' : 'ai';
 
             const formData = new FormData();
             formData.append('file-upload', fileInput.files[0]);
-            formData.append('analysis_type', analysisType); // Envia o tipo de análise
+            formData.append('analysis_type', analysisType); 
 
-            // Mostra uma mensagem de carregamento
             if(resultsArea) {
                 resultsArea.innerHTML = '<h3>Analisando seus dados... Por favor, aguarde.</h3>';
                 resultsArea.classList.add('loading');
             }
 
             try {
-                // Faz a chamada "fetch" para a sua rota /upload no Flask
                 const response = await fetch('/upload', {
                     method: 'POST',
                     body: formData,
@@ -64,16 +56,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok) {
-                    // Guarda os resultados e redireciona
+                    // --- LÓGICA DE METAS APRIMORADA ---
+                    const goalsData = {};
+                    const goalInputs = document.querySelectorAll('#goals-form input[type="number"]');
+
+                    goalInputs.forEach(input => {
+                        const name = input.name;
+                        const value = parseFloat(input.value);
+                        
+                        // Guarda o valor apenas se for um número válido e maior que zero
+                        if (!isNaN(value) && value > 0) {
+                            goalsData[name] = value;
+                        }
+                    });
+
+                    // IMPORTANTE PARA DEPURAR: Pressione F12 no browser para ver esta mensagem.
+                    console.log("Metas que estão a ser guardadas:", goalsData);
+
+                    // Guarda os resultados da análise E o objeto de metas
                     localStorage.setItem('analysisData', JSON.stringify(result));
+                    localStorage.setItem('goalsData', JSON.stringify(goalsData)); // Guarda o objeto completo
+
                     window.location.href = '/resultados';
                 } else {
-                    // Mostra erro
                     resultsArea.innerHTML = `<h3>Erro na Análise</h3><p>${result.error || 'Ocorreu um problema desconhecido.'}</p>`;
                 }
 
             } catch (error) {
-                // Se houver um erro de rede
                 console.error('Erro ao enviar o ficheiro:', error);
                 if(resultsArea) {
                     resultsArea.innerHTML = '<h3>Erro de Comunicação</h3><p>Não foi possível conectar ao servidor. Tente novamente.</p>';
