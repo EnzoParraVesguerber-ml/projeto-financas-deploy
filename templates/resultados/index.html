@@ -9,17 +9,31 @@
             <div class="dashboard">
                 <div class="dashboard-grid">
                     
-                    <section id="results" class="results-box">
+                    <section class="results-box">
                         <h2>📊 Gastos por Categoria</h2>
                         <div class="chart-container">
                             <canvas id="resultsChart"></canvas>
                         </div>
                     </section>
                     
-                    <section id="goals-comparison" class="results-box">
-                        <h2>🎯 Gastos vs. Metas</h2>
+                    <section class="results-box">
+                        <h2>🎯 Total Gasto vs. Meta Total</h2>
                         <div class="chart-container">
                             <canvas id="goalsChart"></canvas>
+                        </div>
+                    </section>
+
+                    <section class="results-box">
+                        <h2>🔍 Gasto vs. Meta (Detalhado)</h2>
+                        <div class="chart-container">
+                            <canvas id="comparisonChart"></canvas>
+                        </div>
+                    </section>
+
+                    <section class="results-box">
+                        <h2>📉 Sobra ou Excesso por Categoria</h2>
+                        <div class="chart-container">
+                            <canvas id="deviationChart"></canvas>
                         </div>
                     </section>
 
@@ -28,6 +42,5 @@
         </main>
         
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
         <script src="{{ url_for('static', filename='js/script-resultados.js') }}"></script>
 {% endblock %}
