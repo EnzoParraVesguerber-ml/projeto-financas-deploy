@@ -47,19 +47,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// NOVA PALETA DE CORES HARMONIZADA
+const NOVA_PALETA = {
+    cyan: 'rgba(34, 211, 238, 0.8)',
+    purple: 'rgba(168, 85, 247, 0.8)',
+    indigo: 'rgba(99, 102, 241, 0.8)',
+    pink: 'rgba(236, 72, 153, 0.8)',
+    green: 'rgba(34, 197, 94, 0.8)',
+    amber: 'rgba(245, 158, 11, 0.8)',
+    blue: 'rgba(59, 130, 246, 0.8)',
+    violet: 'rgba(139, 92, 246, 0.8)',
+    sky: 'rgba(14, 165, 233, 0.8)',
+    fuchsia: 'rgba(217, 70, 239, 0.8)',
+    // Cores para borda (sem transparência)
+    cyan_border: 'rgb(34, 211, 238)',
+    purple_border: 'rgb(168, 85, 247)',
+    indigo_border: 'rgb(99, 102, 241)',
+    pink_border: 'rgb(236, 72, 153)',
+    green_border: 'rgb(34, 197, 94)',
+    amber_border: 'rgb(245, 158, 11)',
+    blue_border: 'rgb(59, 130, 246)',
+    violet_border: 'rgb(139, 92, 246)',
+    sky_border: 'rgb(14, 165, 233)',
+    fuchsia_border: 'rgb(217, 70, 239)'
+};
+
+
 function createBarChart(analysisData, canvasElement) {
+    // ALTERADO: Paleta de cores mais rica e vibrante
     const backgroundColors = [
-        'rgba(34, 211, 238, 0.9)', 'rgba(34, 211, 238, 0.8)', 'rgba(34, 211, 238, 0.7)',
-        'rgba(34, 211, 238, 0.6)', 'rgba(34, 211, 238, 0.5)', 'rgba(34, 211, 238, 0.4)',
-        'rgba(34, 211, 238, 0.3)', 'rgba(34, 211, 238, 0.2)'
+        NOVA_PALETA.cyan, NOVA_PALETA.purple, NOVA_PALETA.indigo,
+        NOVA_PALETA.pink, NOVA_PALETA.green, NOVA_PALETA.amber,
+        NOVA_PALETA.blue, NOVA_PALETA.violet, NOVA_PALETA.sky,
+        NOVA_PALETA.fuchsia
     ];
+    const borderColors = [
+        NOVA_PALETA.cyan_border, NOVA_PALETA.purple_border, NOVA_PALETA.indigo_border,
+        NOVA_PALETA.pink_border, NOVA_PALETA.green_border, NOVA_PALETA.amber_border,
+        NOVA_PALETA.blue_border, NOVA_PALETA.violet_border, NOVA_PALETA.sky_border,
+        NOVA_PALETA.fuchsia_border
+    ];
+
     const data = {
         labels: analysisData.labels,
         datasets: [{
             label: 'Gastos por Categoria',
             data: analysisData.data,
             backgroundColor: backgroundColors,
-            borderColor: 'rgb(34, 211, 238)',
+            borderColor: borderColors,
             borderWidth: 1,
         }]
     };
@@ -79,8 +114,9 @@ function createPieChart(totalExpenses, totalGoals, canvasElement) {
         labels: ['Total Gasto', 'Meta de Gastos'],
         datasets: [{
             data: [totalExpenses.toFixed(2), totalGoals.toFixed(2)],
-            backgroundColor: ['rgba(239, 68, 68, 0.7)', 'rgba(34, 197, 94, 0.7)'],
-            borderColor: ['rgb(239, 68, 68)', 'rgb(34, 197, 94)'],
+            // ALTERADO: Cores mais neutras para a visão geral
+            backgroundColor: [NOVA_PALETA.amber, NOVA_PALETA.blue],
+            borderColor: [NOVA_PALETA.amber_border, NOVA_PALETA.blue_border],
             borderWidth: 1,
         }]
     };
@@ -100,8 +136,9 @@ function createComparisonBarChart(analysisData, goalsData, canvasElement) {
     const data = {
         labels: analysisData.labels,
         datasets: [
-            { label: 'Valor Gasto', data: analysisData.data, backgroundColor: 'rgba(239, 68, 68, 0.7)', borderColor: 'rgb(239, 68, 68)', borderWidth: 1 },
-            { label: 'Meta de Gasto', data: alignedGoals, backgroundColor: 'rgba(34, 197, 94, 0.7)', borderColor: 'rgb(34, 197, 94)', borderWidth: 1 }
+            // ALTERADO: Cor de "gasto" para rosa/magenta, mais suave que o vermelho
+            { label: 'Valor Gasto', data: analysisData.data, backgroundColor: NOVA_PALETA.pink, borderColor: NOVA_PALETA.pink_border, borderWidth: 1 },
+            { label: 'Meta de Gasto', data: alignedGoals, backgroundColor: NOVA_PALETA.green, borderColor: NOVA_PALETA.green_border, borderWidth: 1 }
         ]
     };
     const config = {
@@ -115,9 +152,6 @@ function createComparisonBarChart(analysisData, goalsData, canvasElement) {
     new Chart(canvasElement, config);
 }
 
-/**
- * NOVO: Função para criar o gráfico de desvio (sobra ou excesso)
- */
 function createDeviationChart(analysisData, goalsData, canvasElement) {
     const goalMapping = { 'Alimentação': 'goal_alimentacao', 'Casa e Vestuário': 'goal_casa_vestuario', 'Cuidados Pessoais': 'goal_cuidados_pessoais', 'Educação': 'goal_educacao', 'Lazer e Eletrônicos': 'goal_lazer_eletronicos', 'Outros': 'goal_outros', 'Pet': 'goal_pet', 'Saúde': 'goal_saude', 'Serviços e Taxas': 'goal_servicos_taxas', 'Supermercado': 'goal_supermercado', 'Transporte': 'goal_transporte', 'Veículo': 'goal_veiculo' };
 
@@ -125,16 +159,15 @@ function createDeviationChart(analysisData, goalsData, canvasElement) {
         const goalKey = goalMapping[label];
         const goalValue = goalsData[goalKey] || 0;
         const expenseValue = analysisData.data[index];
-        // Calcula a diferença: positivo se sobrou, negativo se excedeu
         return goalValue - expenseValue;
     });
-
-    // Define a cor de cada barra com base no valor (positivo/negativo)
+    
+    // ALTERADO: Cor de "excesso" para rosa/magenta
     const backgroundColors = deviationData.map(value => 
-        value >= 0 ? 'rgba(34, 197, 94, 0.7)' : 'rgba(239, 68, 68, 0.7)'
+        value >= 0 ? NOVA_PALETA.green : NOVA_PALETA.pink
     );
     const borderColors = deviationData.map(value =>
-        value >= 0 ? 'rgb(34, 197, 94)' : 'rgb(239, 68, 68)'
+        value >= 0 ? NOVA_PALETA.green_border : NOVA_PALETA.pink_border
     );
 
     const data = {
@@ -152,12 +185,12 @@ function createDeviationChart(analysisData, goalsData, canvasElement) {
         type: 'bar',
         data: data,
         options: {
-            indexAxis: 'y', // Transforma em gráfico de barras horizontais
+            indexAxis: 'y', 
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    display: false // Legenda não é tão necessária aqui
+                    display: false
                 }
             },
             scales: {
