@@ -166,12 +166,19 @@ a:hover {
 }
 
 .form-group label {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone e o texto */
     margin-bottom: 5px;
     font-size: 0.9rem;
     white-space: nowrap;      /* Impede que o texto quebre */
     overflow: hidden;         /* Esconde o texto que transborda */
     text-overflow: ellipsis;  /* Adiciona "..." ao final */
+}
+
+.form-group label img {
+    width: 20px; /* Tamanho menor para os ícones das metas */
+    height: 20px;
 }
 
 .form-group input {
@@ -218,14 +225,7 @@ a:hover {
     transform: scale(1.05);
 }
 
-.footer{
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    border-top: solid 1px var(--primary-color);
-}
 /* --- Estilos para o Botão Switch --- */
-
 .switch-container {
     display: flex;
     align-items: center;
@@ -239,10 +239,18 @@ a:hover {
 }
 
 .switch-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 0.95rem;
     color: var(--text-color);
     font-weight: 500;
     transition: color 0.3s ease;
+}
+
+.switch-label img {
+    width: 24px;
+    height: 24px;
 }
 
 /* Destaca o texto da opção inativa */
@@ -300,6 +308,14 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(26px);
 }
+
+/* --- Estilos para os Ícones Adicionados --- */
+.upload-box h2 img {
+    width: 32px;
+    height: 32px;
+}
+
+/* --- Media Queries --- */
 /* Para tablets e telas menores */
 @media (max-width: 1024px) {
     .dashboard-grid {
@@ -329,42 +345,4 @@ input:checked + .slider:before {
     .user-info span {
         display: none;
     }
-}
-
-.btns-log.active{
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* --- Estilos para os Ícones Adicionados --- */
-
-/* Ícones nos títulos das seções */
-.upload-box h2 img {
-    width: 32px;
-    height: 32px;
-}
-
-/* Ícones nas labels do formulário de metas */
-.form-group label {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Espaço entre o ícone e o texto */
-}
-
-.form-group label img {
-    width: 20px; /* Tamanho menor para os ícones das metas */
-    height: 20px;
-}
-
-/* Ícones no switch de tipo de análise */
-.switch-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.switch-label img {
-    width: 24px;
-    height: 24px;
 }
