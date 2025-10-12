@@ -1,3 +1,6 @@
+/* ==========================================================================
+   Variáveis Globais e Estilos Base
+   ========================================================================== */
 :root {
     --bg-color: #0f172a;
     --bg2-color: rgba(72, 69, 69, 0.2);
@@ -6,12 +9,11 @@
     --card-bg-color: rgba(30, 41, 59, 0.6);
     --text-color: #cbd5e1;
     --heading-color: #f1f5f9;
-    --form-bg-color: #1e293b; /* Fundo do formulário mais escuro */
-    --input-bg-color: #0f172a; /* Fundo do input */
-    --input-border-color: #334155; /* Borda sutil do input */
+    --form-bg-color: #1e293b;
+    --input-bg-color: #0f172a;
+    --input-border-color: #334155;
 }
 
-/* --- Estilos Gerais --- */
 html {
     scroll-behavior: smooth;
 }
@@ -19,6 +21,7 @@ html {
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -34,35 +37,36 @@ a:hover {
     color: var(--primary-hover);
 }
 
-/* --- Header e Navegação --- */
-.top-box{
+/* ==========================================================================
+   Header e Navegação
+   ========================================================================== */
+.top-box {
     width: 100%;
-    padding: 15px 0;
+    padding: 15px 20px; /* Adicionado padding lateral para consistência */
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
     border-bottom: 1px solid var(--heading-color);
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     backdrop-filter: blur(5px);
+    box-sizing: border-box;
 }
 
-.logo{
+.logo {
     font-size: 2em;
     font-weight: bold;
     color: var(--heading-color);
-    margin-left: 20px;
 }
 
 .logo a {
     text-decoration: none;
-    color: var(--heading-color); /* Força a cor branca */
+    color: inherit; /* Herda a cor do elemento pai .logo */
 }
 
-.logo span{
+.logo span {
     color: var(--primary-color);
 }
 
@@ -81,24 +85,35 @@ a:hover {
     border: 2px solid var(--bg2-color);
 }
 
-/* --- Conteúdo Principal e Formulário --- */
+#trigger-box-phone {
+    display: none;
+}
+
+.btns-log.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Conteúdo Principal e Formulário de Cadastro
+   ========================================================================== */
 .main-content {
-    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 80px 20px 50px 20px; /* ALTERADO: Adiciona 20px de padding lateral */
-    box-sizing: border-box; /* Garante que o padding não cause problemas de layout */
+    padding: 100px 20px 50px 20px; /* Aumentado padding-top para não ficar sob o header */
+    box-sizing: border-box;
 }
 
 .form-container {
     background-color: var(--form-bg-color);
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Sombra mais escura */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     width: 100%;
-    max-width: 450px; /* Limita a largura do formulário */
+    max-width: 450px;
     text-align: center;
     border: 1px solid var(--input-border-color);
 }
@@ -107,6 +122,15 @@ a:hover {
     margin-bottom: 30px;
     color: var(--heading-color);
     font-size: 1.8em;
+    display: flex; /* Para alinhar o ícone com o texto */
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.form-container h2 img {
+    width: 35px;
+    height: 35px;
 }
 
 .input-group {
@@ -141,6 +165,11 @@ a:hover {
     box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
 }
 
+.input-group input.input-error {
+    border-color: #ef4444; /* Vermelho para erro */
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+}
+
 /* --- Checkbox de Termos --- */
 .checkbox-group {
     display: flex;
@@ -150,9 +179,8 @@ a:hover {
 }
 
 .checkbox-group input[type="checkbox"] {
-    margin-right: 10px;
-    /* Estilização básica para o checkbox em navegadores que suportam */
     appearance: none;
+    -webkit-appearance: none;
     width: 18px;
     height: 18px;
     border: 1px solid var(--input-border-color);
@@ -161,6 +189,7 @@ a:hover {
     cursor: pointer;
     position: relative;
     top: -1px;
+    margin-right: 10px;
 }
 
 .checkbox-group input[type="checkbox"]:checked {
@@ -183,109 +212,78 @@ a:hover {
     margin: 0;
 }
 
-/* --- Botão de Envio --- */
+/* --- Botão de Envio e Link de Login --- */
 .submit-button {
     background-color: var(--primary-color);
     color: var(--bg-color);
-    padding: 14px 20px; /* Mais preenchimento */
-    border-radius: 8px; /* Cantos mais suaves */
+    padding: 14px 20px;
+    border-radius: 8px;
     font-size: 1.1em;
     font-weight: bold;
     width: 100%;
     margin-top: 15px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito suave */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .submit-button:hover {
     background-color: var(--primary-hover);
-    transform: translateY(-2px); /* Efeito de "levantar" */
+    transform: translateY(-2px);
 }
 
-/* --- Link de Login --- */
 .login-link {
     margin-top: 25px;
     font-size: 0.9em;
 }
 
-/* --- Footer --- */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 .site-footer {
     text-align: center;
     font-family: 'Poppins', sans-serif;
     width: 100%;
+    padding: 20px 0; /* Adicionado padding para espaçamento */
     border-top: solid 1px var(--primary-color);
 }
 
-/* Adicione isso ao seu style.css */
+/* ==========================================================================
+   Media Queries para Responsividade
+   ========================================================================== */
 
-.input-group input.input-error {
-    border-color: #ef4444; /* Vermelho forte para erro */
-    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+/* Telas de tablets e celulares */
+@media (max-width: 1024px) {
+    .trigger-box {
+        display: none;
+    }
+    #trigger-box-phone {
+        display: block;
+    }
 }
 
-/* --- Media Queries para Responsividade --- */
+/* Telas de celulares */
 @media (max-width: 500px) {
-    .header-container {
-        padding: 10px 15px;
-    }
-    
     .logo {
         font-size: 1.5em;
     }
-
+    
+    /* Estilos de botões que podem estar no header */
     .log-buttons button {
         padding: 8px 15px;
         font-size: 0.9em;
     }
+    
+    .header-container { /* Seletor mantido caso seja usado no HTML */
+        padding: 10px 15px;
+    }
 
     .form-container {
-        width: 90%; /* Faz a caixa ocupar 90% da largura da tela */
-        padding: 30px 20px; /* Reduz o espaçamento interno para telas menores */
-        margin: 0 auto; /* Remove as margens laterais e centraliza a caixa */
-        box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+        width: 90%;
+        padding: 30px 20px;
     }
 
     .form-container h2 {
         font-size: 1.5em;
     }
-
-    
-}
-
-.btns-log.active{
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-#trigger-box-phone {
-        display: none;
-}
-
-/* Quando a tela for menor que 1024px (tablets e telemóveis) */
-@media (max-width: 1024px) {
-    
-    /* Escondemos o menu de texto "Menu de Navegação" */
-    .trigger-box {
-        display: none;
-    }
-
-    /* E mostramos o ícone do menu de telemóvel */
-    #trigger-box-phone {
-        display: block; /* ou 'inline-block' dependendo do seu layout */
-    }
-}
-
-/* --- Estilo para o Ícone no Título do Cadastro --- */
-.form-container h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px; /* Espaço entre o ícone e o texto */
-}
-
-.form-container h2 img {
-    width: 35px; /* Tamanho do ícone */
-    height: 35px;
 }
