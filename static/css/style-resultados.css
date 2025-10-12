@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. Variáveis Globais e Estilos Base
+   ========================================================================== */
 :root {
     --bg-color: #0f172a;
     --bg2-color: rgba(72, 69, 69, 0.2);
@@ -6,22 +9,23 @@
     --card-bg-color: rgba(30, 41, 59, 0.6);
     --text-color: #cbd5e1;
     --heading-color: #f1f5f9;
-    --form-bg-color: #1e293b; 
+    --form-bg-color: #1e293b;
     --input-bg-color: #0f172a;
     --input-border-color: #334155;
 }
 
-html { 
-    scroll-behavior: smooth; 
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    font-family: 'Poppins', sans-serif; /* Fonte padrão para consistência */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden; /* Impede qualquer scroll horizontal na página */
+    overflow-x: hidden;
 }
 
 a {
@@ -34,99 +38,142 @@ a:hover {
     color: var(--primary-hover);
 }
 
-/* --- Header e Navegação (sem alterações) --- */
-.header-container { width: 100%; padding: 15px 0; position: fixed; top: 0; left: 0; z-index: 100; border-bottom: 1px solid var(--heading-color); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(5px); }
-.logo { font-size: 2em; font-weight: bold; color: var(--heading-color); margin-left: 20px; }
-.logo a { text-decoration: none; color: var(--heading-color); }
-.logo span { color: var(--primary-color); }
-.menu-container { position: relative; text-align: center; }
-.trigger-box { background-color: var(--bg-color); color: var(--text-color); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 1.2em; font-weight: bold; border: 2px solid var(--bg2-color); }
-.footer { text-align: center; font-family: 'Poppins', sans-serif; width: 100%; border-top: solid 1px var(--primary-color); padding: 20px 0; }
+/* ==========================================================================
+   2. Layout Principal (Header e Footer)
+   ========================================================================== */
 
-.dashboard {
-    padding: 100px 20px 60px 20px;
+/* --- Header --- */
+.header-container {
+    width: 100%;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--heading-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(5px);
     box-sizing: border-box;
 }
 
-.results-box{
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--heading-color);
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.menu-container {
+    position: relative;
+    text-align: center;
+}
+
+.trigger-box {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 2px solid var(--bg2-color);
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    width: 100%;
+    border-top: solid 1px var(--primary-color);
+    padding: 20px 0;
+}
+
+/* ==========================================================================
+   3. Estilos Específicos do Dashboard
+   ========================================================================== */
+.dashboard {
+    padding: 100px 20px 60px 20px;
+    box-sizing: border-box;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Define 2 colunas de tamanho igual */
+    gap: 30px;
+}
+
+.results-box {
     background-color: var(--form-bg-color);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    text-align: center;
     border: 1px solid var(--input-border-color);
     display: flex;
     flex-direction: column;
-    min-width: 0; /* Permite que o item encolha sem quebrar o layout */
+    min-width: 0; /* Previne que o conteúdo flexível quebre o layout */
 }
 
+/* Título e ícone da caixa de resultados (Regras consolidadas) */
 .results-box h2 {
     font-size: 1.5rem;
     color: var(--heading-color);
     margin: 0 0 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
-/* Contentor do gráfico flexível */
+.results-box h2 img {
+    width: 30px;
+    height: 30px;
+}
+
 .chart-container {
     position: relative;
     width: 100%;
-    flex-grow: 1; 
-    min-height: 300px; 
+    flex-grow: 1; /* Permite que o container cresça para preencher o espaço */
+    min-height: 300px;
 }
 
-/* =============================== */
-/* --- REGRAS DE RESPONSIVIDADE --- */
-/* =============================== */
+/* ==========================================================================
+   4. Media Queries para Responsividade
+   ========================================================================== */
 
-/* Grelha de gráficos 2x2 */
-.dashboard-grid{
-    font-family: 'Poppins', sans-serif;
-    color: var(--heading-color);
-    display: grid;
-    /* ALTERAÇÃO PRINCIPAL: Define explicitamente 2 colunas */
-    grid-template-columns: 1fr 1fr; 
-    gap: 30px;
-    margin: 0 auto;
-    max-width: 1600px;
-}
-
-/* ================================= */
-/* --- REGRAS DE RESPONSIVIDADE --- */
-/* ================================= */
-
-/* Para tablets e ecrãs menores (Até 1024px) */
+/* --- Tablets e Telas Menores (até 1024px) --- */
 @media (max-width: 1024px) {
     .dashboard-grid {
-        grid-template-columns: 1fr; /* Passa para uma única coluna */
+        grid-template-columns: 1fr; /* Muda para uma única coluna */
         gap: 25px;
     }
 }
 
-/* Para telemóveis (Até 600px) */
+/* --- Celulares (até 600px) --- */
 @media (max-width: 600px) {
     .dashboard {
-        padding-top: 80px;
+        padding: 80px 15px 40px 15px; /* Ajusta o padding para telas pequenas */
     }
+
     .results-box {
         padding: 20px;
     }
+
     .results-box h2 {
         font-size: 1.2rem;
     }
+
     .chart-container {
-        min-height: 280px; /* Reduz a altura mínima em telemóveis */
+        min-height: 280px;
     }
-}
-
-/* --- Estilos para os Ícones nos Títulos dos Gráficos --- */
-.results-box h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px; /* Espaço entre o ícone e o texto */
-}
-
-.results-box h2 img {
-    width: 30px;  /* Tamanho dos ícones */
-    height: 30px;
 }
