@@ -1,9 +1,10 @@
 /* static/css/base.css */
+/* Contém estilos globais para o site (mensagens, header, footer) */
 
 /* --- ESTILOS PARA MENSAGENS FLASH (POP-UP) --- */
 .flash-messages-container {
     position: fixed;
-    top: 80px; /* Abaixo do cabeçalho */
+    top: 80px;
     right: 20px;
     z-index: 1050;
     width: 100%;
@@ -16,7 +17,7 @@
     margin-bottom: 10px;
     border: 1px solid transparent;
     border-radius: 8px;
-    color: #f1f5f9; /* --heading-color */
+    color: #f1f5f9;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     opacity: 0.95;
 }
@@ -35,17 +36,13 @@
 .alert-info { background-color: #1e40af; border-color: #3b82f6; }
 .alert-warning { background-color: #b45309; border-color: #f59e0b; }
 
-/* ============================================= */
-/* --- ESTILOS UNIFICADOS PARA O MENU HEADER --- */
-/* ============================================= */
 
-/* Container principal do menu suspenso */
+/* --- ESTILOS UNIFICADOS PARA O MENU HEADER --- */
 .btns-log {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    
     position: absolute;
     top: calc(100% + 10px);
     right: 0;
@@ -53,28 +50,26 @@
     border-radius: 8px;
     border: 1px solid var(--input-border-color, #334155);
     padding: 10px;
-    width: 200px; /* Aumentei um pouco a largura para caber o nome */
+    width: 200px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     z-index: 10;
 }
 
-/* Classe 'active' que o JavaScript adiciona */
+/* Classe 'active' que o JavaScript adiciona para mostrar o menu */
 .btns-log.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* Estilo para o container do usuário logado */
 .user-info {
     display: flex;
-    flex-direction: column; /* Empilha os itens verticalmente */
-    align-items: center; /* Centraliza os itens */
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    gap: 8px; /* Espaço entre o nome e o botão logout */
+    gap: 8px;
 }
 
-/* Estilo para o texto "Olá, ..." */
 .user-info span {
     color: var(--heading-color, #f1f5f9);
     font-family: 'Poppins', sans-serif;
@@ -84,7 +79,6 @@
     width: 100%;
 }
 
-/* Estilo para TODOS os botões dentro do menu */
 .btns-log button {
     display: block;
     width: 100%;
@@ -96,14 +90,13 @@
     cursor: pointer;
     border: none;
     text-align: center;
-    box-sizing: border-box; /* Garante que o padding não estoure a largura */
+    box-sizing: border-box;
 }
 
 .btns-log button:last-child {
     margin-bottom: 0;
 }
 
-/* Estilo do botão de Login */
 .login-btn {
     color: var(--text-color, #cbd5e1);
     background: transparent;
@@ -112,7 +105,6 @@
     background-color: #141c30;
 }
 
-/* Estilo dos botões de Sign Up e Logout (botões de ação) */
 .signup-btn,
 .logout-button {
     background-color: var(--primary-color, #22d3ee);
@@ -124,13 +116,14 @@
     background-color: var(--primary-hover, rgb(45, 223, 250));
 }
 
+
 /* --- ESTILOS PARA O FOOTER --- */
 .footer {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    gap: 20px; /* Cria um espaço entre o texto e o ícone */
+    gap: 20px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
     width: 100%;
@@ -139,16 +132,16 @@
 }
 
 .footer p {
-    margin: 0; /* Remove a margem padrão do parágrafo */
+    margin: 0;
 }
 
 .github-link img {
-    width: 32px; /* Define um tamanho para o ícone */
+    width: 32px;
     height: 32px;
-    vertical-align: middle; /* Alinha o ícone verticalmente com o texto */
+    vertical-align: middle;
     transition: opacity 0.3s ease;
 }
 
 .github-link:hover img {
-    opacity: 0.8; /* Adiciona um efeito suave ao passar o mouse */
+    opacity: 0.8;
 }

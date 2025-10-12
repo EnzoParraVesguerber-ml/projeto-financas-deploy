@@ -1,24 +1,25 @@
-:root{
+/* CSS Específico da Página Inicial */
+
+:root {
     --bg-color: #0f172a;
-    --bg2-color: rgba(72, 69, 69, 0.2); /* fundo preto opaco 60% */
+    --bg2-color: rgba(72, 69, 69, 0.2);
     --primary-color: #22d3ee;
     --primary-hover: rgb(45, 223, 250);
     --card-bg-color: rgba(30, 41, 59, 0.6);
     --text-color: #cbd5e1;
     --heading-color: #f1f5f9;
-    
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-body{
+body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
-.top-box{
+.top-box {
     width: 100%;
     padding: 15px 0;
     position: fixed;
@@ -33,7 +34,7 @@ body{
     backdrop-filter: blur(5px);
 }
 
-.logo{
+.logo {
     font-size: 2em;
     font-weight: bold;
     color: var(--heading-color);
@@ -42,15 +43,15 @@ body{
 
 .logo a {
     text-decoration: none;
-    color: var(--heading-color); /* Força a cor branca */
+    color: var(--heading-color);
 }
 
-.logo span{
+.logo span {
     color: var(--primary-color);
 }
 
 .menu-container {
-    position: relative; /* Essencial para o posicionamento do dropdown */
+    position: relative;
 }
 
 .trigger-box {
@@ -64,70 +65,102 @@ body{
     border: 2px solid var(--bg2-color);
 }
 
-.major{
+.major {
     display: flex;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
     flex-direction: column;
-    padding: 10% 0;  
+    padding: 10% 0;
 }
 
-.first-section{
+.first-section {
     text-align: center;
 }
 
-.first-section-heading{
+.first-section-heading {
     font-family: 'Poppins', sans-serif;
     font-size: 60px;
     color: var(--heading-color);
     margin-bottom: 0%;
-    
 }
-.first-section-heading span{
+
+.first-section-heading span {
     color: var(--primary-color);
 }
 
-.first-section-paragraph{
+.first-section-paragraph {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
-    max-width: 640px;  /* largura máxima do texto */
-    margin: 20px auto; /* centraliza horizontalmente */
-    line-height: 1.6;  /* melhora a leitura */
+    max-width: 640px;
+    margin: 20px auto;
+    line-height: 1.6;
 }
 
-.first-section-start{
+.first-section-start {
     display: flex;
     justify-content: center;
-    
 }
 
 .presentation-link {
     background-color: var(--primary-color);
-    color: var(--bg-color); /* Melhor contraste */
+    color: var(--bg-color);
     font-family: 'Poppins', sans-serif;
-    font-size: 22px; /* Tamanho ajustado */
+    font-size: 22px;
     font-weight: bold;
     text-decoration: none;
-    padding: 16px 32px; /* Espaçamento mais consistente */
+    padding: 16px 32px;
     border-radius: 15px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito suave */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .presentation-link:hover {
     background-color: var(--primary-hover);
-    transform: translateY(-3px); /* Efeito de "levantar" */
+    transform: translateY(-3px);
 }
 
-.second-section { /* cartões de informações */
+.second-section {
     text-align: center;
     font-family: 'Poppins', sans-serif;
     padding: 17%;
-    display: flex;              /* coloca os filhos lado a lado */
-    justify-content: space-between; /* distribui os itens com espaço entre eles */
-    align-items: flex-start;    /* alinha pelo topo (pode mudar p/ center se quiser centralizar) */
-    gap: 20px;                  /* espaço entre os blocos */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* ESTILOS DOS CARDS DA SEGUNDA SEÇÃO AGRUPADOS AQUI */
+.second-section-opcions {
+    font-family: 'Poppins', sans-serif;
+    flex: 1;
+    max-width: 300px;
+    min-height: 200px;
+    position: relative;
+    background: var(--bg2-color);
+    padding: 29px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.second-section-opcions:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.second-section-opcions h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.second-section-opcions h2 img {
+    width: 40px;
+    height: 40px;
 }
 
 .third-section {
@@ -139,21 +172,20 @@ body{
     text-align: center;
     margin-bottom: 60px;
     color: rgb(255, 255, 255);
-    font-size: 40px
+    font-size: 40px;
 }
 
 .third-section-graphic {
-    background-color:#1e293b;
+    background-color: #1e293b;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    /* ALTERADO */
-    height: auto; /* Permite que a altura se ajuste ao conteúdo */
-    width: 100%;  /* Ocupa a largura disponível */
-    max-width: 800px; /* Mas não passa de 800px */
+    height: auto;
+    width: 100%;
+    max-width: 800px;
     margin: 40px auto;
-    padding: 20px; /* Adiciona espaçamento interno */
-    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .graphic-header {
@@ -161,33 +193,24 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    border-bottom: 1px solid  rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .color-circles {
     display: flex;
 }
 
-.color-circles span:nth-child(1){
-   margin: 6px;
-   padding: 10px 10px;
-   border-radius: 100%;
-   background-color: #7a3939;;
+/* REGRA OTIMIZADA: Estilos comuns para todos os spans */
+.color-circles span {
+    margin: 6px;
+    padding: 10px;
+    border-radius: 100%;
 }
 
-.color-circles span:nth-child(2){
-   margin: 6px;
-   padding: 10px 10px;
-   border-radius: 100%;
-   background-color: #f59e0b;;
-}
-
-.color-circles span:nth-child(3){
-   margin: 6px;
-   padding: 10px 10px;
-   border-radius: 100%;
-   background-color:#22c55e;;
-}
+/* Regras específicas apenas com a cor de fundo */
+.color-circles span:nth-child(1) { background-color: #7a3939; }
+.color-circles span:nth-child(2) { background-color: #f59e0b; }
+.color-circles span:nth-child(3) { background-color: #22c55e; }
 
 .graphic-item-header {
     color: var(--heading-color);
@@ -203,84 +226,52 @@ body{
     padding: 8px;
 }
 
-.graphic {
-    display: flex;
-    gap: 20px;
-    /* REMOVIDO */
-    /* margin-left: 60px; */ 
-    align-items: center;
-    /* ADICIONADO */
-    flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo */
-    justify-content: center; /* Centraliza os itens quando a linha quebra */
-    padding-top: 20px;
-}
-
-.graphic-chart{
-    flex: 1;
-}
-
-
-.graphic-pie {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: conic-gradient(
-        #22d3ee 0% 30%, 
-        #6366f1 30% 55%, 
-        #a855f7 55% 75%,
-        #ec4899 75% 100%
-    );
-    animation: spin 10s linear infinite;
-}
-
-.graphic-data{
-    flex: 2;
-}
-
-.graphic-item .color-box { 
+.graphic-item .color-box {
     width: 13px;
     height: 13px;
     margin-right: 10px;
     border-radius: 2px;
 }
 
-.footer{
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    border-top: solid 1px var(--primary-color);
+.graphic {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
 }
 
-#trigger-box-phone{
+.graphic-chart {
+    flex: 1;
+}
+
+.graphic-pie {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(#22d3ee 0% 30%, #6366f1 30% 55%, #a855f7 55% 75%, #ec4899 75% 100%);
+    animation: spin 10s linear infinite;
+}
+
+.graphic-data {
+    flex: 2;
+}
+
+#trigger-box-phone {
     display: none;
-}
-
-.logo a{
-    text-decoration: none;
-    color: var(--heading-color);
-}
-
-.btns-log.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
 }
 
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 /* --- REGRAS DE RESPONSIVIDADE --- */
-
-/* Para Telas de Tablet e Menores (Até 1024px) */
 @media (max-width: 1024px) {
-    /* Esconde o menu de texto e mostra o ícone de menu */
     .trigger-box {
         display: none;
     }
     #trigger-box-phone {
         display: block;
     }
-
-    /* Ajusta o layout da segunda secção */
     .second-section {
         flex-direction: column;
         align-items: center;
@@ -289,16 +280,14 @@ body{
     }
     .second-section-opcions {
         max-width: 90%;
-        width: 100%; /* Ocupa a largura total para melhor leitura */
+        width: 100%;
         margin-bottom: 20px;
     }
-
-    /* Ajusta a secção do gráfico */
     .third-section {
-        width: 100%; /* Ocupa a largura total */
+        width: 100%;
     }
     .third-section-graphic {
-        width: 95vw; /* Usa a largura da viewport */
+        width: 95vw;
         max-width: 95vw;
     }
     .graphic {
@@ -310,17 +299,16 @@ body{
     }
 }
 
-/* Responsividade para celulares */
 @media (max-width: 600px) {
     .top-box {
-        flex-direction: row; /* Alterado de volta para 'row' */
-        align-items: center; /* Garante o alinhamento vertical */
+        flex-direction: row;
+        align-items: center;
         padding: 10px 15px;
     }
     .logo {
         font-size: 1.5em;
         margin-left: 0;
-        margin-bottom: 0; /* Remove a margem que empurrava o conteúdo */
+        margin-bottom: 0;
     }
     .btns-log button {
         font-size: 0.9em;
@@ -359,7 +347,7 @@ body{
     .third-section-graphic {
         width: 100%;
         min-width: 0;
-        height: auto; /* Altura automática para o gráfico */
+        height: auto;
     }
     .graphic {
         flex-direction: column;
@@ -370,50 +358,8 @@ body{
         width: 90px;
         height: 90px;
     }
-    .footer {
+    .footer { /* Estilo específico do footer para mobile */
         font-size: 0.9em;
         padding: 10px 0;
     }
-}
-
-/* --- Estilos para os Ícones da Segunda Seção --- */
-.second-section-opcions h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centraliza o ícone e o texto */
-    gap: 12px; /* Adiciona um espaço entre o ícone e o texto */
-}
-
-.second-section-opcions h2 img {
-    width: 40px;  /* Define um tamanho padrão para os ícones */
-    height: 40px;
-}
-
-/* --- Efeito Hover para os cartões da Segunda Seção --- */
-.second-section-opcions {
-    /* Adiciona uma transição suave para as propriedades transform e box-shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.second-section-opcions:hover {
-    /* Move o cartão 5 pixels para cima */
-    transform: translateY(-5px);
-    
-    /* Adiciona uma sombra mais pronunciada para dar a sensação de elevação */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-.second-section-opcions {
-    font-family: 'Poppins', sans-serif;
-    flex: 1;
-    max-width: 300px;
-    min-height: 200px; /* ALTERADO AQUI */
-    position: relative;
-    background: var(--bg2-color); 
-    padding: 29px;
-    border-radius: 12px;
-    /* Adicionado para melhor alinhamento do conteúdo interno */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
