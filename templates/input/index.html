@@ -10,7 +10,17 @@
             <div class="dashboard-grid">
                 <section id="upload" class="upload-box">
                     <h2>📥 1. Análise de Extrato</h2>
-                    <p>Envie seu extrato (.csv ou .xlsx) para que nossa I.A. categorize seus gastos.</p>
+                    <p>Escolha o tipo de análise e envie seu extrato (.csv ou .xlsx).</p>
+
+                    <div class="switch-container">
+                        <span class="switch-label" data-value="ai">Usar IA</span>
+                        <label class="switch">
+                            <input type="checkbox" id="analysis-type-switch">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="switch-label active" data-value="labeled">Já Rotulado</span>
+                    </div>
+
                     <form action="#" method="POST" enctype="multipart/form-data">
                         <label for="file-upload" class="file-upload-label">
                             Escolher arquivo

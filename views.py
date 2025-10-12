@@ -10,7 +10,7 @@ from helpers import FormularioRegisto, FormularioLogin
 import pandas as pd
 import joblib
 import os
-from ml_model.predictor import classificar_despesas
+from ml_model.predictor import classificar_despesas, processar_pre_classificado
 
 # --- ROTAS DE UTILIZADOR E AUTENTICAÇÃO ---
 
@@ -107,10 +107,6 @@ def resultados_page():
     
     return render_template('resultados/index.html')
 
-# --- ROTA DE ANÁLISE (BACKEND) ---
-
-# --- ROTA DE ANÁLISE (BACKEND) ---
-
 @app.route('/upload', methods=['POST'])
 def upload():
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
@@ -120,24 +116,28 @@ def upload():
         return jsonify({'error': 'Nenhum ficheiro enviado'}), 400
 
     file = request.files['file-upload']
+    analysis_type = request.form.get('analysis_type') # Pega o tipo de análise do formulário
 
     if file.filename == '':
         return jsonify({'error': 'Nome de ficheiro inválido'}), 400
 
     try:
-        # --- INTEGRAÇÃO DO MODELO DE NLP ---
-        
-        # Cria uma pasta temporária para guardar os uploads, se não existir
+        # Cria uma pasta temporária para guardar os uploads
         temp_dir = 'uploads'
         if not os.path.exists(temp_dir):
             os.makedirs(temp_dir)
         
-        # Salva o ficheiro temporariamente
         caminho_arquivo = os.path.join(temp_dir, file.filename)
         file.save(caminho_arquivo)
 
-        # Chama a função de classificação do seu modelo
-        dados_analise = classificar_despesas(caminho_arquivo)
+        dados_analise = None
+        # Decide qual função chamar com base na escolha do usuário
+        if analysis_type == 'ai':
+            dados_analise = classificar_despesas(caminho_arquivo)
+        elif analysis_type == 'labeled':
+            dados_analise = processar_pre_classificado(caminho_arquivo)
+        else:
+            return jsonify({'error': 'Tipo de análise inválido'}), 400
         
         # Remove o ficheiro temporário depois de usar
         os.remove(caminho_arquivo)
@@ -145,8 +145,12 @@ def upload():
         # Retorna os dados classificados para o frontend
         return jsonify(dados_analise)
 
+    except ValueError as ve:
+        # Erro específico para colunas faltando
+        print(f"Erro de valor na rota /upload: {ve}")
+        return jsonify({'error': str(ve)}), 400
     except Exception as e:
-        # Retorna uma mensagem de erro mais informativa
-        print(f"Erro na rota /upload: {e}") # Para depuração no terminal
+        # Erro genérico
+        print(f"Erro na rota /upload: {e}")
         return jsonify({'error': f'Ocorreu um erro ao processar o ficheiro: {str(e)}'}), 500
 

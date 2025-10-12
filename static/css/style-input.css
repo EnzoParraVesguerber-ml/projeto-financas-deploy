@@ -224,7 +224,82 @@ a:hover {
     width: 100%;
     border-top: solid 1px var(--primary-color);
 }
+/* --- Estilos para o Botão Switch --- */
 
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    background-color: var(--bg-color);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--input-border-color);
+}
+
+.switch-label {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Destaca o texto da opção inativa */
+.switch-label:not(.active) {
+    color: #64748b; /* Um cinza mais claro */
+}
+
+/* O container do switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Esconde o checkbox padrão */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* O fundo do switch (a parte que desliza) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #334155; /* Cor quando desativado */
+    transition: .4s;
+    border-radius: 34px;
+}
+
+/* O círculo que se move */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Muda a cor do fundo quando o checkbox está marcado */
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+/* Move o círculo para a direita quando o checkbox está marcado */
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
 /* Para tablets e telas menores */
 @media (max-width: 1024px) {
     .dashboard-grid {
@@ -261,3 +336,4 @@ a:hover {
     visibility: visible;
     transform: translateY(0);
 }
+

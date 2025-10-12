@@ -1,8 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById('file-upload');
     const fileNameSpan = document.getElementById('file-name');
-    const generateBtn = document.getElementById('generate-analysis'); // Corrigido para corresponder ao ID no seu HTML
+    const generateBtn = document.getElementById('generate-analysis');
     const resultsArea = document.getElementById('analysis-results');
+    
+    // --- LÓGICA DO SWITCH ---
+    const analysisSwitch = document.getElementById('analysis-type-switch');
+    const switchLabels = document.querySelectorAll('.switch-label');
+
+    if (analysisSwitch) {
+        // Define o estado inicial (desmarcado = 'ai')
+        analysisSwitch.checked = false; 
+        document.querySelector('.switch-label[data-value="ai"]').classList.add('active');
+        document.querySelector('.switch-label[data-value="labeled"]').classList.remove('active');
+
+        analysisSwitch.addEventListener('change', () => {
+            // Alterna a classe 'active' nos labels para dar feedback visual
+            switchLabels.forEach(label => label.classList.toggle('active'));
+        });
+    }
+    // --- FIM DA LÓGICA DO SWITCH ---
 
     // Mostra o nome do ficheiro selecionado
     if (fileInput) {
@@ -23,8 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // NOVO: Verifica se o switch está marcado ('checked') ou não
+            // Se estiver marcado, o valor é 'labeled'. Se não, é 'ai'.
+            const analysisType = analysisSwitch.checked ? 'labeled' : 'ai';
+
             const formData = new FormData();
             formData.append('file-upload', fileInput.files[0]);
+            formData.append('analysis_type', analysisType); // Envia o tipo de análise
 
             // Mostra uma mensagem de carregamento
             if(resultsArea) {
@@ -42,20 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok) {
-                    // Se a análise foi bem-sucedida:
-                    // 1. Guarda os resultados no armazenamento local do navegador
+                    // Guarda os resultados e redireciona
                     localStorage.setItem('analysisData', JSON.stringify(result));
-                    
-                    // 2. Redireciona para a página de resultados
                     window.location.href = '/resultados';
-
                 } else {
-                    // Se o backend retornou um erro
+                    // Mostra erro
                     resultsArea.innerHTML = `<h3>Erro na Análise</h3><p>${result.error || 'Ocorreu um problema desconhecido.'}</p>`;
                 }
 
             } catch (error) {
-                // Se houver um erro de rede ou na comunicação
+                // Se houver um erro de rede
                 console.error('Erro ao enviar o ficheiro:', error);
                 if(resultsArea) {
                     resultsArea.innerHTML = '<h3>Erro de Comunicação</h3><p>Não foi possível conectar ao servidor. Tente novamente.</p>';
@@ -68,4 +86,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
