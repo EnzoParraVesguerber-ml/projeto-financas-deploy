@@ -9,7 +9,6 @@
     --form-bg-color: #1e293b; /* Fundo do formulário mais escuro */
     --input-bg-color: #0f172a; /* Fundo do input */
     --input-border-color: #334155; /* Borda sutil do input */
-    
 }
 
 html {
@@ -86,19 +85,9 @@ a:hover {
     padding: 120px 20px 50px 20px; 
     min-height: 100vh;
     box-sizing: border-box;
-}
-
-.footer{
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    border-top: solid 1px var(--primary-color);
-}
-
-/* Código para a parte de LOGIN*/
-.major{
     font-family: 'Poppins', sans-serif;
 }
+
 /* Estilos para a Caixa de Login */
 .login-box {
     background-color: var(--form-bg-color);
@@ -115,6 +104,15 @@ a:hover {
     margin-bottom: 30px;
     color: var(--heading-color);
     font-size: 1.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Espaço entre o ícone e o texto */
+}
+
+.login-box h2 img {
+    width: 35px; /* Tamanho do ícone */
+    height: 35px;
 }
 
 .input-group {
@@ -169,6 +167,25 @@ a:hover {
     margin-top: 25px;
 }
 
+#trigger-box-phone {
+    display: none;
+}
+
+/* --- Media Queries --- */
+
+/* Quando a tela for menor que 1024px */
+@media (max-width: 1024px) {
+    /* Escondemos o menu de texto */
+    .trigger-box {
+        display: none;
+    }
+
+    /* E mostramos o ícone do menu */
+    #trigger-box-phone {
+        display: block;
+    }
+}
+
 @media (max-width: 500px) {
     .header-container {
         padding: 10px 15px;
@@ -189,40 +206,4 @@ a:hover {
         margin: 0 auto;
         box-sizing: border-box;
     }
-}
-
-.btns-log.active{
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-#trigger-box-phone {
-    display: none;
-}
-
-/* Quando a tela for menor que 1024px */
-@media (max-width: 1024px) {
-    /* Escondemos o menu de texto */
-    .trigger-box {
-        display: none;
-    }
-
-    /* E mostramos o ícone do menu */
-    #trigger-box-phone {
-        display: block;
-    }
-}
-
-/* --- Estilo para o Ícone no Título do Login --- */
-.login-box h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px; /* Espaço entre o ícone e o texto */
-}
-
-.login-box h2 img {
-    width: 35px; /* Tamanho do ícone */
-    height: 35px;
 }
