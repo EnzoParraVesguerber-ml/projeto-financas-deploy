@@ -10,28 +10,40 @@
                 <div class="dashboard-grid">
                     
                     <section class="results-box">
-                        <h2>📊 Gastos por Categoria</h2>
+                        <h2>
+                            <img src="{{ url_for('static', filename='img/graph-icon.svg') }}" alt="Ícone de Gráfico">
+                            Gastos por Categoria
+                        </h2>
                         <div class="chart-container">
                             <canvas id="resultsChart"></canvas>
                         </div>
                     </section>
                     
                     <section class="results-box">
-                        <h2>🎯 Total Gasto vs. Meta Total</h2>
+                        <h2>
+                            <img src="{{ url_for('static', filename='img/analyse-icon.svg') }}" alt="Ícone de Análise">
+                            Total Gasto vs. Meta Total
+                        </h2>
                         <div class="chart-container">
                             <canvas id="goalsChart"></canvas>
                         </div>
                     </section>
 
                     <section class="results-box">
-                        <h2>🔍 Gasto vs. Meta (Detalhado)</h2>
+                        <h2>
+                            <img src="{{ url_for('static', filename='img/search-icon.svg') }}" alt="Ícone de Alvo">
+                            Gasto vs. Meta (Detalhado)
+                        </h2>
                         <div class="chart-container">
                             <canvas id="comparisonChart"></canvas>
                         </div>
                     </section>
 
                     <section class="results-box">
-                        <h2>📉 Sobra ou Excesso por Categoria</h2>
+                        <h2>
+                            <img src="{{ url_for('static', filename='img/excess-icon.svg') }}" alt="Ícone de Cifrão">
+                            Sobra ou Excesso por Categoria
+                        </h2>
                         <div class="chart-container">
                             <canvas id="deviationChart"></canvas>
                         </div>

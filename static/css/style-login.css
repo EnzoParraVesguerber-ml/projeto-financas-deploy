@@ -213,3 +213,16 @@ a:hover {
         display: block;
     }
 }
+
+/* --- Estilo para o Ícone no Título do Login --- */
+.login-box h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Espaço entre o ícone e o texto */
+}
+
+.login-box h2 img {
+    width: 35px; /* Tamanho do ícone */
+    height: 35px;
+}

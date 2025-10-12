@@ -276,3 +276,16 @@ a:hover {
         display: block; /* ou 'inline-block' dependendo do seu layout */
     }
 }
+
+/* --- Estilo para o Ícone no Título do Cadastro --- */
+.form-container h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Espaço entre o ícone e o texto */
+}
+
+.form-container h2 img {
+    width: 35px; /* Tamanho do ícone */
+    height: 35px;
+}

@@ -130,17 +130,6 @@ body{
     gap: 20px;                  /* espaço entre os blocos */
 }
 
-.second-section-opcions {
-    font-family: 'Poppins', sans-serif;
-    flex: 1;                    /* cada bloco ocupa o mesmo espaço */
-    max-width: 300px;           /* limite opcional p/ não ficar muito largo */
-    height: 200px; 
-    position: relative;             /* permite posicionar o conteúdo por cima */
-    background: var(--bg2-color); 
-    padding: 29px;                  /* espaço interno */
-    border-radius: 12px;            /* cantos arredondados */
-}
-
 .third-section {
     font-family: 'Poppins', sans-serif;
     margin-bottom: 40px;
@@ -385,4 +374,46 @@ body{
         font-size: 0.9em;
         padding: 10px 0;
     }
+}
+
+/* --- Estilos para os Ícones da Segunda Seção --- */
+.second-section-opcions h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza o ícone e o texto */
+    gap: 12px; /* Adiciona um espaço entre o ícone e o texto */
+}
+
+.second-section-opcions h2 img {
+    width: 40px;  /* Define um tamanho padrão para os ícones */
+    height: 40px;
+}
+
+/* --- Efeito Hover para os cartões da Segunda Seção --- */
+.second-section-opcions {
+    /* Adiciona uma transição suave para as propriedades transform e box-shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.second-section-opcions:hover {
+    /* Move o cartão 5 pixels para cima */
+    transform: translateY(-5px);
+    
+    /* Adiciona uma sombra mais pronunciada para dar a sensação de elevação */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.second-section-opcions {
+    font-family: 'Poppins', sans-serif;
+    flex: 1;
+    max-width: 300px;
+    min-height: 200px; /* ALTERADO AQUI */
+    position: relative;
+    background: var(--bg2-color); 
+    padding: 29px;
+    border-radius: 12px;
+    /* Adicionado para melhor alinhamento do conteúdo interno */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

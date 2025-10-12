@@ -337,3 +337,34 @@ input:checked + .slider:before {
     transform: translateY(0);
 }
 
+/* --- Estilos para os Ícones Adicionados --- */
+
+/* Ícones nos títulos das seções */
+.upload-box h2 img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Ícones nas labels do formulário de metas */
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone e o texto */
+}
+
+.form-group label img {
+    width: 20px; /* Tamanho menor para os ícones das metas */
+    height: 20px;
+}
+
+/* Ícones no switch de tipo de análise */
+.switch-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.switch-label img {
+    width: 24px;
+    height: 24px;
+}

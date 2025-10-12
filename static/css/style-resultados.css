@@ -117,3 +117,16 @@ a:hover {
         min-height: 280px; /* Reduz a altura mínima em telemóveis */
     }
 }
+
+/* --- Estilos para os Ícones nos Títulos dos Gráficos --- */
+.results-box h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Espaço entre o ícone e o texto */
+}
+
+.results-box h2 img {
+    width: 30px;  /* Tamanho dos ícones */
+    height: 30px;
+}

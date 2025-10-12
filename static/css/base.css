@@ -123,3 +123,32 @@
 .logout-button:hover {
     background-color: var(--primary-hover, rgb(45, 223, 250));
 }
+
+/* --- ESTILOS PARA O FOOTER --- */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 20px; /* Cria um espaço entre o texto e o ícone */
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    border-top: solid 1px var(--primary-color, #22d3ee);
+    box-sizing: border-box;
+}
+
+.footer p {
+    margin: 0; /* Remove a margem padrão do parágrafo */
+}
+
+.github-link img {
+    width: 32px; /* Define um tamanho para o ícone */
+    height: 32px;
+    vertical-align: middle; /* Alinha o ícone verticalmente com o texto */
+    transition: opacity 0.3s ease;
+}
+
+.github-link:hover img {
+    opacity: 0.8; /* Adiciona um efeito suave ao passar o mouse */
+}
