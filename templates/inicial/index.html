@@ -1,21 +1,30 @@
 {% extends "base.html" %}
+<!-- Herda o layout base do projeto, que inclui header, footer e estrutura principal -->
 {% block head %}
     {{ super() }}
+    <!-- Inclui o CSS específico para a página inicial -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style-inicial.css') }}">
-    <title>Projeto Educação Financeira</title>
+    <title>Projeto Educação Financeira</title> <!-- Define o título da aba do navegador para esta página. -->
 {% endblock %}
 
 {% block content %}
 <main class="major">
+    <!-- Seção principal-->
     <section class="first-section">
+        <!-- Título principal com destaque-->
         <h1 class="first-section-heading">Entenda seus gastos com <br><span>Facilidade</span></h1>
+        <!-- Parágrafo explicativo sobre o serviço -->
         <p class="first-section-paragraph">Faça o upload do seu extrato bancário e deixe nossa tecnologia classificar suas despesas automaticamente.<br>Tenha clareza sobre sua vida financeira e tome decisões mais inteligentes.</p>
+        <!-- Botão de chamada para ação (CTA) -->
         <div class="first-section-start">
             <button id="start-btn" class="presentation-link" > Comece Agora (É Grátis)                    
             </button>
         </div>
     </section>
+
+    <!-- Seção de funcionalidades -->
     <section class="second-section">
+        <!-- Uploud do extrato -->
         <div class="second-section-opcions">
             <h2>
                 <img src="{{ url_for('static', filename='img/analyse-icon.svg') }}" alt="Ícone de Análise">
@@ -23,6 +32,7 @@
             </h2>
             <p>Exporte seu extrato bancário em formato .csv ou .xlsx e faça o upload de forma segura na nossa plataforma.</p>
         </div>
+        <!-- Análise com IA -->
         <div class="second-section-opcions">
             <h2>
                 <img src="{{ url_for('static', filename='img/robot-icon.svg') }}" alt="Ícone de Robô para IA">
@@ -30,6 +40,7 @@
             </h2>
             <p>Nossa inteligência Artificial processa suas transações e as categoriza automaticamente em segundos.</p>
         </div>
+        <!-- Visualização dos dados -->
         <div class="second-section-opcions">
             <h2>
                 <img src="{{ url_for('static', filename='img/graph-icon.svg') }}" alt="Ícone de Gráfico">
@@ -38,18 +49,24 @@
             <p>Receba um dashboard interativo com gráficos e insights para entender para onde seu dinheiro está realmente indo.</p>
         </div>
     </section>
+
+    <!-- Seção de gráficos -->
     <section class="third-section">
+            <!-- Título da seção de gráficos -->
             <h2 class="third-section-heading">Veja a Magia Acontecer</h2>
             <div class="third-section-graphic">
+                    <!-- Cabeçalho do gráfico com círculos coloridos -->
                     <div class="graphic-header">
                     <div class="color-circles">
                     <span></span><span></span><span></span>
                     </div>
                 </div>
+                <!-- Área do gráficoe dados -->
                 <div class="graphic">
                     <div class='graphic-chart'><div class="graphic-pie"></div></div>
                     <div class="graphic-data">
                         <h4 class="graphic-item-header">Gastos por categoria:</h4>
+                        <!-- Lista de categorias e percentuais, cada uma com cor diferente-->
                         <div class="graphic-item"><span class="color-box" style="background-color: #22d3ee;"></span>Moradia - 30%</div>
                         <div class="graphic-item"><span class="color-box" style="background-color: #6366f1;"></span>Alimentação - 25%</div>
                         <div class="graphic-item"><span class="color-box" style="background-color: #a855f7"></span>Transporte - 20%</div>
@@ -59,5 +76,7 @@
             </div>
     </section>
 </main>
+
+<!-- Inclui o JavaScript específico para a página inicial -->
 <script src="{{ url_for('static', filename='js/script-inicial.js') }}"></script>
 {% endblock %}

@@ -1,47 +1,49 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!-- Herda a estrutura e estilos globais do template base.html -->
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-signup.css') }}">
-    <title>Crie sua Conta - JEBY Finanças</title>
+    {{ super() }} <!-- Insere o conteúdo do bloco 'head' do base.html, como meta tags e links globais -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-signup.css') }}"> <!-- Adiciona CSS específico para a página de cadastro -->
+    <title>Crie sua Conta - JEBY Finanças</title> <!-- Título da aba do navegador -->
 {% endblock %}
 {% block content %}
-<main class="main-content">
-    <div id="signup-box" class="form-container">
+<main class="main-content"> <!-- Área principal da página de cadastro -->
+    <div id="signup-box" class="form-container"> <!-- Container visual do formulário de cadastro -->
         <h2>
             <img src="{{ url_for('static', filename='img/key-icon.svg') }}" alt="Ícone de Chave">
             Crie sua conta
         </h2>
-        <form id="signup-form" action="{{ url_for('registrar') }}" method="POST">
-            {{ form.hidden_tag() }}
+         <!-- Formulário de cadastro do usuário -->
+        <form id="signup-form" action="{{ url_for('registrar') }}" method="POST">  <!-- Envia os dados para a rota 'registrar' usando o método POST -->
+            {{ form.hidden_tag() }} <!-- Insere campos ocultos do Flask-WTF, como tokens CSRF, para proteger contra ataques de falsificação de requisições -->
             <div class="input-group">
-                <label for="name">Nome completo:</label>
-                <input type="text" id="name" name="nome" required>
+                <label for="name">Nome completo:</label> <!-- Rótulo do campo de nome -->
+                <input type="text" id="name" name="nome" required> <!-- Campo para digitar o nome completo, obrigatório -->
             </div>
 
             <div class="input-group">
-                <label for="email-signup">E-mail:</label>
-                <input type="email" id="email-signup" name="email" required>
+                <label for="email-signup">E-mail:</label> <!-- Rótulo do campo de e-mail -->
+                <input type="email" id="email-signup" name="email" required> <!-- Campo para digitar o e-mail, obrigatório -->
             </div>
             
             <div class="input-group">
-                <label for="password-signup">Senha:</label>
-                <input type="password" id="password-signup" name="senha" required>
+                <label for="password-signup">Senha:</label> <!-- Rótulo do campo de senha -->
+                <input type="password" id="password-signup" name="senha" required> <!-- Campo para digitar a senha, obrigatório -->
             </div>
             
             <div class="input-group">
-                <label for="confirm-password">Confirme a senha:</label>
-                <input type="password" id="confirm-password" name="confirmar_senha" required>
+                <label for="confirm-password">Confirme a senha:</label> <!-- Rótulo do campo de confirmação de senha -->
+                <input type="password" id="confirm-password" name="confirmar_senha" required> <!-- Campo para confirmar a senha, obrigatório -->
             </div>
 
             <div class="checkbox-group">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">Eu concordo com os<a href="#"> termos e condições</a></label>
+                <input type="checkbox" id="terms" name="terms" required> <!-- Checkbox para aceitar os termos, obrigatório -->
+                <label for="terms">Eu concordo com os<a href="#"> termos e condições</a></label> <!-- Link para os termos e condições -->
             </div>
 
-            <button type="submit" class="submit-button">Cadastrar-se</button>
+            <button type="submit" class="submit-button">Cadastrar-se</button> <!-- Botão para enviar o formulário de cadastro -->
         </form>
-        <p class="login-link">Já tem uma conta? <a href="{{ url_for('login_page') }}">Entre Aqui</a></p>
+        <p class="login-link">Já tem uma conta? <a href="{{ url_for('login_page') }}">Entre Aqui</a></p> <!-- Link para página de login caso o usuário já tenha conta -->
     </div>
 </main>
+<!-- Script JS específico para validações e interações do cadastro -->
 <script src="{{ url_for('static', filename='js/script-signup.js') }}"></script>
 {% endblock %}

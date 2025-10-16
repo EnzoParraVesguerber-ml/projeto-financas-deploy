@@ -1,7 +1,7 @@
 /* static/css/base.css */
 /* Contém estilos globais para o site (mensagens, header, footer) */
 
-/* --- ESTILOS PARA MENSAGENS FLASH (POP-UP) --- */
+/* Container fixo para mensagens de alerta (pop-up) */
 .flash-messages-container {
     position: fixed;
     top: 80px;
@@ -11,6 +11,7 @@
     max-width: 350px;
 }
 
+/* Estilo base para alertas */
 .alert {
     position: relative;
     padding: 15px;
@@ -21,7 +22,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     opacity: 0.95;
 }
-
+/* Botão de fechar o alerta*/
 .alert .close-btn {
     position: absolute;
     top: 5px;
@@ -30,14 +31,14 @@
     cursor: pointer;
     font-weight: bold;
 }
-
+/* Alertas de sucesso, erro, informação e aviso, respectivamente */
 .alert-success { background-color: #166534; border-color: #22c55e; }
 .alert-danger { background-color: #991b1b; border-color: #ef4444; }
 .alert-info { background-color: #1e40af; border-color: #3b82f6; }
 .alert-warning { background-color: #b45309; border-color: #f59e0b; }
 
 
-/* --- ESTILOS UNIFICADOS PARA O MENU HEADER --- */
+/* Menu de botões de login/logout inicialmente ocultos */
 .btns-log {
     opacity: 0;
     visibility: hidden;
@@ -62,6 +63,7 @@
     transform: translateY(0);
 }
 
+/* Informações do usuário no menu */
 .user-info {
     display: flex;
     flex-direction: column;
@@ -70,6 +72,7 @@
     gap: 8px;
 }
 
+/* Texto das informações do usuário */
 .user-info span {
     color: var(--heading-color, #f1f5f9);
     font-family: 'Poppins', sans-serif;
@@ -79,6 +82,7 @@
     width: 100%;
 }
 
+/* Botões do menu de login/logout */
 .btns-log button {
     display: block;
     width: 100%;
@@ -93,10 +97,12 @@
     box-sizing: border-box;
 }
 
+/* Remove a margem do último botão */
 .btns-log button:last-child {
     margin-bottom: 0;
 }
 
+/* Botão de login */
 .login-btn {
     color: var(--text-color, #cbd5e1);
     background: transparent;
@@ -105,6 +111,7 @@
     background-color: #141c30;
 }
 
+/* Botão de logout */
 .signup-btn,
 .logout-button {
     background-color: var(--primary-color, #22d3ee);
@@ -117,7 +124,7 @@
 }
 
 
-/* --- ESTILOS PARA O FOOTER --- */
+/* Estilos para o footer */
 .footer {
     display: flex;
     justify-content: center;
@@ -131,10 +138,12 @@
     box-sizing: border-box;
 }
 
+/* Parágrafo do footer */
 .footer p {
     margin: 0;
 }
 
+/* Ícone do Github no footer */
 .github-link img {
     width: 32px;
     height: 32px;
@@ -142,6 +151,7 @@
     transition: opacity 0.3s ease;
 }
 
+/* Efeito ao passar o mouse no ícone do Github */
 .github-link:hover img {
-    opacity: 0.8;
+    opacity: 0.8; /* Ícone fica mais transparente */
 }

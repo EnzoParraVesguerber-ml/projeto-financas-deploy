@@ -1,58 +1,64 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!-- Extende o template base.html -->
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-resultados.css') }}">
-    <title>Resultados da Análise - JEBY Finanças</title>
+    {{ super() }} <!-- Insere o conteúdo do bloco 'head' definido em base.html, como meta tags e links globais. -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-resultados.css') }}"> <!-- Inclui o CSS específico para esta página -->
+    <title>Resultados da Análise - JEBY Finanças</title> <!-- Define o título da aba do navegador para esta página -->
 {% endblock %}
 {% block content %}
         <main>
-            <div class="dashboard">
-                <div class="dashboard-grid">
+            <div class="dashboard"> <!-- Container principal para os gráficos de resultados -->
+                <div class="dashboard-grid"> <!-- Grid para organizar as seções dos gráficos -->
                     
+                    <!-- Seção: Gastos por Categoria -->
                     <section class="results-box">
                         <h2>
-                            <img src="{{ url_for('static', filename='img/graph-icon.svg') }}" alt="Ícone de Gráfico">
+                            <img src="{{ url_for('static', filename='img/graph-icon.svg') }}" alt="Ícone de Gráfico"> <!-- Ícone ilustrativos -->
                             Gastos por Categoria
                         </h2>
                         <div class="chart-container">
-                            <canvas id="resultsChart"></canvas>
+                            <canvas id="resultsChart"></canvas> <!-- Área onde o gráfico será renderizado via Chart.js -->
                         </div>
                     </section>
                     
+                    <!-- Seção: Total Gasto vs Meta Total -->
                     <section class="results-box">
                         <h2>
                             <img src="{{ url_for('static', filename='img/analyse-icon.svg') }}" alt="Ícone de Análise">
                             Total Gasto vs. Meta Total
                         </h2>
                         <div class="chart-container">
-                            <canvas id="goalsChart"></canvas>
+                            <canvas id="goalsChart"></canvas> <!-- Gráfico comparando o total gasto com a meta -->
                         </div>
                     </section>
-
+                    
+                    <!-- Seção: Gasto vs. Meta (Detalhado) -->
                     <section class="results-box">
                         <h2>
                             <img src="{{ url_for('static', filename='img/search-icon.svg') }}" alt="Ícone de Alvo">
                             Gasto vs. Meta (Detalhado)
                         </h2>
                         <div class="chart-container">
-                            <canvas id="comparisonChart"></canvas>
+                            <canvas id="comparisonChart"></canvas> <!-- Gráfico detalhado por categoria -->
                         </div>
                     </section>
-
+                    
+                    <!-- Seção: Sobra ou Excesso por Categoria -->
                     <section class="results-box">
                         <h2>
                             <img src="{{ url_for('static', filename='img/excess-icon.svg') }}" alt="Ícone de Cifrão">
                             Sobra ou Excesso por Categoria
                         </h2>
                         <div class="chart-container">
-                            <canvas id="deviationChart"></canvas>
+                            <canvas id="deviationChart"></canvas> <!-- Gráfico mostrando sobra ou excesso em cada categoria -->
+                    </div>
                         </div>
                     </section>
 
                 </div>
             </div>
         </main>
-        
+        <!-- Importa a biblioteca Chart.js para renderização dos gráficos -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- Importa o script JS específico para manipulação dos gráficos de resultados -->
         <script src="{{ url_for('static', filename='js/script-resultados.js') }}"></script>
 {% endblock %}

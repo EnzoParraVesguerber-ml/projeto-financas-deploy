@@ -1,32 +1,34 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!-- Extende o template base.html como base-->
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-login.css') }}">
-    <title>Login - JEBY Finanças</title>
+    {{ super() }}  <!-- Insere o conteúdo do bloco 'head' definido em base.html, como meta tags e links globais. -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-login.css') }}"> <!-- Inclui o CSS específico para esta página -->
+    <title>Login - JEBY Finanças</title> <!-- Define o título da aba do navegador para esta página -->
 {% endblock %}
 {% block content %}
-<main class="major">
-    <div class="login-box">
+<main class="major"> <!-- Área principal da página, usada para centralizar o conteúdo de login -->
+    <div class="login-box"> <!-- Caixa visual que agrupa o formulário de login e informações relacionadas -->
         <h2>
             <img src="{{ url_for('static', filename='img/key-icon.svg') }}" alt="Ícone de Chave">
             Login para sua conta
         </h2>
+        <!-- Formulário de login -->
         <form action="{{ url_for('autenticar') }}" method="POST">
-            {{ form.hidden_tag() }}
-            <div class="input-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
+            {{ form.hidden_tag() }} <!-- Insere campos ocultos do Flask-WTF -->
+            <div class="input-group">  
+                <label for="email">E-mail:</label> <!-- Rótulo do campo de e-mail, melhora acessibilidade -->
+                <input type="email" id="email" name="email" required> <!-- Campo de e-mail -->
             </div>
             <div class="input-group">
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="senha" required>
+                <label for="password">Senha:</label> <!-- Rótulo do campo de senha -->
+                <input type="password" id="password" name="senha" required> <!-- Campo para o usuário digitar seu e-mail -->
             </div>
-            <button type="submit" class="submit-button">Entrar</button>
+            <button type="submit" class="submit-button">Entrar</button> <!-- Botão para enviar o formulário e tentar autenticar o usuário -->
         </form>
-        <p class="forgot-password"><a href="#">Esqueceu sua senha?</a></p>
+        <p class="forgot-password"><a href="#">Esqueceu sua senha?</a></p> <!-- Link para recuperação de senha -->
     </div>
     
 </main>
-    
+
+<!-- Inclui o JavaScript específico para a página de login -->
 <script src="{{ url_for('static', filename='js/script-login.js') }}"></script>
 {% endblock %}

@@ -4,11 +4,9 @@ import os
 import re
 from nltk.corpus import stopwords
 
-# --- CARREGAMENTO DO MODELO E VETORIZADOR ---
-
-# Constrói o caminho absoluto para a pasta de modelos
+# Define o caminho para a pasta onde os modelos treinados estão salvos
 saved_models_path = os.path.join(os.path.dirname(__file__), 'saved_models')
-
+# Caminhos dos arquivos do modelo e do vetorizador
 MODEL_PATH = os.path.join(saved_models_path, 'classifier_model.joblib')
 VECTORIZER_PATH = os.path.join(saved_models_path, 'tfidf_vectorizer.joblib')
 
@@ -22,12 +20,7 @@ except FileNotFoundError:
     model = None
     vectorizer = None
 
-# --- MAPA DE CORREÇÃO DE CARACTERES ---
-# ### ALTERAÇÃO ###: Movido para fora da função para ser uma constante global.
-# Este mapa corrige os rótulos que o modelo aprendeu de forma incorreta.
-# --- MAPA DE CORREÇÃO DE CARACTERES ---
-# ### ALTERAÇÃO ###: Corrigido o SyntaxError usando raw strings (prefixo 'r').
-# O 'r' antes da string faz com que o Python ignore as barras invertidas.
+# Mapeamento para corrigir rótulos quebrados vindos do modelo
 CORRECTION_MAP = {
     r'Alimenta\x80\x9co': 'Alimentação',
     r'Alimenta\x8√\xdf\x8√\xdf£o': 'Alimentação',
@@ -46,7 +39,6 @@ CORRECTION_MAP = {
 }
 
 
-# --- FUNÇÃO DE LIMPEZA DE TEXTO (DO SEU NOTEBOOK) ---
 
 def clean_text(text):
     """
@@ -55,16 +47,16 @@ def clean_text(text):
     if not isinstance(text, str):
         return ""
         
-    text = text.lower()
-    text = re.sub(r'[^a-z\s]', '', text)
+    text = text.lower()  # Converte para minúsculo
+    text = re.sub(r'[^a-z\s]', '', text) # Remove caracteres não alfabéticos
     
     words = text.split()
-    stop_words_pt = set(stopwords.words('portuguese'))
+    stop_words_pt = set(stopwords.words('portuguese')) # Stopwords em português
     words_without_stopwords = [word for word in words if word not in stop_words_pt]
     
-    return ' '.join(words_without_stopwords)
+    return ' '.join(words_without_stopwords) # Retorna texto limpo
 
-# --- FUNÇÃO PRINCIPAL DE CLASSIFICAÇÃO ---
+
 
 def classificar_despesas(caminho_do_arquivo_csv):
     """
@@ -90,7 +82,6 @@ def classificar_despesas(caminho_do_arquivo_csv):
         # Usa o modelo para prever as categorias (com os rótulos quebrados)
         categorias_preditas_quebradas = model.predict(descriptions_tfidf)
         
-        # ### ALTERAÇÃO PRINCIPAL ###
         # Corrigimos os rótulos quebrados que vieram do modelo usando o mapa.
         # Usamos .get(label, label) para que, se um rótulo não estiver no mapa, ele seja mantido como está.
         categorias_corrigidas = [CORRECTION_MAP.get(label, label) for label in categorias_preditas_quebradas]
@@ -121,7 +112,6 @@ def classificar_despesas(caminho_do_arquivo_csv):
         print(f"Erro ao processar o ficheiro em predictor.py: {e}")
         raise
 
-# NOVA FUNÇÃO PARA PROCESSAR ARQUIVOS PRÉ-CLASSIFICADOS
 def processar_pre_classificado(caminho_do_arquivo_csv):
     """
     Lê um arquivo CSV que já contém as colunas 'Categoria' e 'Valor',
@@ -135,8 +125,6 @@ def processar_pre_classificado(caminho_do_arquivo_csv):
         if 'Categoria' not in df.columns or 'Valor' not in df.columns:
             raise ValueError("O ficheiro CSV para esta opção deve conter as colunas 'Categoria' e 'Valor'.")
 
-        # ### ALTERAÇÃO ###: Aplica a mesma correção aqui, caso o CSV de entrada
-        # também tenha os rótulos com codificação errada.
         df['Categoria'] = df['Categoria'].replace(CORRECTION_MAP)
 
         # Converte a coluna 'Valor' para numérico, tratando vírgulas e erros

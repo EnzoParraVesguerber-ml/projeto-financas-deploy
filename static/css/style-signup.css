@@ -1,204 +1,219 @@
-/* ==========================================================================
-   Variáveis Globais e Estilos Base
-   ========================================================================== */
-:root {
-    --bg-color: #0f172a;
-    --bg2-color: rgba(72, 69, 69, 0.2);
-    --primary-color: #22d3ee;
-    --primary-hover: rgb(45, 223, 250);
-    --card-bg-color: rgba(30, 41, 59, 0.6);
-    --text-color: #cbd5e1;
-    --heading-color: #f1f5f9;
-    --form-bg-color: #1e293b;
-    --input-bg-color: #0f172a;
-    --input-border-color: #334155;
+   /* Variáveis de cores */
+   :root {
+    --bg-color: #0f172a; /* Fundo principal */
+    --bg2-color: rgba(72, 69, 69, 0.2); /* Fundo opaco preto */
+    --primary-color: #22d3ee; /* Cor principal (azul) */
+    --primary-hover: rgb(45, 223, 250); /* Cor ao passar o mouse */
+    --card-bg-color: rgba(30, 41, 59, 0.6); /* Fundo dos cards */
+    --text-color: #cbd5e1; /* Cor do texto */
+    --heading-color: #f1f5f9; /* Cor dos títulos */
+    --form-bg-color: #1e293b; /* Fundo do formulário mais escuro */
+    --input-bg-color: #0f172a; /* Fundo do input */
+    --input-border-color: #334155; /* Borda sutil do input */
 }
 
+/* Suaviza o scroll da página */
 html {
     scroll-behavior: smooth;
 }
 
+/* Estilo base para o corpo da página */
 body {
-    background-color: var(--bg-color);
+    background-color: var(--bg-color); /* Cor de fundo principal */
     color: var(--text-color);
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove padding padrão */
+    box-sizing: border-box; /* Inclui padding e border na largura total */
 }
 
+/* Estilo base para links */
 a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s;
+    color: var(--primary-color); 
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.3s; /* Transição suave ao passar o mouse */
 }
 
 a:hover {
     color: var(--primary-hover);
 }
 
-/* ==========================================================================
-   Header e Navegação
-   ========================================================================== */
-.top-box {
+/* Barra superior fixa no topo da página */
+   .top-box {
     width: 100%;
     padding: 15px 20px; /* Adicionado padding lateral para consistência */
-    position: fixed;
+    position: fixed; /* Fixa no topo */
     top: 0;
     left: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--heading-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    backdrop-filter: blur(5px);
-    box-sizing: border-box;
+    z-index: 100; /* Fica acima de outros elementos */
+    border-bottom: 1px solid var(--heading-color); /* Linha divisória */
+    display: flex; /* Layout flexível */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; /* Espaço entre logo e menu */
+    backdrop-filter: blur(5px); /* Efeito de desfoque */
+    box-sizing: border-box; /* Inclui o padding na largura */
 }
 
+/* Estilo do logo do sistema */
 .logo {
-    font-size: 2em;
-    font-weight: bold;
-    color: var(--heading-color);
+    font-size: 2em; /* Tamanho maior para destaque */
+    font-weight: bold; /* Negrito para ênfase */
+    color: var(--heading-color); /* Cor clara para contraste */
 }
 
+/* Estilo do link dentro do logo */
 .logo a {
-    text-decoration: none;
+    text-decoration: none; /* Remove o sublinhado */
     color: inherit; /* Herda a cor do elemento pai .logo */
 }
 
+/* Destaque azul para parte do logo */
 .logo span {
     color: var(--primary-color);
 }
 
+/* Container do menu para posicionamento relativo */
 .menu-container {
     position: relative; /* Essencial para o posicionamento do dropdown */
 }
 
+/* Botão do menu principal */
 .trigger-box {
     background-color: var(--bg-color);
     color: var(--text-color);
     padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.2em;
+    border-radius: 8px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão */
+    font-size: 1.2em; 
     font-weight: bold;
-    border: 2px solid var(--bg2-color);
+    border: 2px solid var(--bg2-color); /* Borda sutil */
 }
 
+/* Ícone do menu para dispositivos móveis */
 #trigger-box-phone {
     display: none;
 }
 
+/* Botões de login ativo */
 .btns-log.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* ==========================================================================
-   Conteúdo Principal e Formulário de Cadastro
-   ========================================================================== */
+/* Container principal centralizada */
 .main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    display: flex; /* Layout flexível */
+    justify-content: center;  /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Ocupa toda a altura da tela */
     padding: 100px 20px 50px 20px; /* Aumentado padding-top para não ficar sob o header */
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclui o padding na largura */
 }
 
+/* Caixa do formulário de cadastro */
 .form-container {
     background-color: var(--form-bg-color);
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    width: 100%;
-    max-width: 450px;
-    text-align: center;
-    border: 1px solid var(--input-border-color);
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Sombra mais escura */
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-width: 450px; /* Limita a largura do formulário */
+    text-align: center; /* Centraliza o texto */
+    border: 1px solid var(--input-border-color); /* Borda sutil */
 }
 
+/* Título do formulário de cadastro */
 .form-container h2 {
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Espaçamento abaixo do título */
     color: var(--heading-color);
-    font-size: 1.8em;
+    font-size: 1.8em; 
     display: flex; /* Para alinhar o ícone com o texto */
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 15px; /* Espaço entre o ícone e o texto */
 }
 
+/* Ícone do título do formulário */
 .form-container h2 img {
     width: 35px;
     height: 35px;
 }
 
+/* Grupo de inputs do formulário */
 .input-group {
     margin-bottom: 20px;
-    text-align: left;
+    text-align: left; /* Alinha o texto à esquerda */
 }
 
+/* Label dos inputs */
 .input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--text-color);
+    display: block; /* Ocupa toda a linha */
+    margin-bottom: 8px; /* Espaçamento abaixo da label */
+    font-weight: 500; /* Seminegrito */
+    color: var(--text-color); 
     font-size: 0.95em;
 }
 
+/* Inputs de texto, email e senha */
 .input-group input[type="text"],
 .input-group input[type="email"],
 .input-group input[type="password"] {
-    width: 100%;
+    width: 100%; /* Ocupa toda a largura do container */
     padding: 12px;
     background-color: var(--input-bg-color);
     color: var(--text-color);
     border: 1px solid var(--input-border-color);
-    border-radius: 5px;
-    box-sizing: border-box;
+    border-radius: 5px; /* Bordas arredondadas */
+    box-sizing: border-box; /* Inclui o padding na largura */
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+/* Efeito de foco nos inputs */
 .input-group input:focus {
     border-color: var(--primary-color);
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
+    outline: none; /* Remove a borda padrão */
+    box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2); /* Sombra azul suave */
 }
 
+/* Input com erro de validação */
 .input-group input.input-error {
     border-color: #ef4444; /* Vermelho para erro */
     box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
 }
 
-/* --- Checkbox de Termos --- */
+/* Checkbox de termos*/
 .checkbox-group {
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
-    text-align: left;
+    margin-bottom: 25px; /* Espaço para baixo */
+    text-align: left; /* Alinha o texto à esquerda */
 }
 
+/* Estilo do checkbox personalizado */
 .checkbox-group input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
+    appearance: none; /* Remove o estilo padrão */
+    -webkit-appearance: none; /* Remove o estilo padrão no Safari */
+    width: 18px; /* Tamanho do checkbox */
+    height: 18px; 
     border: 1px solid var(--input-border-color);
-    border-radius: 3px;
+    border-radius: 3px; /* Bordas levemente arredondadas */
     background-color: var(--input-bg-color);
-    cursor: pointer;
-    position: relative;
+    cursor: pointer; /* Cursor de mão */
+    position: relative; 
     top: -1px;
     margin-right: 10px;
 }
 
+/* Checkbox marcado */
 .checkbox-group input[type="checkbox"]:checked {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
+/* Ícone de check dentro do checkbox */
 .checkbox-group input[type="checkbox"]:checked::after {
-    content: '✓';
+    content: '✓'; /* Símbolo de check */
     display: block;
     color: var(--bg-color);
     font-size: 14px;
@@ -206,6 +221,7 @@ a:hover {
     text-align: center;
 }
 
+/* Label do checkbox */
 .checkbox-group label {
     font-size: 0.9em;
     color: var(--text-color);
@@ -220,58 +236,54 @@ a:hover {
     border-radius: 8px;
     font-size: 1.1em;
     font-weight: bold;
-    width: 100%;
-    margin-top: 15px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Ocupa toda a largura */
+    margin-top: 15px; /* Espaço acima do botão */
+    border: none; /* Sem borda */
+    cursor: pointer; /* Cursor de mão */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito suave */
 }
 
+/* Efeito hover no botão de envio */
 .submit-button:hover {
     background-color: var(--primary-hover);
-    transform: translateY(-2px);
+    transform: translateY(-2px); /* Leve elevação ao passar o mouse */
 }
 
+/* Link para a página de login */
 .login-link {
     margin-top: 25px;
     font-size: 0.9em;
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/* Footer da página */
 .site-footer {
-    text-align: center;
+    text-align: center; 
     font-family: 'Poppins', sans-serif;
     width: 100%;
     padding: 20px 0; /* Adicionado padding para espaçamento */
-    border-top: solid 1px var(--primary-color);
+    border-top: solid 1px var(--primary-color); /* Linha divisória azul */
 }
-
-/* ==========================================================================
-   Media Queries para Responsividade
-   ========================================================================== */
 
 /* Telas de tablets e celulares */
 @media (max-width: 1024px) {
     .trigger-box {
-        display: none;
+        display: none; /* Esconde menu de texto */
     }
     #trigger-box-phone {
-        display: block;
+        display: block; /* Mostra o ícone do menu */
     }
 }
 
 /* Telas de celulares */
 @media (max-width: 500px) {
     .logo {
-        font-size: 1.5em;
+        font-size: 1.5em; /* Reduz o tamanho do logo */
     }
     
     /* Estilos de botões que podem estar no header */
     .log-buttons button {
-        padding: 8px 15px;
-        font-size: 0.9em;
+        padding: 8px 15px; 
+        font-size: 0.9em; 
     }
     
     .header-container { /* Seletor mantido caso seja usado no HTML */
@@ -279,11 +291,11 @@ a:hover {
     }
 
     .form-container {
-        width: 90%;
-        padding: 30px 20px;
+        width: 90%; 
+        padding: 30px 20px; /* Reduz o padding */
     }
 
     .form-container h2 {
-        font-size: 1.5em;
+        font-size: 1.5em; /* Reduz o tamanho do título */
     }
 }

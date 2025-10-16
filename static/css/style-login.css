@@ -1,42 +1,47 @@
+/* Váriaveis de cores */
 :root{
-    --bg-color: #0f172a;
+    --bg-color: #0f172a; /* Cor de fundo principal */
     --bg2-color: rgba(72, 69, 69, 0.2); /* fundo preto opaco 60% */
-    --primary-color: #22d3ee;
-    --primary-hover: rgb(45, 223, 250);
-    --card-bg-color: rgba(30, 41, 59, 0.6);
-    --text-color: #cbd5e1;
-    --heading-color: #f1f5f9;
+    --primary-color: #22d3ee; /* Cor principal (azul) */
+    --primary-hover: rgb(45, 223, 250); /* Cor ao passar o mouse */
+    --card-bg-color: rgba(30, 41, 59, 0.6); /* Fundo dos cards */
+    --text-color: #cbd5e1; /* Cor do texto */
+    --heading-color: #f1f5f9; /* Cor dos títulos */
     --form-bg-color: #1e293b; /* Fundo do formulário mais escuro */
     --input-bg-color: #0f172a; /* Fundo do input */
     --input-border-color: #334155; /* Borda sutil do input */
 }
 
+/* Suaviza o scroll da página */
 html {
     scroll-behavior: smooth;
 }
 
+/* Estilo base para o corpo da página */
 body{
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
+/* Estilo base para links */
 a{
     color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s;
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.3s; /* Transição suave */
 }
 
 a:hover {
     color: var(--primary-hover);
 }
 
+/* Barra superior fixa */
 .top-box{
     width: 100%;
     padding: 15px 0;
-    position: fixed;
+    position: fixed; /* Fixa no topo */
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 100; /* Fica acima de outros elementos */
     border-bottom: 1px solid var(--heading-color);
     margin: 0 auto;
     display: flex;
@@ -45,6 +50,7 @@ a:hover {
     backdrop-filter: blur(5px);
 }
 
+/* logo do sistema */
 .logo{
     font-size: 2em;
     font-weight: bold;
@@ -52,19 +58,23 @@ a:hover {
     margin-left: 20px;
 }
 
+/* Estilo do link dentro do logo */
 .logo a {
-    text-decoration: none;
+    text-decoration: none; /* Remove o sublinhado */
     color: var(--heading-color); /* Força a cor branca */
 }
 
+/* Destaque azul para parte do logo */
 .logo span{
     color: var(--primary-color);
 }
 
+/* Container do menu para posicionamento relativo */
 .menu-container {
     position: relative; /* Essencial para o posicionamento do dropdown */
 }
 
+/* Botão do menu principal */
 .trigger-box {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -76,12 +86,12 @@ a:hover {
     border: 2px solid var(--bg2-color);
 }
 
+/* Container principal centralizada */
 .major{
     display: flex;
     align-items: center;
     justify-content: center;  
     flex-direction: column;
-    /* PADDING CORRIGIDO PARA EMPURRAR O CONTEÚDO PARA BAIXO */
     padding: 120px 20px 50px 20px; 
     min-height: 100vh;
     box-sizing: border-box;
@@ -110,11 +120,13 @@ a:hover {
     gap: 15px; /* Espaço entre o ícone e o texto */
 }
 
+/* Título do login*/
 .login-box h2 img {
     width: 35px; /* Tamanho do ícone */
     height: 35px;
 }
 
+/* grupo de inputs do formulário */
 .input-group {
     margin-bottom: 20px;
     text-align: left;
@@ -128,12 +140,14 @@ a:hover {
     font-size: 0.95em;
 }
 
+/* Efeito de foco nos inputs */
 .input-group input:focus {
     border-color: var(--primary-color);
     outline: none;
     box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
 }
 
+/* Estilo dos inputs */
 .input-group input {
     width: 100%;
     padding: 12px;
@@ -145,6 +159,7 @@ a:hover {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+/* Botão de envio do formulário */
 .submit-button {
     background-color: var(--primary-color);
     color: var(--bg-color);
@@ -159,11 +174,13 @@ a:hover {
     transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito suave */
 }
 
+/* Efeito hover no botão de envio */
 .submit-button:hover {
     background-color: var(--primary-hover);
     transform: translateY(-2px); /* Efeito de "levantar" */
 }
 
+/* Link de esqueci minha senha */
 .forgot-password {
     margin-top: 15px;
     font-size: 0.9em;
@@ -173,43 +190,44 @@ a:hover {
     margin-top: 25px;
 }
 
+/* Ícone do menu para telas pequenas */
 #trigger-box-phone {
     display: none;
 }
 
-/* --- Media Queries --- */
 
 /* Quando a tela for menor que 1024px */
 @media (max-width: 1024px) {
     /* Escondemos o menu de texto */
     .trigger-box {
-        display: none;
+        display: none; /* Esconde o botão de menu */
     }
 
     /* E mostramos o ícone do menu */
     #trigger-box-phone {
-        display: block;
+        display: block; /* Mostra o ícone do menu */
     }
 }
 
+/* Ajustes para telas menores (celular) */
 @media (max-width: 500px) {
     .header-container {
         padding: 10px 15px;
     }
     
     .logo {
-        font-size: 1.5em;
+        font-size: 1.5em; /* Reduz o tamanho da logo */
     }
 
     .btns-log button {
-        padding: 8px 15px;
-        font-size: 0.9em;
+        padding: 8px 15px; /* Reduz o padding dos botões*/
+        font-size: 0.9em; /* Reduz o tamanho da fonte dos botões */
     }
 
     .login-box { 
-        width: 90%;
-        padding: 30px 20px;
-        margin: 0 auto;
-        box-sizing: border-box;
+        width: 90%; /* Ocupa 90% da largura da tela */
+        padding: 30px 20px; /* Reduz o padding */
+        margin: 0 auto; /* Centraliza */ 
+        box-sizing: border-box; /*Inclui o padding na largura */
     }
 }

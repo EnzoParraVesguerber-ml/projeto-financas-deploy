@@ -1,5 +1,5 @@
 /* CSS Específico da Página Inicial */
-
+/* Variáveis de cores */
 :root {
     --bg-color: #0f172a;
     --bg2-color: rgba(72, 69, 69, 0.2);
@@ -10,15 +10,18 @@
     --heading-color: #f1f5f9;
 }
 
+/* Suaviza o scroll da página */
 html {
     scroll-behavior: smooth;
 }
 
+/* Estilo base para o corpo da página */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
+/* Barra superior fixa */
 .top-box {
     width: 100%;
     padding: 15px 0;
@@ -34,6 +37,7 @@ body {
     backdrop-filter: blur(5px);
 }
 
+/* logo do site */
 .logo {
     font-size: 2em;
     font-weight: bold;
@@ -41,19 +45,23 @@ body {
     margin-left: 20px;
 }
 
+/* Link da logo */
 .logo a {
     text-decoration: none;
     color: var(--heading-color);
 }
 
+/* Parte colorida da logo */
 .logo span {
     color: var(--primary-color);
 }
 
+/* Container do menu (botão de login e logout) */
 .menu-container {
     position: relative;
 }
 
+/* Botão que aciona o menu (ícone de usuário) */
 .trigger-box {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -65,6 +73,7 @@ body {
     border: 2px solid var(--bg2-color);
 }
 
+/* Container principal da página */
 .major {
     display: flex;
     align-items: center;
@@ -73,10 +82,12 @@ body {
     padding: 10% 0;
 }
 
+/* Primeira seção (apresentação) */
 .first-section {
     text-align: center;
 }
 
+/* Título da primeira seção */
 .first-section-heading {
     font-family: 'Poppins', sans-serif;
     font-size: 60px;
@@ -84,10 +95,12 @@ body {
     margin-bottom: 0%;
 }
 
+/* Destaque colorido no título */
 .first-section-heading span {
     color: var(--primary-color);
 }
 
+/* Parágrafo de apresentação */
 .first-section-paragraph {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
@@ -96,11 +109,13 @@ body {
     line-height: 1.6;
 }
 
+/* Botão de início */
 .first-section-start {
     display: flex;
     justify-content: center;
 }
 
+/* Link de apresentação (botão principal) */
 .presentation-link {
     background-color: var(--primary-color);
     color: var(--bg-color);
@@ -115,11 +130,13 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Efeito ao passar o mouse no botão principal*/
 .presentation-link:hover {
     background-color: var(--primary-hover);
     transform: translateY(-3px);
 }
 
+/* Segunda seção (cards de opções) */
 .second-section {
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -130,7 +147,7 @@ body {
     gap: 20px;
 }
 
-/* ESTILOS DOS CARDS DA SEGUNDA SEÇÃO AGRUPADOS AQUI */
+/* Estilo dos cards da segunda seção */
 .second-section-opcions {
     font-family: 'Poppins', sans-serif;
     flex: 1;
@@ -146,11 +163,13 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Efeito ao passar o mouse sobre os cards */
 .second-section-opcions:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
+/* Título dos cards */
 .second-section-opcions h2 {
     display: flex;
     align-items: center;
@@ -158,16 +177,19 @@ body {
     gap: 12px;
 }
 
+/* Ícone dos cards */
 .second-section-opcions h2 img {
     width: 40px;
     height: 40px;
 }
 
+/* Terceira seção (gráfico) */
 .third-section {
     font-family: 'Poppins', sans-serif;
     margin-bottom: 40px;
 }
 
+/* Título da terceira seção */
 .third-section-heading {
     text-align: center;
     margin-bottom: 60px;
@@ -175,6 +197,7 @@ body {
     font-size: 40px;
 }
 
+/* Container do gráfico */
 .third-section-graphic {
     background-color: #1e293b;
     border-radius: 12px;
@@ -188,6 +211,7 @@ body {
     box-sizing: border-box;
 }
 
+/* Cabeçalho do gráfico */
 .graphic-header {
     display: flex;
     justify-content: space-between;
@@ -196,11 +220,12 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Círculos coloridos no cabeçalho do gráfico */
 .color-circles {
     display: flex;
 }
 
-/* REGRA OTIMIZADA: Estilos comuns para todos os spans */
+/* Estilos comuns para todos os spans */
 .color-circles span {
     margin: 6px;
     padding: 10px;
@@ -212,11 +237,13 @@ body {
 .color-circles span:nth-child(2) { background-color: #f59e0b; }
 .color-circles span:nth-child(3) { background-color: #22c55e; }
 
+/* Título dos itens do gráfico */
 .graphic-item-header {
     color: var(--heading-color);
     margin-bottom: 15px;
 }
 
+/* Itens do gráfico */
 .graphic-item {
     display: flex;
     align-items: center;
@@ -226,6 +253,7 @@ body {
     padding: 8px;
 }
 
+/* Caixa de cor dos itens do gráfico */
 .graphic-item .color-box {
     width: 13px;
     height: 13px;
@@ -233,6 +261,7 @@ body {
     border-radius: 2px;
 }
 
+/* Layout do gráfico */
 .graphic {
     display: flex;
     gap: 20px;
@@ -242,10 +271,12 @@ body {
     padding-top: 20px;
 }
 
+/* Área do gráfico */
 .graphic-chart {
     flex: 1;
 }
 
+/* Gráfico de pizza animado */
 .graphic-pie {
     width: 150px;
     height: 150px;
@@ -254,108 +285,111 @@ body {
     animation: spin 10s linear infinite;
 }
 
+/* Área dos dados do gráfico */
 .graphic-data {
     flex: 2;
 }
 
+/* Botão de menu para dispositivos móveis */
 #trigger-box-phone {
     display: none;
 }
 
+/* Animação de rotação para o gráfico de pizza */
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-/* --- REGRAS DE RESPONSIVIDADE --- */
+/* Responsividade */
 @media (max-width: 1024px) {
     .trigger-box {
-        display: none;
+        display: none; /* Esconde menu desktop */
     }
     #trigger-box-phone {
-        display: block;
+        display: block; /* Mostra menu mobile */
     }
-    .second-section {
+    .second-section { /* Cards em coluna, redução no espaçamento e ajuste na margem supeior*/
         flex-direction: column;
         align-items: center;
         padding: 5%;
         margin-top: 4%;
     }
-    .second-section-opcions {
+    .second-section-opcions { /* Cards ocupam quase toda a largura */
         max-width: 90%;
         width: 100%;
         margin-bottom: 20px;
     }
-    .third-section {
+    .third-section { /* Seção ocupa toda a largura */
         width: 100%;
     }
-    .third-section-graphic {
+    .third-section-graphic { /* Gráfico ocupa quase toda a largura da tela */
         width: 95vw;
         max-width: 95vw;
     }
-    .graphic {
+    .graphic { /* Reduz espaço entre elementos do gráfico */
         margin-left: 0;
         gap: 15px;
     }
-    .graphic-chart {
+    .graphic-chart { /* Remove margem lateral do gráfico */
         margin-left: 0;
     }
 }
-
+/* Para telas até 600px de largura (celulares) */
 @media (max-width: 600px) {
     .top-box {
         flex-direction: row;
         align-items: center;
         padding: 10px 15px;
     }
-    .logo {
+    .logo { /* Reduz o tamanho da logo */
         font-size: 1.5em;
         margin-left: 0;
         margin-bottom: 0;
     }
-    .btns-log button {
+    .btns-log button { /* Reduz o tamanho dos botões do menu */
         font-size: 0.9em;
         padding: 8px 12px;
         margin-bottom: 5px;
     }
-    .major {
+    .major { /* Ajusta o espaçamento vertical */
         padding: 20% 0 10% 0;
     }
-    .first-section-heading {
+    .first-section-heading { /* Reduz o tamanho do título */
         font-size: 2em;
     }
-    .first-section-paragraph {
+    .first-section-paragraph { /* Reduz o tamanho do texto  */
         font-size: 1em;
         padding: 0 10px;
     }
-    .presentation-link {
+    .presentation-link { /* Reduz o tamanho do botão */
         font-size: 1em;
         padding: 10px 20px;
     }
-    .second-section {
+    .second-section { /* Cards em coluna */
         flex-direction: column;
         gap: 15px;
         padding: 5%;
     }
-    .second-section-opcions {
+    .second-section-opcions { /* Cards ocupam toda a largura */
         max-width: 100%;
         width: 100%;
         height: auto;
         padding: 15px;
     }
-    .third-section-heading {
+    .third-section-heading {  /* Reduz o tamanho do título */
         font-size: 1.2em;
         margin-bottom: 30px;
     }
-    .third-section-graphic {
-        width: 100%;
+    .third-section-graphic { /* Gráfico ocupa toda a largura */
+        width: 100%; 
         min-width: 0;
         height: auto;
     }
-    .graphic {
-        flex-direction: column;
+    .graphic {  /* Elementos do gráfico em colunas */
+        flex-direction: column; 
         margin-left: 0;
         gap: 10px;
     }
-    .graphic-pie {
-        width: 90px;
+    .graphic-pie { /* Tamanho reduzido do gráfico de pizza */
+        width: 90px; 
         height: 90px;
     }
     .footer { /* Estilo específico do footer para mobile */

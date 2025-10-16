@@ -12,20 +12,20 @@ import joblib
 import os
 from ml_model.predictor import classificar_despesas, processar_pre_classificado
 
-# --- ROTAS DE UTILIZADOR E AUTENTICAÇÃO ---
 
 @app.route('/login')
 def login_page():
+    # Página de login, recebe parâmetro 'proxima' para redirecionamento após login
     proxima = request.args.get('proxima')
     form = FormularioLogin() # Cria uma instância do formulário
     if proxima is None:
         proxima = url_for('dashboard')
     return render_template('login/index.html', proxima=proxima, form=form) # Envia para o template
 
-# No ficheiro: Projeto-Finan-as/views.py
 
 @app.route('/autenticar', methods=['POST',])
 def autenticar():
+    # Rota para autenticar o usuário após envio do formulário de login
     form = FormularioLogin(request.form)
     usuario = Usuario.query.filter_by(email=form.email.data).first()
 
@@ -42,12 +42,13 @@ def autenticar():
             proxima_pagina = request.form.get('proxima')
             return redirect(proxima_pagina or url_for('dashboard'))
 
-    # Se o usuário não existe OU a senha está incorreta, mostra o erro
+    # Se o usuário não existe ou a senha está incorreta, mostra o erro
     flash('Email ou senha incorretos. Tente novamente.', 'danger')
     return redirect(url_for('login_page'))
 
 @app.route('/registrar', methods=['POST',])
 def registrar():
+    # Rota para registrar novo usuário
     form = FormularioRegisto(request.form)
 
     # O método validate() verifica todas as regras definidas no helpers.py
@@ -76,24 +77,27 @@ def registrar():
 
 @app.route('/logout')
 def logout():
+    # Rota para logout do usuário
     session.pop('usuario_logado', None)
     session.pop('usuario_nome', None)
     flash('Logout efetuado com sucesso!', 'info')
     return redirect(url_for('home'))
 
-# --- ROTAS PRINCIPAIS DA APLICAÇÃO ---
 
 @app.route('/')
 def home():
+    # Página inicial
     return render_template('inicial/index.html')
 
 @app.route('/signup')
 def signup_page():
+    # Página de cadastro de usuários
     form = FormularioRegisto() # Cria uma instância do formulário
     return render_template('signup/index.html', form=form) # Envia para o template
 
 @app.route('/dashboard')
 def dashboard():
+    # Página principal do dashboard, requer login
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         flash('Por favor, faça login para aceder a esta página.', 'info')
         return redirect(url_for('login_page', proxima=url_for('dashboard')))
@@ -102,6 +106,7 @@ def dashboard():
 
 @app.route('/resultados')
 def resultados_page():
+    # Página de resultados da análise
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         return redirect(url_for('login_page'))
     
@@ -109,6 +114,7 @@ def resultados_page():
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    # Rota para upload e processamento do ficheiro CSV
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         return jsonify({'error': 'Não autorizado'}), 401
 

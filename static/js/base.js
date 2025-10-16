@@ -1,17 +1,20 @@
+// Aguarda o carregamento completo do DOM antes de executar o código
 document.addEventListener('DOMContentLoaded', function() {
+   // Seleciona o container do menu e os botões de login/logout
     const menuContainer = document.querySelector('.menu-container');
     const btnsLog = document.querySelector('.btns-log');
-
+    
+    // Se o menu existir, adiciona eventos para mostrar/ocultar os botões de login/logout ao passar o mouse
     if (menuContainer) {
         menuContainer.addEventListener('mouseenter', function() {
             if (btnsLog) {
-                btnsLog.classList.add('active');
+                btnsLog.classList.add('active'); // Exibe os botões
             }
         });
 
         menuContainer.addEventListener('mouseleave', function() {
             if (btnsLog) {
-                btnsLog.classList.remove('active');
+                btnsLog.classList.remove('active'); // Oculta os botões
             }
         });
     }
@@ -20,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const signupBtn = document.getElementById("signup-btn");
     if (signupBtn) {
         signupBtn.addEventListener("click", function(event) {
-            event.preventDefault();
-            window.location.href = "/signup";
+            event.preventDefault(); // Impede o comportamento padrão do link
+            window.location.href = "/signup"; // Redireciona para a página de cadastro
         });
     }
 
@@ -29,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginBtn = document.getElementById("login-btn");
     if (loginBtn) {
         loginBtn.addEventListener("click", function(event) {
-            event.preventDefault();
-            window.location.href = "/login";
+            event.preventDefault(); // Impede o comportamento padrão do link
+            window.location.href = "/login"; // Redireciona para a página de login
         });
     }
 
@@ -38,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const logoutBtn = document.getElementById("logout-btn");
     if (logoutBtn) {
         logoutBtn.addEventListener("click", function(event) {
-            event.preventDefault();
-            window.location.href = "/logout";
+            event.preventDefault(); // Impede o comportamento padrão do link
+            window.location.href = "/logout"; // Redireciona para a página de logout
         });
     }
 });

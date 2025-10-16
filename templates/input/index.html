@@ -1,20 +1,22 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!-- Extende o template base.html -->
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-input.css') }}">
-    <title>Dashboard - JEBY Finanças</title>
+    {{ super() }}  <!-- Insere o conteúdo do bloco 'head' definido em base.html, como meta tags e links globais -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-input.css') }}"> <!-- Inclui o CSS específico para esta página -->
+    <title>Dashboard - JEBY Finanças</title> <!-- Define o título da aba do navegador para esta página -->
 {% endblock %}
 {% block content %}
     <main>
         <div class="dashboard">
             <div class="dashboard-grid">
+                <!-- Seção de upload de extrato -->
                 <section id="upload" class="upload-box">
                     <h2>
                         <img src="{{ url_for('static', filename='img/upload-icon.svg') }}" alt="Ícone de Upload">
                         1. Análise de Extrato
                     </h2>
                     <p>Escolha o tipo de análise e envie seu extrato (.csv ou .xlsx).</p>
-
+                    
+                    <!-- Switch para escolher o tipo de análise -->
                     <div class="switch-container">
                         <span class="switch-label" data-value="ai">
                             <img src="{{ url_for('static', filename='img/IA-icon.svg') }}" alt="Ícone IA">
@@ -29,7 +31,8 @@
                             Já Rotulado
                         </span>
                     </div>
-
+                    
+                    <!-- Formulário de upload de arquivo -->
                     <form action="#" method="POST" enctype="multipart/form-data">
                         <label for="file-upload" class="file-upload-label">
                             Escolher arquivo
@@ -38,7 +41,8 @@
                         <span id="file-name">Nenhum arquivo selecionado</span>
                     </form>
                 </section>
-
+                
+                <!-- Seção de metas mensais -->
                 <section class="upload-box">
                     <h2>
                         <img src="{{ url_for('static', filename='img/bullseye-icon.svg') }}" alt="Ícone de Alvo">
@@ -47,12 +51,14 @@
                     <p>Defina limites de gastos para as categorias do seu extrato e acompanhe seu progresso.</p>
                     <form id="goals-form">
                         <div class="form-group-grid">
+                            <!-- Cada grid representa uma categoria de meta -->
                             <div class="form-group">
                                 <label for="goal-casa" title="Casa e Vestuário">
                                     <img src="{{ url_for('static', filename='img/home-icon.svg') }}">Casa e Vestuário
                                 </label>
                                 <input type="number" id="goal-casa" name="goal_casa_vestuario" placeholder="R$ 0">
                             </div>
+                            <!-- Repetição de blocos para cada categoria -->
                             <div class="form-group">
                                 <label for="goal-veiculo" title="Veículo">
                                     <img src="{{ url_for('static', filename='img/car-icon.svg') }}">Veículo
@@ -123,14 +129,17 @@
                     </form>
                 </section>
             </div>
-
+            
+            <!-- Botão para gerar análise -->
             <div class="generate-button-wrapper">
                 <button id="generate-analysis" class="generate-button">
                     Gerar Análise Completa
                 </button>
             </div>
-
+        
+        <!-- Área para exibir os resultados da análise -->
         <div id="analysis-results" class="analysis-results-area"></div>
     </main>
+    <!-- Inclui o JavaScript específico para a página de input -->
     <script src="{{ url_for('static', filename='js/script-input.js') }}"></script>
 {% endblock %}

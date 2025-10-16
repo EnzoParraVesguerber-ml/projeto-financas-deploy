@@ -1,126 +1,129 @@
-/* ==========================================================================
-   1. Variáveis Globais e Estilos Base
-   ========================================================================== */
+/* Váriaveis de cores */
 :root {
-    --bg-color: #0f172a;
-    --bg2-color: rgba(72, 69, 69, 0.2);
-    --primary-color: #22d3ee;
-    --primary-hover: rgb(45, 223, 250);
-    --card-bg-color: rgba(30, 41, 59, 0.6);
-    --text-color: #cbd5e1;
-    --heading-color: #f1f5f9;
-    --form-bg-color: #1e293b;
-    --input-bg-color: #0f172a;
-    --input-border-color: #334155;
+    --bg-color: #0f172a; /* Cor de fundo principal */
+    --bg2-color: rgba(72, 69, 69, 0.2); /* Fundo preto opaco */
+    --primary-color: #22d3ee; /* Cor principal (azul) */
+    --primary-hover: rgb(45, 223, 250); /* Cor ao passar o mouse */
+    --card-bg-color: rgba(30, 41, 59, 0.6); /* Fundo dos cards */
+    --text-color: #cbd5e1; /* Cor do texto padrão */
+    --heading-color: #f1f5f9; /* Cor dos títulos */
+    --form-bg-color: #1e293b; /* Fundo do formulário mais escuro */
+    --input-bg-color: #0f172a; /* Fundo do input */
+    --input-border-color: #334155; /* Borda sutil do input */
 }
 
+/* Suaviza o scroll da página */
 html {
     scroll-behavior: smooth;
 }
 
+/* Estilo base para o corpo da página */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Poppins', sans-serif; /* Fonte padrão para consistência */
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
+    padding: 0; 
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+    overflow-x: hidden; /* Previne rolagem horizontal */
 }
 
+/* Estilo base para links */
 a {
     color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s;
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.3s; /* Transição suave ao passar o mouse */
 }
 
+/* Efeito hover para links */
 a:hover {
     color: var(--primary-hover);
 }
 
-/* ==========================================================================
-   2. Layout Principal (Header e Footer)
-   ========================================================================== */
-
-/* --- Header --- */
+/* Barra superior fixa */
 .header-container {
     width: 100%;
     padding: 15px 20px;
-    position: fixed;
+    position: fixed; /* Fixa no topo */
     top: 0;
     left: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--heading-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    backdrop-filter: blur(5px);
-    box-sizing: border-box;
+    z-index: 100; /* Fica acima de outros elementos */
+    border-bottom: 1px solid var(--heading-color); /* Linha divisória */
+    display: flex; /* Layout flexível */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; /* Espaço entre logo e menu */
+    backdrop-filter: blur(5px); /* Efeito de desfoque */
+    box-sizing: border-box; /* Inclui o padding na largura */
 }
 
+/* Estulo do logo do sistema */
 .logo {
-    font-size: 2em;
-    font-weight: bold;
-    color: var(--heading-color);
+    font-size: 2em; /* Tamanho maior para destaque */
+    font-weight: bold; /* Deixa o texto em negrito */
+    color: var(--heading-color); 
 }
 
+/* Estilo do link dentro do logo */
 .logo a {
-    text-decoration: none;
-    color: inherit;
+    text-decoration: none; /* Remove o sublinhado */
+    color: inherit; /* Herda a cor do logo */
 }
 
+/* Destaque azul para parte do logo */
 .logo span {
     color: var(--primary-color);
 }
 
+/* Container do menu para posicionamento relativo */
 .menu-container {
     position: relative;
     text-align: center;
 }
 
+/* Botão do menu principal */
 .trigger-box {
     background-color: var(--bg-color);
     color: var(--text-color);
     padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 8px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão */
     font-size: 1.2em;
     font-weight: bold;
     border: 2px solid var(--bg2-color);
 }
 
-/* --- Footer --- */
+/* Footer */
 .footer {
-    text-align: center;
-    width: 100%;
-    border-top: solid 1px var(--primary-color);
-    padding: 20px 0;
+    text-align: center; 
+    width: 100%; /* Ocupa toda a largura */
+    border-top: solid 1px var(--primary-color); /* Linha divisória azul */
+    padding: 20px 0; /* Espaçamento vertical */
 }
 
-/* ==========================================================================
-   3. Estilos Específicos do Dashboard
-   ========================================================================== */
+/* Container principal do dashboard */    
 .dashboard {
-    padding: 100px 20px 60px 20px;
-    box-sizing: border-box;
-    max-width: 1600px;
-    margin: 0 auto;
+    padding: 100px 20px 60px 20px; /* Espaçamento para não sobrepor o header */
+    box-sizing: border-box; /* Inclui o padding na largura */
+    max-width: 1600px; /* Limita a largura máxima */
+    margin: 0 auto; /* Centraliza na tela */ 
 }
 
+/* Grid principal do dashboard para organizar os cards */
 .dashboard-grid {
-    display: grid;
+    display: grid; /* Layout em grid */
     grid-template-columns: repeat(2, 1fr); /* Define 2 colunas de tamanho igual */
-    gap: 30px;
+    gap: 30px; /* Espaçamento entre os cards */
 }
 
+/* Caixa de resultados */
 .results-box {
     background-color: var(--form-bg-color);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--input-border-color);
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Layout flexível */
+    flex-direction: column; /* Itens em coluna */
     min-width: 0; /* Previne que o conteúdo flexível quebre o layout */
 }
 
@@ -129,51 +132,49 @@ a:hover {
     font-size: 1.5rem;
     color: var(--heading-color);
     margin: 0 0 25px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+    display: flex; /* Alinha o ícone e o texto */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 15px; /* Espaço entre o ícone e o texto */
 }
 
+/* Ícone do título */
 .results-box h2 img {
     width: 30px;
     height: 30px;
 }
 
+/* Container do gráfico */
 .chart-container {
-    position: relative;
+    position: relative; /* Permite posicionamento absoluto dos elementos internos */
     width: 100%;
     flex-grow: 1; /* Permite que o container cresça para preencher o espaço */
     min-height: 300px;
 }
 
-/* ==========================================================================
-   4. Media Queries para Responsividade
-   ========================================================================== */
-
-/* --- Tablets e Telas Menores (até 1024px) --- */
+/* Tablets e telas menores (até 1024px) */
 @media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: 1fr; /* Muda para uma única coluna */
-        gap: 25px;
+        gap: 25px; /* Reduz o espaçamento entre os cards */
     }
 }
 
-/* --- Celulares (até 600px) --- */
+/* Celulares (até 600px) */
 @media (max-width: 600px) {
     .dashboard {
         padding: 80px 15px 40px 15px; /* Ajusta o padding para telas pequenas */
     }
 
     .results-box {
-        padding: 20px;
+        padding: 20px; /* Reduz o espaçamento interno */
     }
 
-    .results-box h2 {
-        font-size: 1.2rem;
+    .results-box h2 { 
+        font-size: 1.2rem; /* Reduz o tamanho do título */
     }
 
     .chart-container {
-        min-height: 280px;
+        min-height: 280px; /* Ajusta a altura mínima do gráfico */
     }
 }

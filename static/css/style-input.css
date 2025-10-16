@@ -1,20 +1,23 @@
+/* Váriaveis de cores */
 :root {
-    --bg-color: #0f172a;
-    --bg2-color: rgba(72, 69, 69, 0.2);
-    --primary-color: #22d3ee;
-    --primary-hover: rgb(45, 223, 250);
-    --card-bg-color: rgba(30, 41, 59, 0.6);
-    --text-color: #cbd5e1;
-    --heading-color: #f1f5f9;
+    --bg-color: #0f172a; /* Fundo principal */
+    --bg2-color: rgba(72, 69, 69, 0.2); /* Fundo secundário translúcido */
+    --primary-color: #22d3ee; /* Cor principal (botões, destaques) */
+    --primary-hover: rgb(45, 223, 250); /* Cor ao passar o mouse */
+    --card-bg-color: rgba(30, 41, 59, 0.6); /* Fundo dos cards */
+    --text-color: #cbd5e1; /* Cor do texto */
+    --heading-color: #f1f5f9; /* Cor dos títulos */
     --form-bg-color: #1e293b; /* Fundo do formulário mais escuro */
     --input-bg-color: #0f172a; /* Fundo do input */
     --input-border-color: #334155; /* Borda sutil do input */
 }
 
+/* Suaviza o scroll da página */
 html { 
     scroll-behavior: smooth; 
 }
 
+/* Estilo base para o corpo da página */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -23,17 +26,19 @@ body {
     box-sizing: border-box;
 }
 
+/* Estilo base para links */
 a {
     color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s;
 }
 
+/* Efeito hover para links */
 a:hover {
     color: var(--primary-hover);
 }
 
-/* --- Header e Navegação --- */
+/* Conteiner do Header */
 .header-container {
     width: 100%;
     padding: 15px 0;
@@ -46,9 +51,10 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px); /* Efeito de desfoque */
 }
 
+/* Logo do site */
 .logo {
     font-size: 2em;
     font-weight: bold;
@@ -56,20 +62,24 @@ a:hover {
     margin-left: 20px;
 }
 
+/* Link da logo */
 .logo a {
     text-decoration: none;
     color: var(--heading-color); /* Força a cor branca */
 }
 
+/* Parte colorida da logo */
 .logo span {
     color: var(--primary-color);
 }
 
+/* Container do menu (botão de login e logout) */
 .menu-container {
     position: relative; /* Essencial para o posicionamento dos botões */
     text-align: center;
 }
 
+/* Botão que aciona o menu (ícone de usuário) */
 .trigger-box {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -81,12 +91,14 @@ a:hover {
     border: 2px solid var(--bg2-color);
 }
 
+/* Dashboard */
 .dashboard {
-    padding-top: 100px;
-    padding-bottom: 60px;
+    padding-top: 100px; /* Espaço para o header fixo */
+    padding-bottom: 60px; /* Espaço para o footer */
     
 }
 
+/* Grid principal do dashboard */
 .dashboard-grid {
     font-family: 'Poppins', sans-serif;
     color: var(--heading-color);
@@ -98,6 +110,7 @@ a:hover {
     max-width: 1400px; /* Limita a largura máxima */
 }
 
+/* Caixa do formulário de upload */
 .upload-box{
     background-color: var(--form-bg-color);
     padding: 20px;
@@ -110,10 +123,12 @@ a:hover {
     align-items: center;
 }
 
+/* Input de uploud */
 #upload{
     width: 90%;
 }
 
+/* Título do formulário de upload */
 .upload-box h2 {
     font-size: 1.5rem;
     color: var(--heading-color);
@@ -123,12 +138,14 @@ a:hover {
     gap: 10px;
 }
 
+/* Parágrafo explicativo upload */
 .upload-box p {
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 25px;
 }
 
+/* Botão para upload de arquivo */
 .file-upload-label {
     display: inline-block;
     background: var(--primary-color);
@@ -142,15 +159,17 @@ a:hover {
     width: 85%;
 }
 
+/* Efeito hover no botão de upload */
 .file-upload-label:hover { 
     opacity: 0.9; 
     transform: scale(1.05);
 }
 
 #file-upload { 
-    display: none; 
+    display: none; /* Esconde o input padrão */
 }
 
+/* Nome do arquivo selecionado */
 #file-name {
     margin-top: 15px;
     font-style: italic;
@@ -165,6 +184,7 @@ a:hover {
     gap: 20px;
 }
 
+/* Estilo dos labels dos inputs */
 .form-group label {
     display: flex;
     align-items: center;
@@ -176,11 +196,13 @@ a:hover {
     text-overflow: ellipsis;  /* Adiciona "..." ao final */
 }
 
+/* Tamanho dos ícones nos labels */
 .form-group label img {
     width: 20px; /* Tamanho menor para os ícones das metas */
     height: 20px;
 }
 
+/* Inputs do formulário */
 .form-group input {
     width: 90%;
     height: 40%;
@@ -193,19 +215,23 @@ a:hover {
     font-family: 'Poppins', sans-serif;
 }
 
+/* Efeito de foco nos inputs */
 .form-group input:focus {
     outline: none;
     border-color: var(--primary-color);
 }
 
+/* Título do formulário de metas */
 #goals-form{
     text-align: left;
 }
 
+/* Wrapper do botão de gerar relatório */
 .generate-button-wrapper {
     text-align: center;
 }
 
+/* Botão de gerar relatório */
 .generate-button{
     display: inline-block;
     background: var(--primary-color);
@@ -220,12 +246,13 @@ a:hover {
     cursor: pointer;
 }
 
+/* Efeito hover no botão de gerar relatório */
 .generate-button:hover {
     opacity: 0.9;
     transform: scale(1.05);
 }
 
-/* --- Estilos para o Botão Switch --- */
+/* Container para o botão switch */
 .switch-container {
     display: flex;
     align-items: center;
@@ -238,6 +265,7 @@ a:hover {
     border: 1px solid var(--input-border-color);
 }
 
+/* label do switch */
 .switch-label {
     display: flex;
     align-items: center;
@@ -248,6 +276,7 @@ a:hover {
     transition: color 0.3s ease;
 }
 
+/* Ícone do switch */
 .switch-label img {
     width: 24px;
     height: 24px;
@@ -309,13 +338,12 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-/* --- Estilos para os Ícones Adicionados --- */
+/* Título do formulário de upload */
 .upload-box h2 img {
     width: 32px;
     height: 32px;
 }
 
-/* --- Media Queries --- */
 /* Para tablets e telas menores */
 @media (max-width: 1024px) {
     .dashboard-grid {

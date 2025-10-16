@@ -1,6 +1,6 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
+from flask import Flask # Importa o Flask, framework principal para aplicações web em Python
+from flask_sqlalchemy import SQLAlchemy # Importa o SQLAlchemy, ORM para manipulação do banco de dados
+from flask_bcrypt import Bcrypt # Importa o Bcrypt, utilizado para criptografar senhas
 
 # 1. Inicializa a aplicação Flask
 app = Flask(__name__)
@@ -9,8 +9,8 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
 # 3. Inicializa as extensões que vamos usar no projeto
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
+db = SQLAlchemy(app) # ORM para interagir com o banco de dados
+bcrypt = Bcrypt(app) # Utilitário para hash de senhas
 
 # 4. Importa as rotas (views) do nosso ficheiro views.py
 #    É importante que esta linha venha DEPOIS da inicialização de 'app', 'db', e 'bcrypt'
@@ -19,5 +19,5 @@ from views import *
 
 # 5. Executa a aplicação em modo de desenvolvimento quando o script é chamado diretamente
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) # Inicia o servidor Flask com debug ativado
 
