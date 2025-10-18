@@ -24,6 +24,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Estilo base para links */
@@ -38,69 +39,14 @@ a:hover {
     color: var(--primary-hover);
 }
 
-/* Conteiner do Header */
-.header-container {
-    width: 100%;
-    padding: 15px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--heading-color);
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    backdrop-filter: blur(5px); /* Efeito de desfoque */
-}
-
-/* Logo do site */
-.logo {
-    font-size: 2em;
-    font-weight: bold;
-    color: var(--heading-color);
-    margin-left: 20px;
-}
-
-/* Link da logo */
-.logo a {
-    text-decoration: none;
-    color: var(--heading-color); /* Força a cor branca */
-}
-
-/* Parte colorida da logo */
-.logo span {
-    color: var(--primary-color);
-}
-
-/* Container do menu (botão de login e logout) */
-.menu-container {
-    position: relative; /* Essencial para o posicionamento dos botões */
-    text-align: center;
-}
-
-/* Botão que aciona o menu (ícone de usuário) */
-.trigger-box {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.2em;
-    font-weight: bold;
-    border: 2px solid var(--bg2-color);
-}
-
 /* Dashboard */
 .dashboard {
     padding-top: 100px; /* Espaço para o header fixo */
     padding-bottom: 60px; /* Espaço para o footer */
-    
 }
 
 /* Grid principal do dashboard */
 .dashboard-grid {
-    font-family: 'Poppins', sans-serif;
     color: var(--heading-color);
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -120,7 +66,7 @@ a:hover {
     max-width: 550px; /* Limita a largura do formulário */
     text-align: center;
     border: 1px solid var(--input-border-color);
-    align-items: center;
+    box-sizing: border-box;
 }
 
 /* Input de uploud */
@@ -212,7 +158,6 @@ a:hover {
     border-radius: 8px;
     color: var(--heading-color);
     font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
 }
 
 /* Efeito de foco nos inputs */
@@ -354,7 +299,6 @@ input:checked + .slider:before {
     .upload-box, #upload {
         width: 100%; /* Faz as caixas ocuparem a largura total */
         max-width: none; /* Remove a largura máxima */
-        box-sizing: border-box;
     }
 }
 

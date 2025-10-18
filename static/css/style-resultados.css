@@ -40,66 +40,6 @@ a:hover {
     color: var(--primary-hover);
 }
 
-/* Barra superior fixa */
-.header-container {
-    width: 100%;
-    padding: 15px 20px;
-    position: fixed; /* Fixa no topo */
-    top: 0;
-    left: 0;
-    z-index: 100; /* Fica acima de outros elementos */
-    border-bottom: 1px solid var(--heading-color); /* Linha divisória */
-    display: flex; /* Layout flexível */
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: space-between; /* Espaço entre logo e menu */
-    backdrop-filter: blur(5px); /* Efeito de desfoque */
-    box-sizing: border-box; /* Inclui o padding na largura */
-}
-
-/* Estulo do logo do sistema */
-.logo {
-    font-size: 2em; /* Tamanho maior para destaque */
-    font-weight: bold; /* Deixa o texto em negrito */
-    color: var(--heading-color); 
-}
-
-/* Estilo do link dentro do logo */
-.logo a {
-    text-decoration: none; /* Remove o sublinhado */
-    color: inherit; /* Herda a cor do logo */
-}
-
-/* Destaque azul para parte do logo */
-.logo span {
-    color: var(--primary-color);
-}
-
-/* Container do menu para posicionamento relativo */
-.menu-container {
-    position: relative;
-    text-align: center;
-}
-
-/* Botão do menu principal */
-.trigger-box {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding: 10px 20px;
-    border-radius: 8px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão */
-    font-size: 1.2em;
-    font-weight: bold;
-    border: 2px solid var(--bg2-color);
-}
-
-/* Footer */
-.footer {
-    text-align: center; 
-    width: 100%; /* Ocupa toda a largura */
-    border-top: solid 1px var(--primary-color); /* Linha divisória azul */
-    padding: 20px 0; /* Espaçamento vertical */
-}
-
 /* Container principal do dashboard */    
 .dashboard {
     padding: 100px 20px 60px 20px; /* Espaçamento para não sobrepor o header */
