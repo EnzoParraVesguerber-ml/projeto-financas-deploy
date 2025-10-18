@@ -155,3 +155,51 @@
 .github-link:hover img {
     opacity: 0.8; /* Ícone fica mais transparente */
 }
+
+/* --- CONTROLO DO MENU DESKTOP/MOBILE --- */
+
+/* Por padrão (mobile-first), esconde o texto do menu desktop */
+/* Usamos :not() para selecionar o .trigger-box que NÃO tem o ID phone */
+.menu-container .trigger-box:not(#trigger-box-phone) {
+  display: none;
+}
+
+/* Mostra o ícone do menu mobile por padrão e ajusta o tamanho */
+#trigger-box-phone {
+  display: inline-block; /* Ou block, dependendo de como quer alinhar */
+  padding: 5px;          /* Pequeno espaço à volta do ícone */
+  border: none;          /* Remove a borda padrão do trigger-box */
+  background: none;      /* Remove o fundo padrão do trigger-box */
+  cursor: pointer;
+}
+#trigger-box-phone img {
+    width: 30px; /* Tamanho do ícone */
+    height: 30px;
+    display: block; /* Para centrar ou aplicar margens corretamente */
+}
+
+
+/* Media Query para telas maiores (ex: a partir de 1024px) */
+@media (min-width: 1024px) {
+
+  /* Esconde o ícone do menu mobile */
+  #trigger-box-phone {
+    display: none;
+  }
+
+  /* Mostra o texto do menu desktop e aplica os estilos originais */
+  .menu-container .trigger-box:not(#trigger-box-phone) {
+    display: inline-block; /* Ou block */
+    /* Seus estilos originais para o botão de texto: */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 2px solid var(--bg2-color);
+  }
+}
+
+/* --- FIM DO CONTROLO DO MENU --- */
