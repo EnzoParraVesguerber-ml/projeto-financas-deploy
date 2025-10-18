@@ -58,3 +58,8 @@ build/
 
 # Arquivos de log
 *.log
+
+# Arquivo: .gitignore
+.env
+venv/
+__pycache__/

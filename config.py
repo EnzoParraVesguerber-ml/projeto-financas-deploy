@@ -1,10 +1,19 @@
 import os
+from dotenv import load_dotenv
 
-# Usada pelo Flask para proteger sessões, cookies e formulários contra ataques
-SECRET_KEY = 'jeby-financas-chave-secreta-para-desenvolvimento'
+# Carrega as variáveis de ambiente do arquivo .env
+# Isso é crucial para o desenvolvimento local
+load_dotenv()
 
-# String de conexão para o SQLAlchemy se ligar ao seu banco de dados MySQL
-SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:admin@127.0.0.1/jeby_financas'
+# Pega a chave secreta do ambiente. Se não achar, usa uma chave padrão
+SECRET_KEY = os.environ.get('SECRET_KEY', 'jeby-financas-chave-secreta-para-desenvolvimento')
 
-# Desativa uma funcionalidade do SQLAlchemy que consome recursos e que não é necessária para este projeto
+# Pega a string de conexão do banco de dados do ambiente
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+
+# Verifica se a URL do banco foi carregada
+if not SQLALCHEMY_DATABASE_URI:
+    raise ValueError("A variável de ambiente 'DATABASE_URL' não foi definida.")
+
+# Desativa uma funcionalidade do SQLAlchemy que consome recursos
 SQLALCHEMY_TRACK_MODIFICATIONS = False
