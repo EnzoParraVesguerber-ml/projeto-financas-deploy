@@ -1,49 +1,76 @@
-{% extends "base.html" %} <!-- Herda a estrutura e estilos globais do template base.html -->
-{% block head %}
-    {{ super() }} <!-- Insere o conteúdo do bloco 'head' do base.html, como meta tags e links globais -->
-    <link rel="stylesheet" href="static/css/style-signup.css"> <!-- Adiciona CSS específico para a página de cadastro -->
-    <title>Crie sua Conta - JEBY Finanças</title> <!-- Título da aba do navegador -->
-{% endblock %}
-{% block content %}
-<main class="main-content"> <!-- Área principal da página de cadastro -->
-    <div id="signup-box" class="form-container"> <!-- Container visual do formulário de cadastro -->
-        <h2>
-            <img src="static/img/key-icon.svg" alt="Ícone de Chave">
-            Crie sua conta
-        </h2>
-         <!-- Formulário de cadastro do usuário -->
-        <form id="signup-form" action="#" method="POST">  <!-- Envia os dados para a rota 'registrar' usando o método POST -->
-            {{ form.hidden_tag() }} <!-- Insere campos ocultos do Flask-WTF, como tokens CSRF, para proteger contra ataques de falsificação de requisições -->
-            <div class="input-group">
-                <label for="name">Nome completo:</label> <!-- Rótulo do campo de nome -->
-                <input type="text" id="name" name="nome" required> <!-- Campo para digitar o nome completo, obrigatório -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/base.css">
+    <link rel="stylesheet" href="static/css/style-signup.css">
+    <title>Crie sua Conta - JEBY Finanças</title>
+</head>
+<body>
+    <header class="top-box">
+        <div class="logo">
+            <a href="index.html"><span>JEBY </span>Finanças</a>
+        </div>
+        <div class="menu-container">
+            <div class="trigger-box">Menu de Navegação</div>
+            <div id="trigger-box-phone" class="trigger-box">
+                <img src="static/img/Menu Aberto.svg" alt="Menu Icone">
             </div>
+            <div class="btns-log">
+                <button id="login-btn" class="login-btn">Login</button>
+                <button id="signup-btn" class="signup-btn">Sign Up</button>
+                 <div class="user-info" style="display: none;">
+                    <span id="user-name"></span>
+                    <button id="logout-btn" class="logout-button">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-            <div class="input-group">
-                <label for="email-signup">E-mail:</label> <!-- Rótulo do campo de e-mail -->
-                <input type="email" id="email-signup" name="email" required> <!-- Campo para digitar o e-mail, obrigatório -->
-            </div>
-            
-            <div class="input-group">
-                <label for="password-signup">Senha:</label> <!-- Rótulo do campo de senha -->
-                <input type="password" id="password-signup" name="senha" required> <!-- Campo para digitar a senha, obrigatório -->
-            </div>
-            
-            <div class="input-group">
-                <label for="confirm-password">Confirme a senha:</label> <!-- Rótulo do campo de confirmação de senha -->
-                <input type="password" id="confirm-password" name="confirmar_senha" required> <!-- Campo para confirmar a senha, obrigatório -->
-            </div>
+    <div class="flash-messages-container"></div>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="terms" name="terms" required> <!-- Checkbox para aceitar os termos, obrigatório -->
-                <label for="terms">Eu concordo com os<a href="#"> termos e condições</a></label> <!-- Link para os termos e condições -->
-            </div>
+    <main class="main-content">
+        <div id="signup-box" class="form-container">
+            <h2>
+                <img src="static/img/key-icon.svg" alt="Ícone de Chave">
+                Crie sua conta
+            </h2>
+            <form id="signup-form">
+                <div class="input-group">
+                    <label for="name">Nome completo:</label>
+                    <input type="text" id="name" name="nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="email-signup">E-mail:</label>
+                    <input type="email" id="email-signup" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password-signup">Senha:</label>
+                    <input type="password" id="password-signup" name="senha" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirme a senha:</label>
+                    <input type="password" id="confirm-password" name="confirmar_senha" required>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Eu concordo com os<a href="#"> termos e condições</a></label>
+                </div>
+                <button type="submit" class="submit-button">Cadastrar-se</button>
+            </form>
+            <p class="login-link">Já tem uma conta? <a href="login.html">Entre Aqui</a></p>
+        </div>
+    </main>
 
-            <button type="submit" class="submit-button">Cadastrar-se</button> <!-- Botão para enviar o formulário de cadastro -->
-        </form>
-        <p class="login-link">Já tem uma conta? <a href="login.html">Entre Aqui</a></p> <!-- Link para página de login caso o usuário já tenha conta -->
-    </div>
-</main>
-<!-- Script JS específico para validações e interações do cadastro -->
-<script src="static/js/script-signup.js"></script>
-{% endblock %}
+    <footer class="footer">
+        <p>© 2025 JEBY-Todos os direitos reservados.</p>
+        <a href="https://github.com/EnzoParraVesguerber-ml/projeto-financas-deploy.git" target="_blank" class="github-link">
+            <img src="static/img/github-icon.svg" alt="GitHub Repository">
+        </a>
+    </footer>
+
+    <script src="static/js/base.js"></script>
+    <script src="static/js/script-signup.js"></script>
+</body>
+</html>

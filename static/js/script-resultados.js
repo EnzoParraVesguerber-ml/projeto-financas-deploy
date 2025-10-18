@@ -3,21 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Recupera dados de análise e metas do localStorage
     const analysisDataJSON = localStorage.getItem('analysisData');
     const goalsDataJSON = localStorage.getItem('goalsData');
-    
+
     // Seleciona os elementos canvas dos gráficos
     const barChartCanvas = document.getElementById('resultsChart');
     const pieChartCanvas = document.getElementById('goalsChart');
     const comparisonChartCanvas = document.getElementById('comparisonChart');
     const deviationChartCanvas = document.getElementById('deviationChart'); // Canvas para o novo gráfico
     const mainContent = document.querySelector('.dashboard-grid');
-    
+
     // Verifica se há dados de análise
     if (analysisDataJSON) {
         const analysisData = JSON.parse(analysisDataJSON);
-        
+
         // Verifica se os dados possuem labels e valores
         if (analysisData && analysisData.labels && analysisData.data) {
-            
+
             let goalsData = {};
             let totalGoals = 0;
             // Se houver dados de metas, calcula o total
@@ -25,16 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 goalsData = JSON.parse(goalsDataJSON);
                 totalGoals = Object.values(goalsData).reduce((sum, value) => sum + value, 0);
             }
-            
+
             // Cria o gráfico de barras dos gastos por categoria
             createBarChart(analysisData, barChartCanvas);
-            
+
             // Cria o gráfico de pizza comparando gastos totais e metas
             if (pieChartCanvas) {
                 const totalExpenses = analysisData.data.reduce((sum, value) => sum + value, 0);
                 createPieChart(totalExpenses, totalGoals, pieChartCanvas);
             }
-            
+
             // Cria o gráfico de comparação entre gastos e metas por categoria
             if (comparisonChartCanvas) {
                 createComparisonBarChart(analysisData, goalsData, comparisonChartCanvas);
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (deviationChartCanvas) {
                 createDeviationChart(analysisData, goalsData, deviationChartCanvas);
             }
-            
+
             // Limpa os dados do localStorage após uso
             localStorage.removeItem('analysisData');
             localStorage.removeItem('goalsData');
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     } else {
          // Exibe mensagem se não houver dados para mostrar
-        mainContent.innerHTML = '<div class="results-box"><h2>Nenhum dado para exibir</h2><p><a href="/dashboard">Volte ao painel</a> e envie um extrato.</p></div>';
+        mainContent.innerHTML = '<div class="results-box"><h2>Nenhum dado para exibir</h2><p><a href="dashboard.html">Volte ao painel</a> e envie um extrato.</p></div>'; // MUDANÇA AQUI
     }
 });
 
@@ -71,7 +71,7 @@ const NOVA_PALETA = {
     violet: 'rgba(139, 92, 246, 0.8)',
     sky: 'rgba(14, 165, 233, 0.8)',
     fuchsia: 'rgba(217, 70, 239, 0.8)',
-    
+
     cyan_border: 'rgb(34, 211, 238)',
     purple_border: 'rgb(168, 85, 247)',
     indigo_border: 'rgb(99, 102, 241)',
@@ -86,7 +86,7 @@ const NOVA_PALETA = {
 
 // Função para criar gráfico de barras dos gastos por categoria
 function createBarChart(analysisData, canvasElement) {
-   
+
     const backgroundColors = [
         NOVA_PALETA.cyan, NOVA_PALETA.purple, NOVA_PALETA.indigo,
         NOVA_PALETA.pink, NOVA_PALETA.green, NOVA_PALETA.amber,
@@ -130,7 +130,7 @@ function createPieChart(totalExpenses, totalGoals, canvasElement) {
         labels: ['Total Gasto', 'Meta de Gastos'],
         datasets: [{
             data: [totalExpenses.toFixed(2), totalGoals.toFixed(2)],
-            
+
             backgroundColor: [NOVA_PALETA.amber, NOVA_PALETA.blue],
             borderColor: [NOVA_PALETA.amber_border, NOVA_PALETA.blue_border],
             borderWidth: 1,
@@ -157,7 +157,7 @@ function createComparisonBarChart(analysisData, goalsData, canvasElement) {
     const data = {
         labels: analysisData.labels,
         datasets: [
-            
+
             { label: 'Valor Gasto', data: analysisData.data, backgroundColor: NOVA_PALETA.pink, borderColor: NOVA_PALETA.pink_border, borderWidth: 1 },
             { label: 'Meta de Gasto', data: alignedGoals, backgroundColor: NOVA_PALETA.green, borderColor: NOVA_PALETA.green_border, borderWidth: 1 }
         ]
@@ -178,7 +178,7 @@ function createComparisonBarChart(analysisData, goalsData, canvasElement) {
 function createDeviationChart(analysisData, goalsData, canvasElement) {
     // Mapeamento das categorias para as chaves das metas
     const goalMapping = { 'Alimentação': 'goal_alimentacao', 'Casa e Vestuário': 'goal_casa_vestuario', 'Cuidados Pessoais': 'goal_cuidados_pessoais', 'Educação': 'goal_educacao', 'Lazer e Eletrônicos': 'goal_lazer_eletronicos', 'Outros': 'goal_outros', 'Pet': 'goal_pet', 'Saúde': 'goal_saude', 'Serviços e Taxas': 'goal_servicos_taxas', 'Supermercado': 'goal_supermercado', 'Transporte': 'goal_transporte', 'Veículo': 'goal_veiculo' };
-    
+
     // Calcula o desvio (meta - gasto) para cada categoria
     const deviationData = analysisData.labels.map((label, index) => {
         const goalKey = goalMapping[label];
@@ -186,9 +186,9 @@ function createDeviationChart(analysisData, goalsData, canvasElement) {
         const expenseValue = analysisData.data[index];
         return goalValue - expenseValue;
     });
-    
+
     // Define cores conforme o desvio (positivo ou negativo)
-    const backgroundColors = deviationData.map(value => 
+    const backgroundColors = deviationData.map(value =>
         value >= 0 ? NOVA_PALETA.green : NOVA_PALETA.pink
     );
     const borderColors = deviationData.map(value =>
@@ -210,7 +210,7 @@ function createDeviationChart(analysisData, goalsData, canvasElement) {
         type: 'bar',
         data: data,
         options: {
-            indexAxis: 'y', 
+            indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
             plugins: {

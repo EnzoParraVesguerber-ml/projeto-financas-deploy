@@ -1,34 +1,64 @@
-{% extends "base.html" %} <!-- Extende o template base.html como base-->
-{% block head %}
-    {{ super() }}  <!-- Insere o conteúdo do bloco 'head' definido em base.html, como meta tags e links globais. -->
-    <link rel="stylesheet" href="static/css/style-login.css"> <!-- Inclui o CSS específico para esta página -->
-    <title>Login - JEBY Finanças</title> <!-- Define o título da aba do navegador para esta página -->
-{% endblock %}
-{% block content %}
-<main class="major"> <!-- Área principal da página, usada para centralizar o conteúdo de login -->
-    <div class="login-box"> <!-- Caixa visual que agrupa o formulário de login e informações relacionadas -->
-        <h2>
-            <img src="static/img/key-icon.svg" alt="Ícone de Chave">
-            Login para sua conta
-        </h2>
-        <!-- Formulário de login -->
-        <form action="#" id="login-form">
-            {{ form.hidden_tag() }} <!-- Insere campos ocultos do Flask-WTF -->
-            <div class="input-group">  
-                <label for="email">E-mail:</label> <!-- Rótulo do campo de e-mail, melhora acessibilidade -->
-                <input type="email" id="email" name="email" required> <!-- Campo de e-mail -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/base.css">
+    <link rel="stylesheet" href="static/css/style-login.css">
+    <title>Login - JEBY Finanças</title>
+</head>
+<body>
+    <header class="top-box">
+        <div class="logo">
+            <a href="index.html"><span>JEBY </span>Finanças</a>
+        </div>
+        <div class="menu-container">
+            <div class="trigger-box">Menu de Navegação</div>
+            <div id="trigger-box-phone" class="trigger-box">
+                <img src="static/img/Menu Aberto.svg" alt="Menu Icone">
             </div>
-            <div class="input-group">
-                <label for="password">Senha:</label> <!-- Rótulo do campo de senha -->
-                <input type="password" id="password" name="senha" required> <!-- Campo para o usuário digitar seu e-mail -->
+            <div class="btns-log">
+                <button id="login-btn" class="login-btn">Login</button>
+                <button id="signup-btn" class="signup-btn">Sign Up</button>
+                 <div class="user-info" style="display: none;">
+                    <span id="user-name"></span>
+                    <button id="logout-btn" class="logout-button">Logout</button>
+                </div>
             </div>
-            <button type="submit" class="submit-button">Entrar</button> <!-- Botão para enviar o formulário e tentar autenticar o usuário -->
-        </form>
-        <p class="forgot-password"><a href="#">Esqueceu sua senha?</a></p> <!-- Link para recuperação de senha -->
-    </div>
-    
-</main>
+        </div>
+    </header>
 
-<!-- Inclui o JavaScript específico para a página de login -->
-<script src="static/js/script-login.js"></script>
-{% endblock %}
+    <div class="flash-messages-container"></div>
+
+    <main class="major">
+        <div class="login-box">
+            <h2>
+                <img src="static/img/key-icon.svg" alt="Ícone de Chave">
+                Login para sua conta
+            </h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="senha" required>
+                </div>
+                <button type="submit" class="submit-button">Entrar</button>
+            </form>
+            <p class="forgot-password"><a href="#">Esqueceu sua senha?</a></p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 JEBY-Todos os direitos reservados.</p>
+        <a href="https://github.com/EnzoParraVesguerber-ml/projeto-financas-deploy.git" target="_blank" class="github-link">
+            <img src="static/img/github-icon.svg" alt="GitHub Repository">
+        </a>
+    </footer>
+
+    <script src="static/js/base.js"></script>
+    <script src="static/js/script-login.js"></script>
+</body>
+</html>

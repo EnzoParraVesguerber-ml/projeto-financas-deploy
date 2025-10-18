@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
    // Seleciona o container do menu e os botões de login/logout
     const menuContainer = document.querySelector('.menu-container');
     const btnsLog = document.querySelector('.btns-log');
-    
+
     // Se o menu existir, adiciona eventos para mostrar/ocultar os botões de login/logout ao passar o mouse
     if (menuContainer) {
         menuContainer.addEventListener('mouseenter', function() {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (signupBtn) {
         signupBtn.addEventListener("click", function(event) {
             event.preventDefault(); // Impede o comportamento padrão do link
-            window.location.href = "/signup"; // Redireciona para a página de cadastro
+            window.location.href = "signup.html"; // MUDANÇA AQUI
         });
     }
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginBtn) {
         loginBtn.addEventListener("click", function(event) {
             event.preventDefault(); // Impede o comportamento padrão do link
-            window.location.href = "/login"; // Redireciona para a página de login
+            window.location.href = "login.html"; // MUDANÇA AQUI
         });
     }
 
@@ -42,7 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (logoutBtn) {
         logoutBtn.addEventListener("click", function(event) {
             event.preventDefault(); // Impede o comportamento padrão do link
-            window.location.href = "/logout"; // Redireciona para a página de logout
+            // Limpa dados de sessão do frontend e redireciona para a home
+            localStorage.removeItem('user_token'); // Exemplo de como limpar sessão
+            localStorage.removeItem('user_name');
+            window.location.href = "index.html"; // MUDANÇA AQUI
         });
     }
 });

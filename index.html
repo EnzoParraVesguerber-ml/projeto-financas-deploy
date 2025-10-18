@@ -1,82 +1,90 @@
-{% extends "base.html" %}
-<!-- Herda o layout base do projeto, que inclui header, footer e estrutura principal -->
-{% block head %}
-    {{ super() }}
-    <!-- Inclui o CSS específico para a página inicial -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/base.css">
     <link rel="stylesheet" href="static/css/style-inicial.css">
-    <title>Projeto Educação Financeira</title> <!-- Define o título da aba do navegador para esta página. -->
-{% endblock %}
+    <title>Projeto Educação Financeira</title> </head>
+<body>
+    <header class="top-box"> <div class="logo">
+             <a href="index.html"><span>JEBY </span>Finanças</a>
+        </div>
+        <div class="menu-container">
+            <div class="trigger-box">Menu de Navegação</div>
+            <div id="trigger-box-phone" class="trigger-box">
+                <img src="static/img/Menu Aberto.svg" alt="Menu Icone">
+            </div>
+            <div class="btns-log">
+                 <button id="login-btn" class="login-btn">Login</button>
+                <button id="signup-btn" class="signup-btn">Sign Up</button>
+            </div>
+        </div>
+    </header>
 
-{% block content %}
-<main class="major">
-    <!-- Seção principal-->
-    <section class="first-section">
-        <!-- Título principal com destaque-->
-        <h1 class="first-section-heading">Entenda seus gastos com <br><span>Facilidade</span></h1>
-        <!-- Parágrafo explicativo sobre o serviço -->
-        <p class="first-section-paragraph">Faça o upload do seu extrato bancário e deixe nossa tecnologia classificar suas despesas automaticamente.<br>Tenha clareza sobre sua vida financeira e tome decisões mais inteligentes.</p>
-        <!-- Botão de chamada para ação (CTA) -->
-        <div class="first-section-start">
-            <button id="start-btn" class="presentation-link" > Comece Agora (É Grátis)                    
-            </button>
-        </div>
-    </section>
+    <main class="major"> <section class="first-section">
+            <h1 class="first-section-heading">Entenda seus gastos com <br><span>Facilidade</span></h1>
+            <p class="first-section-paragraph">Faça o upload do seu extrato bancário e deixe nossa tecnologia classificar suas despesas automaticamente.<br>Tenha clareza sobre sua vida financeira e tome decisões mais inteligentes.</p>
+            <div class="first-section-start">
+                <button id="start-btn" class="presentation-link"> Comece Agora (É Grátis)
+                </button>
+            </div>
+        </section>
 
-    <!-- Seção de funcionalidades -->
-    <section class="second-section">
-        <!-- Uploud do extrato -->
-        <div class="second-section-opcions">
-            <h2>
-                <img src="static/img/analyse-icon.svg" alt="Ícone de Análise">
-                1. Envie o seu Extrato
-            </h2>
-            <p>Exporte seu extrato bancário em formato .csv ou .xlsx e faça o upload de forma segura na nossa plataforma.</p>
-        </div>
-        <!-- Análise com IA -->
-        <div class="second-section-opcions">
-            <h2>
-                <img src="static/img/robot-icon.svg" alt="Ícone de Robô para IA">
-                2. Análise com I.A.
-            </h2>
-            <p>Nossa inteligência Artificial processa suas transações e as categoriza automaticamente em segundos.</p>
-        </div>
-        <!-- Visualização dos dados -->
-        <div class="second-section-opcions">
-            <h2>
-                <img src="static/img/graph-icon.svg" alt="Ícone de Gráfico">
-                3. Visualize seus Dados
-            </h2>
-            <p>Receba um dashboard interativo com gráficos e insights para entender para onde seu dinheiro está realmente indo.</p>
-        </div>
-    </section>
+        <section class="second-section">
+            <div class="second-section-opcions">
+                <h2>
+                    <img src="static/img/analyse-icon.svg" alt="Ícone de Análise">
+                    1. Envie o seu Extrato
+                </h2>
+                <p>Exporte seu extrato bancário em formato .csv ou .xlsx e faça o upload de forma segura na nossa plataforma.</p>
+            </div>
+            <div class="second-section-opcions">
+                <h2>
+                    <img src="static/img/robot-icon.svg" alt="Ícone de Robô para IA">
+                    2. Análise com I.A.
+                </h2>
+                <p>Nossa inteligência Artificial processa suas transações e as categoriza automaticamente em segundos.</p>
+            </div>
+            <div class="second-section-opcions">
+                <h2>
+                    <img src="static/img/graph-icon.svg" alt="Ícone de Gráfico">
+                    3. Visualize seus Dados
+                </h2>
+                <p>Receba um dashboard interativo com gráficos e insights para entender para onde seu dinheiro está realmente indo.</p>
+            </div>
+        </section>
 
-    <!-- Seção de gráficos -->
-    <section class="third-section">
-            <!-- Título da seção de gráficos -->
-            <h2 class="third-section-heading">Veja a Magia Acontecer</h2>
-            <div class="third-section-graphic">
-                    <!-- Cabeçalho do gráfico com círculos coloridos -->
-                    <div class="graphic-header">
-                    <div class="color-circles">
-                    <span></span><span></span><span></span>
+        <section class="third-section">
+                <h2 class="third-section-heading">Veja a Magia Acontecer</h2>
+                <div class="third-section-graphic">
+                        <div class="graphic-header">
+                        <div class="color-circles">
+                        <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="graphic">
+                        <div class='graphic-chart'><div class="graphic-pie"></div></div>
+                        <div class="graphic-data">
+                            <h4 class="graphic-item-header">Gastos por categoria:</h4>
+                            <div class="graphic-item"><span class="color-box" style="background-color: #22d3ee;"></span>Moradia - 30%</div>
+                            <div class="graphic-item"><span class="color-box" style="background-color: #6366f1;"></span>Alimentação - 25%</div>
+                            <div class="graphic-item"><span class="color-box" style="background-color: #a855f7"></span>Transporte - 20%</div>
+                            <div class="graphic-item"><span class="color-box" style="background-color: #ec4899"></span>Lazer - 25%</div>
+                        </div>
                     </div>
                 </div>
-                <!-- Área do gráficoe dados -->
-                <div class="graphic">
-                    <div class='graphic-chart'><div class="graphic-pie"></div></div>
-                    <div class="graphic-data">
-                        <h4 class="graphic-item-header">Gastos por categoria:</h4>
-                        <!-- Lista de categorias e percentuais, cada uma com cor diferente-->
-                        <div class="graphic-item"><span class="color-box" style="background-color: #22d3ee;"></span>Moradia - 30%</div>
-                        <div class="graphic-item"><span class="color-box" style="background-color: #6366f1;"></span>Alimentação - 25%</div>
-                        <div class="graphic-item"><span class="color-box" style="background-color: #a855f7"></span>Transporte - 20%</div>
-                        <div class="graphic-item"><span class="color-box" style="background-color: #ec4899"></span>Lazer - 25%</div>
-                    </div> 
-                </div> 
-            </div>
-    </section>
-</main>
+        </section>
+    </main>
+    <script src="static/js/script-inicial.js"></script>
 
-<!-- Inclui o JavaScript específico para a página inicial -->
-<script src="static/js/script-inicial.js"></script>
-{% endblock %}
+    <footer class="footer">
+        <p>© 2025 JEBY-Todos os direitos reservados.</p>
+        <a href="https://github.com/EnzoParraVesguerber-ml/projeto-financas-deploy.git" target="_blank" class="github-link">
+            <img src="static/img/github-icon.svg" alt="GitHub Repository">
+        </a>
+    </footer>
+
+    <script src="static/js/base.js"></script>
+</body>
+</html>

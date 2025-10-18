@@ -1,10 +1,40 @@
-{% extends "base.html" %} <!-- Extende o template base.html -->
-{% block head %}
-    {{ super() }}  <!-- Insere o conteúdo do bloco 'head' definido em base.html, como meta tags e links globais -->
-    <link rel="stylesheet" href="static/css/style-input.css"> <!-- Inclui o CSS específico para esta página -->
-    <title>Dashboard - JEBY Finanças</title> <!-- Define o título da aba do navegador para esta página -->
-{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Base -->
+    <link rel="stylesheet" href="static/css/base.css">
+    <!-- CSS Específico da Página -->
+    <link rel="stylesheet" href="static/css/style-input.css">
+    <title>Dashboard - JEBY Finanças</title>
+</head>
+<body>
+    <header class="top-box">
+        <div class="logo">
+            <!-- Em páginas internas, o logo leva para o dashboard -->
+            <a href="dashboard.html"><span>JEBY </span>Finanças</a>
+        </div>
+        <div class="menu-container">
+            <div class="trigger-box">Menu de Navegação</div>
+            <div id="trigger-box-phone" class="trigger-box">
+                <img src="static/img/Menu Aberto.svg" alt="Menu Icone">
+            </div>
+            <div class="btns-log">
+                 <!-- O JS irá controlar qual destes é visível -->
+                <button id="login-btn" class="login-btn" style="display: none;">Login</button>
+                <button id="signup-btn" class="signup-btn" style="display: none;">Sign Up</button>
+                 <div class="user-info" style="display: none;">
+                    <span id="user-name">Olá!</span>
+                    <button id="logout-btn" class="logout-button">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container para mensagens flash que o JS vai criar -->
+    <div class="flash-messages-container"></div>
+
     <main>
         <div class="dashboard">
             <div class="dashboard-grid">
@@ -15,10 +45,10 @@
                         1. Análise de Extrato
                     </h2>
                     <p>Escolha o tipo de análise e envie seu extrato (.csv ou .xlsx).</p>
-                    
+
                     <!-- Switch para escolher o tipo de análise -->
                     <div class="switch-container">
-                        <span class="switch-label" data-value="ai">
+                        <span class="switch-label active" data-value="ai">
                             <img src="static/img/IA-icon.svg" alt="Ícone IA">
                             Usar IA
                         </span>
@@ -26,12 +56,12 @@
                             <input type="checkbox" id="analysis-type-switch">
                             <span class="slider"></span>
                         </label>
-                        <span class="switch-label active" data-value="labeled">
+                        <span class="switch-label" data-value="labeled">
                             <img src="static/img/rotuled-icon.svg" alt="Ícone Rotulado">
                             Já Rotulado
                         </span>
                     </div>
-                    
+
                     <!-- Formulário de upload de arquivo -->
                     <form action="#" method="POST" enctype="multipart/form-data">
                         <label for="file-upload" class="file-upload-label">
@@ -41,7 +71,7 @@
                         <span id="file-name">Nenhum arquivo selecionado</span>
                     </form>
                 </section>
-                
+
                 <!-- Seção de metas mensais -->
                 <section class="upload-box">
                     <h2>
@@ -51,95 +81,77 @@
                     <p>Defina limites de gastos para as categorias do seu extrato e acompanhe seu progresso.</p>
                     <form id="goals-form">
                         <div class="form-group-grid">
-                            <!-- Cada grid representa uma categoria de meta -->
                             <div class="form-group">
-                                <label for="goal-casa" title="Casa e Vestuário">
-                                    <img src="static/img/home-icon.svg">Casa e Vestuário
-                                </label>
+                                <label for="goal-casa" title="Casa e Vestuário"><img src="static/img/home-icon.svg">Casa e Vestuário</label>
                                 <input type="number" id="goal-casa" name="goal_casa_vestuario" placeholder="R$ 0">
                             </div>
-                            <!-- Repetição de blocos para cada categoria -->
                             <div class="form-group">
-                                <label for="goal-veiculo" title="Veículo">
-                                    <img src="static/img/car-icon.svg">Veículo
-                                </label>
+                                <label for="goal-veiculo" title="Veículo"><img src="static/img/car-icon.svg">Veículo</label>
                                 <input type="number" id="goal-veiculo" name="goal_veiculo" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-cuidados" title="Cuidados Pessoais">
-                                    <img src="static/img/health-care-icon.svg">Cuidados Pessoais
-                                </label>
+                                <label for="goal-cuidados" title="Cuidados Pessoais"><img src="static/img/health-care-icon.svg">Cuidados Pessoais</label>
                                 <input type="number" id="goal-cuidados" name="goal_cuidados_pessoais" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-supermercado" title="Supermercado">
-                                    <img src="static/img/market-icon.svg">Supermercado
-                                </label>
+                                <label for="goal-supermercado" title="Supermercado"><img src="static/img/market-icon.svg">Supermercado</label>
                                 <input type="number" id="goal-supermercado" name="goal_supermercado" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-alimentacao" title="Alimentação">
-                                    <img src="static/img/food-icon.svg">Alimentação
-                                </label>
+                                <label for="goal-alimentacao" title="Alimentação"><img src="static/img/food-icon.svg">Alimentação</label>
                                 <input type="number" id="goal-alimentacao" name="goal_alimentacao" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-outros" title="Outros">
-                                    <img src="static/img/others-icon.svg">Outros
-                                </label>
+                                <label for="goal-outros" title="Outros"><img src="static/img/others-icon.svg">Outros</label>
                                 <input type="number" id="goal-outros" name="goal_outros" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-educacao" title="Educação">
-                                    <img src="static/img/book-icon.svg">Educação
-                                </label>
+                                <label for="goal-educacao" title="Educação"><img src="static/img/book-icon.svg">Educação</label>
                                 <input type="number" id="goal-educacao" name="goal_educacao" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-saude" title="Saúde">
-                                    <img src="static/img/capsules-icon.svg">Saúde
-                                </label>
+                                <label for="goal-saude" title="Saúde"><img src="static/img/capsules-icon.svg">Saúde</label>
                                 <input type="number" id="goal-saude" name="goal_saude" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-lazer" title="Lazer e Eletrônicos">
-                                    <img src="static/img/phone-icon.svg">Lazer e Eletrônicos
-                                </label>
+                                <label for="goal-lazer" title="Lazer e Eletrônicos"><img src="static/img/phone-icon.svg">Lazer e Eletrônicos</label>
                                 <input type="number" id="goal-lazer" name="goal_lazer_eletronicos" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-pet" title="Pet">
-                                    <img src="static/img/pet-icon.svg">Pet
-                                </label>
+                                <label for="goal-pet" title="Pet"><img src="static/img/pet-icon.svg">Pet</label>
                                 <input type="number" id="goal-pet" name="goal_pet" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-servicos" title="Serviços e Taxas">
-                                    <img src="static/img/tax-icon.svg">Serviços e Taxas
-                                </label>
+                                <label for="goal-servicos" title="Serviços e Taxas"><img src="static/img/tax-icon.svg">Serviços e Taxas</label>
                                 <input type="number" id="goal-servicos" name="goal_servicos_taxas" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
-                                <label for="goal-transporte" title="Transporte">
-                                    <img src="static/img/bus-icon.svg">Transporte
-                                </label>
+                                <label for="goal-transporte" title="Transporte"><img src="static/img/bus-icon.svg">Transporte</label>
                                 <input type="number" id="goal-transporte" name="goal_transporte" placeholder="R$ 0">
                             </div>
                         </div>
                     </form>
                 </section>
             </div>
-            
-            <!-- Botão para gerar análise -->
+
             <div class="generate-button-wrapper">
                 <button id="generate-analysis" class="generate-button">
                     Gerar Análise Completa
                 </button>
             </div>
-        
-        <!-- Área para exibir os resultados da análise -->
-        <div id="analysis-results" class="analysis-results-area"></div>
+
+            <div id="analysis-results" class="analysis-results-area"></div>
+        </div>
     </main>
-    <!-- Inclui o JavaScript específico para a página de input -->
+
+    <footer class="footer">
+        <p>© 2025 JEBY-Todos os direitos reservados.</p>
+        <a href="https://github.com/EnzoParraVesguerber-ml/projeto-financas-deploy.git" target="_blank" class="github-link">
+            <img src="static/img/github-icon.svg" alt="GitHub Repository">
+        </a>
+    </footer>
+
+    <script src="static/js/base.js"></script>
     <script src="static/js/script-input.js"></script>
-{% endblock %}
+</body>
+</html>

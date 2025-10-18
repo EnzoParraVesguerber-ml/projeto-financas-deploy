@@ -1,29 +1,18 @@
+// URL da sua API no Render
+const API_URL = 'https://projeto-financas-api.onrender.com';
+
 // Esta função cria e exibe mensagens de alerta (flash messages) na interface.
-// Garante que o container de mensagens exista, crie o alerta e o remove após 7 segundos.
 function createFlashMessage(message, category) {
-    // Procura o container de mensagens que o Flask usa.
     let container = document.querySelector('.flash-messages-container');
-    
-    // Se não existir, cria um novo container e insere após o cabeçalho
     if (!container) {
         container = document.createElement('div');
         container.className = 'flash-messages-container';
-        // Insere o container logo após o cabeçalho.
         document.querySelector('header.top-box').insertAdjacentElement('afterend', container);
     }
-
-    // Cria o elemento de alerta.
     const alertDiv = document.createElement('div');
     alertDiv.className = `alert alert-${category}`;
-    alertDiv.innerHTML = `
-        ${message}
-        <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
-    `;
-
-    // Adiciona o novo alerta ao container.
+    alertDiv.innerHTML = `${message}<span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>`;
     container.appendChild(alertDiv);
-
-    // Faz a mensagem desaparecer após 7 segundos 
     setTimeout(() => {
         alertDiv.style.transition = 'opacity 0.5s ease';
         alertDiv.style.opacity = '0';
@@ -33,7 +22,7 @@ function createFlashMessage(message, category) {
 
 // Executa quando o DOM estiver totalmente carregado
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Recupera mensagem flash da sessão, se existir.
     const flashDataJSON = sessionStorage.getItem('flashMessage');
     if (flashDataJSON) {
@@ -52,15 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileNameSpan = document.getElementById('file-name');
     const generateBtn = document.getElementById('generate-analysis');
     const resultsArea = document.getElementById('analysis-results');
-    
+
     // Lógica do Switch
     const analysisSwitch = document.getElementById('analysis-type-switch');
     const switchLabels = document.querySelectorAll('.switch-label');
 
     if (analysisSwitch) {
-        analysisSwitch.checked = true; // Inicia com "Já Rotulado" selecionado
-        document.querySelector('.switch-label[data-value="ai"]').classList.remove('active');
-        document.querySelector('.switch-label[data-value="labeled"]').classList.add('active');
+        // Garante que "Usar IA" seja o padrão ao carregar a página
+        analysisSwitch.checked = false;
+        document.querySelector('.switch-label[data-value="ai"]').classList.add('active');
+        document.querySelector('.switch-label[data-value="labeled"]').classList.remove('active');
 
         analysisSwitch.addEventListener('change', () => {
             switchLabels.forEach(label => label.classList.toggle('active'));
@@ -77,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // Lógica do botão de gerar análise
     if (generateBtn) {
         generateBtn.addEventListener('click', async () => {
@@ -88,12 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             // Define o tipo de análise conforme o switch
             const analysisType = analysisSwitch.checked ? 'labeled' : 'ai';
-            
+
             // Prepara os dados do formulário para envio
             const formData = new FormData();
             formData.append('file-upload', fileInput.files[0]);
-            formData.append('analysis_type', analysisType); 
-            
+            formData.append('analysis_type', analysisType);
+
             // Exibe mensagem de carregando na área de resultados
             if(resultsArea) {
                 resultsArea.innerHTML = '<h3>Analisando seus dados... Por favor, aguarde.</h3>';
@@ -101,12 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                // Envia o arquivo para o backend via fetch
-                const response = await fetch('/upload', {
+                // Envia o arquivo para o backend via fetch, apontando para a API no Render
+                const response = await fetch(`${API_URL}/upload`, {
                     method: 'POST',
                     body: formData,
                 });
-                
+
                 // Recebe o resultado da análise.
                 const result = await response.json();
 
@@ -121,33 +111,28 @@ document.addEventListener('DOMContentLoaded', () => {
                             goalsData[name] = value;
                         }
                     });
-                    
+
                     // Salva dados da análise e metas no localStorage.
                     localStorage.setItem('analysisData', JSON.stringify(result));
                     localStorage.setItem('goalsData', JSON.stringify(goalsData));
-                    // Redireciona para página de resultados
-                    window.location.href = '/resultados';
+                    // Redireciona para página de resultados estática
+                    window.location.href = 'resultados.html';
 
                 } else {
-                    
-                    // Em caso de erro, salva mensagem flash e recarrega para exibir
-                    sessionStorage.setItem('flashMessage', JSON.stringify({
-                        message: result.error || 'Ocorreu um problema desconhecido na análise.',
-                        category: 'danger'
-                    }));
-                    window.location.reload(); // Recarrega a página para mostrar a flash message
+                    // Em caso de erro, cria a mensagem flash diretamente na página atual
+                    createFlashMessage(result.error || 'Ocorreu um problema desconhecido na análise.', 'danger');
+                    if(resultsArea) {
+                        resultsArea.innerHTML = ''; // Limpa a área de "carregando"
+                    }
                 }
 
             } catch (error) {
                 // Erro de comunicação com o servidor
                 console.error('Erro ao enviar o arquivo:', error);
-                
-                
-                sessionStorage.setItem('flashMessage', JSON.stringify({
-                    message: 'Erro de Comunicação: Não foi possível conectar ao servidor. Tente novamente.',
-                    category: 'danger'
-                }));
-                window.location.reload(); // Recarrega a página para mostrar a flash message
+                createFlashMessage('Erro de Comunicação: Não foi possível conectar ao servidor. Tente novamente.', 'danger');
+                 if(resultsArea) {
+                    resultsArea.innerHTML = ''; // Limpa a área de "carregando"
+                }
 
             } finally {
                 // Remove estado de carregando da área de resultados
@@ -158,3 +143,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+

@@ -1,64 +1,103 @@
-{% extends "base.html" %} <!-- Extende o template base.html -->
-{% block head %}
-    {{ super() }} <!-- Insere o conteúdo do bloco 'head' definido em base.html, como meta tags e links globais. -->
-    <link rel="stylesheet" href="static/css/style-resultados.css"> <!-- Inclui o CSS específico para esta página -->
-    <title>Resultados da Análise - JEBY Finanças</title> <!-- Define o título da aba do navegador para esta página -->
-{% endblock %}
-{% block content %}
-        <main>
-            <div class="dashboard"> <!-- Container principal para os gráficos de resultados -->
-                <div class="dashboard-grid"> <!-- Grid para organizar as seções dos gráficos -->
-                    
-                    <!-- Seção: Gastos por Categoria -->
-                    <section class="results-box">
-                        <h2>
-                            <img src="static/img/graph-icon.svg" alt="Ícone de Gráfico"> <!-- Ícone ilustrativos -->
-                            Gastos por Categoria
-                        </h2>
-                        <div class="chart-container">
-                            <canvas id="resultsChart"></canvas> <!-- Área onde o gráfico será renderizado via Chart.js -->
-                        </div>
-                    </section>
-                    
-                    <!-- Seção: Total Gasto vs Meta Total -->
-                    <section class="results-box">
-                        <h2>
-                            <img src="static/img/analyse-icon.svg" alt="Ícone de Análise">
-                            Total Gasto vs. Meta Total
-                        </h2>
-                        <div class="chart-container">
-                            <canvas id="goalsChart"></canvas> <!-- Gráfico comparando o total gasto com a meta -->
-                        </div>
-                    </section>
-                    
-                    <!-- Seção: Gasto vs. Meta (Detalhado) -->
-                    <section class="results-box">
-                        <h2>
-                            <img src="static/img/search-icon.svg" alt="Ícone de Alvo">
-                            Gasto vs. Meta (Detalhado)
-                        </h2>
-                        <div class="chart-container">
-                            <canvas id="comparisonChart"></canvas> <!-- Gráfico detalhado por categoria -->
-                        </div>
-                    </section>
-                    
-                    <!-- Seção: Sobra ou Excesso por Categoria -->
-                    <section class="results-box">
-                        <h2>
-                            <img src="static/img/excess-icon.svg" alt="Ícone de Cifrão">
-                            Sobra ou Excesso por Categoria
-                        </h2>
-                        <div class="chart-container">
-                            <canvas id="deviationChart"></canvas> <!-- Gráfico mostrando sobra ou excesso em cada categoria -->
-                    </div>
-                        </div>
-                    </section>
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Base -->
+    <link rel="stylesheet" href="static/css/base.css">
+    <!-- CSS Específico da Página de Resultados -->
+    <link rel="stylesheet" href="static/css/style-resultados.css">
+    <title>Resultados da Análise - JEBY Finanças</title>
+</head>
+<body>
+    <header class="top-box"> <!-- Cabeçalho -->
+        <div class="logo">
+            <!-- Link aponta para o dashboard pois esta é uma página interna -->
+            <a href="dashboard.html"><span>JEBY </span>Finanças</a>
+        </div>
+        <div class="menu-container">
+            <div class="trigger-box">Menu de Navegação</div>
+            <div id="trigger-box-phone" class="trigger-box">
+                <img src="static/img/Menu Aberto.svg" alt="Menu Icone">
+            </div>
+            <div class="btns-log">
+                <!-- Lógica de login/logout será controlada por JS -->
+                <button id="login-btn" class="login-btn" style="display: none;">Login</button>
+                <button id="signup-btn" class="signup-btn" style="display: none;">Sign Up</button>
+                 <div class="user-info" style="display: none;"> <!-- Oculto por padrão -->
+                    <span id="user-name">Olá, Usuário</span>
+                    <button id="logout-btn" class="logout-button">Logout</button>
                 </div>
             </div>
-        </main>
-        <!-- Importa a biblioteca Chart.js para renderização dos gráficos -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <!-- Importa o script JS específico para manipulação dos gráficos de resultados -->
-        <script src="static/js/script-resultados.js"></script>
-{% endblock %}
+        </div>
+    </header>
+
+    <!-- Container para mensagens flash que o JS pode criar -->
+    <div class="flash-messages-container"></div>
+
+    <main> <!-- Conteúdo principal da página de resultados -->
+        <div class="dashboard">
+            <div class="dashboard-grid">
+                <!-- Seção: Gastos por Categoria -->
+                <section class="results-box">
+                    <h2>
+                        <img src="static/img/graph-icon.svg" alt="Ícone de Gráfico">
+                        Gastos por Categoria
+                    </h2>
+                    <div class="chart-container">
+                        <canvas id="resultsChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Seção: Total Gasto vs Meta Total -->
+                <section class="results-box">
+                    <h2>
+                        <img src="static/img/analyse-icon.svg" alt="Ícone de Análise">
+                        Total Gasto vs. Meta Total
+                    </h2>
+                    <div class="chart-container">
+                        <canvas id="goalsChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Seção: Gasto vs. Meta (Detalhado) -->
+                <section class="results-box">
+                    <h2>
+                        <img src="static/img/search-icon.svg" alt="Ícone de Alvo">
+                        Gasto vs. Meta (Detalhado)
+                    </h2>
+                    <div class="chart-container">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Seção: Sobra ou Excesso por Categoria -->
+                <section class="results-box">
+                    <h2>
+                        <img src="static/img/excess-icon.svg" alt="Ícone de Cifrão">
+                        Sobra ou Excesso por Categoria
+                    </h2>
+                    <div class="chart-container">
+                        <canvas id="deviationChart"></canvas>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <!-- Importa a biblioteca Chart.js para renderização dos gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Importa o script JS específico para manipulação dos gráficos de resultados -->
+    <script src="static/js/script-resultados.js"></script>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p>© 2025 JEBY-Todos os direitos reservados.</p>
+        <a href="https://github.com/EnzoParraVesguerber-ml/projeto-financas-deploy.git" target="_blank" class="github-link">
+            <img src="static/img/github-icon.svg" alt="GitHub Repository">
+        </a>
+    </footer>
+
+    <!-- Script JS base para funcionalidades globais -->
+    <script src="static/js/base.js"></script>
+</body>
+</html>
