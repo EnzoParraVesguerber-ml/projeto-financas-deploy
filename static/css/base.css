@@ -1,44 +1,99 @@
 /* static/css/base.css */
-/* Contém estilos globais para o site (mensagens, header, footer) */
+/* Contém estilos globais para o site */
 
-/* Container fixo para mensagens de alerta (pop-up) */
-.flash-messages-container {
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    z-index: 1050;
+/* Variáveis de cores (para referência em outros ficheiros) */
+:root {
+    --bg-color: #0f172a;
+    --primary-color: #22d3ee;
+    --primary-hover: rgb(45, 223, 250);
+    --text-color: #cbd5e1;
+    --heading-color: #f1f5f9;
+    --form-bg-color: #1e293b;
+    --input-bg-color: #0f172a;
+    --input-border-color: #334155;
+    --bg2-color: rgba(72, 69, 69, 0.2);
+}
+
+/* --- ESTILOS DO HEADER --- */
+.top-box {
     width: 100%;
-    max-width: 350px;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--heading-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
 }
 
-/* Estilo base para alertas */
-.alert {
-    position: relative;
-    padding: 15px;
-    margin-bottom: 10px;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    color: #f1f5f9;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    opacity: 0.95;
-}
-/* Botão de fechar o alerta*/
-.alert .close-btn {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
+.logo {
+    font-size: 2em;
     font-weight: bold;
 }
-/* Alertas de sucesso, erro, informação e aviso, respectivamente */
-.alert-success { background-color: #166534; border-color: #22c55e; }
-.alert-danger { background-color: #991b1b; border-color: #ef4444; }
-.alert-info { background-color: #1e40af; border-color: #3b82f6; }
-.alert-warning { background-color: #b45309; border-color: #f59e0b; }
+
+.logo a {
+    text-decoration: none;
+    color: var(--heading-color);
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.menu-container {
+    position: relative;
+    margin-right: 20px;
+}
+
+/* --- CONTROLO DO MENU DESKTOP/MOBILE --- */
+
+/* Por padrão (mobile-first), esconde o texto do menu desktop */
+.menu-container .trigger-box:not(#trigger-box-phone) {
+    display: none;
+}
+
+/* Mostra e estiliza o ícone do menu mobile por padrão */
+#trigger-box-phone {
+    display: block;
+    padding: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#trigger-box-phone img {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+/* Quando a tela for maior (1024px ou mais) */
+@media (min-width: 1024px) {
+    /* Esconde o ícone do menu mobile */
+    #trigger-box-phone {
+        display: none;
+    }
+
+    /* Mostra o texto do menu desktop e aplica seus estilos */
+    .menu-container .trigger-box:not(#trigger-box-phone) {
+        display: block;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: bold;
+        border: 2px solid var(--bg2-color);
+    }
+}
 
 
-/* Menu de botões de login/logout inicialmente ocultos */
+/* Menu dropdown (btns-log) */
 .btns-log {
     opacity: 0;
     visibility: hidden;
@@ -49,21 +104,19 @@
     right: 0;
     background-color: #1e293b;
     border-radius: 8px;
-    border: 1px solid var(--input-border-color, #334155);
+    border: 1px solid var(--input-border-color);
     padding: 10px;
     width: 200px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     z-index: 10;
 }
 
-/* Classe 'active' que o JavaScript adiciona para mostrar o menu */
 .btns-log.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* Informações do usuário no menu */
 .user-info {
     display: flex;
     flex-direction: column;
@@ -72,9 +125,8 @@
     gap: 8px;
 }
 
-/* Texto das informações do usuário */
 .user-info span {
-    color: var(--heading-color, #f1f5f9);
+    color: var(--heading-color);
     font-family: 'Poppins', sans-serif;
     padding: 5px;
     font-size: 1em;
@@ -82,7 +134,6 @@
     width: 100%;
 }
 
-/* Botões do menu de login/logout */
 .btns-log button {
     display: block;
     width: 100%;
@@ -97,34 +148,30 @@
     box-sizing: border-box;
 }
 
-/* Remove a margem do último botão */
 .btns-log button:last-child {
     margin-bottom: 0;
 }
 
-/* Botão de login */
 .login-btn {
-    color: var(--text-color, #cbd5e1);
+    color: var(--text-color);
     background: transparent;
 }
 .login-btn:hover {
     background-color: #141c30;
 }
 
-/* Botão de logout */
 .signup-btn,
 .logout-button {
-    background-color: var(--primary-color, #22d3ee);
+    background-color: var(--primary-color);
     color: #0f172a;
     font-weight: bold;
 }
 .signup-btn:hover,
 .logout-button:hover {
-    background-color: var(--primary-hover, rgb(45, 223, 250));
+    background-color: var(--primary-hover);
 }
 
-
-/* Estilos para o footer */
+/* --- ESTILOS DO FOOTER --- */
 .footer {
     display: flex;
     justify-content: center;
@@ -134,16 +181,15 @@
     text-align: center;
     font-family: 'Poppins', sans-serif;
     width: 100%;
-    border-top: solid 1px var(--primary-color, #22d3ee);
+    border-top: solid 1px var(--primary-color);
     box-sizing: border-box;
 }
 
-/* Parágrafo do footer */
 .footer p {
     margin: 0;
+    color: var(--text-color);
 }
 
-/* Ícone do Github no footer */
 .github-link img {
     width: 32px;
     height: 32px;
@@ -151,55 +197,40 @@
     transition: opacity 0.3s ease;
 }
 
-/* Efeito ao passar o mouse no ícone do Github */
 .github-link:hover img {
-    opacity: 0.8; /* Ícone fica mais transparente */
+    opacity: 0.8;
 }
 
-/* --- CONTROLO DO MENU DESKTOP/MOBILE --- */
-
-/* Por padrão (mobile-first), esconde o texto do menu desktop */
-/* Usamos :not() para selecionar o .trigger-box que NÃO tem o ID phone */
-.menu-container .trigger-box:not(#trigger-box-phone) {
-  display: none;
+/* --- ESTILOS DE MENSAGENS FLASH --- */
+.flash-messages-container {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1050;
+    width: 100%;
+    max-width: 350px;
 }
 
-/* Mostra o ícone do menu mobile por padrão e ajusta o tamanho */
-#trigger-box-phone {
-  display: inline-block; /* Ou block, dependendo de como quer alinhar */
-  padding: 5px;          /* Pequeno espaço à volta do ícone */
-  border: none;          /* Remove a borda padrão do trigger-box */
-  background: none;      /* Remove o fundo padrão do trigger-box */
-  cursor: pointer;
-}
-#trigger-box-phone img {
-    width: 30px; /* Tamanho do ícone */
-    height: 30px;
-    display: block; /* Para centrar ou aplicar margens corretamente */
-}
-
-
-/* Media Query para telas maiores (ex: a partir de 1024px) */
-@media (min-width: 1024px) {
-
-  /* Esconde o ícone do menu mobile */
-  #trigger-box-phone {
-    display: none;
-  }
-
-  /* Mostra o texto do menu desktop e aplica os estilos originais */
-  .menu-container .trigger-box:not(#trigger-box-phone) {
-    display: inline-block; /* Ou block */
-    /* Seus estilos originais para o botão de texto: */
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding: 10px 20px;
+.alert {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
     border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.2em;
-    font-weight: bold;
-    border: 2px solid var(--bg2-color);
-  }
+    color: #f1f5f9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+    font-family: 'Poppins', sans-serif;
 }
-
-/* --- FIM DO CONTROLO DO MENU --- */
+.alert .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.alert-success { background-color: #166534; border-color: #22c55e; }
+.alert-danger { background-color: #991b1b; border-color: #ef4444; }
+.alert-info { background-color: #1e40af; border-color: #3b82f6; }
+.alert-warning { background-color: #b45309; border-color: #f59e0b; }
