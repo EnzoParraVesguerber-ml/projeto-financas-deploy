@@ -1,9 +1,11 @@
 from flask import Flask # Importa o Flask, framework principal para aplicações web em Python
 from flask_sqlalchemy import SQLAlchemy # Importa o SQLAlchemy, ORM para manipulação do banco de dados
 from flask_bcrypt import Bcrypt # Importa o Bcrypt, utilizado para criptografar senhas
+from flask_cors import CORS
 
 # 1. Inicializa a aplicação Flask
 app = Flask(__name__)
+CORS(app)
 
 # 2. Carrega as configurações do ficheiro config.py
 app.config.from_pyfile('config.py')
