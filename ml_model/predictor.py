@@ -2,7 +2,17 @@ import pandas as pd
 import joblib
 import os
 import re
+import nltk
 from nltk.corpus import stopwords
+
+try:
+    stopwords.words('portuguese')
+except LookupError:
+    print("Recurso 'stopwords' do NLTK não encontrado. Baixando...")
+    nltk.download('stopwords')
+    print("Download concluído.")
+    # Recarrega stopwords após o download
+    from nltk.corpus import stopwords
 
 # Define o caminho para a pasta onde os modelos treinados estão salvos
 saved_models_path = os.path.join(os.path.dirname(__file__), 'saved_models')
@@ -46,14 +56,14 @@ def clean_text(text):
     """
     if not isinstance(text, str):
         return ""
-        
+
     text = text.lower()  # Converte para minúsculo
     text = re.sub(r'[^a-z\s]', '', text) # Remove caracteres não alfabéticos
-    
+
     words = text.split()
-    stop_words_pt = set(stopwords.words('portuguese')) # Stopwords em português
+    stop_words_pt = set(stopwords.words('portuguese')) # Stopwords em português AGORA DEVE FUNCIONAR
     words_without_stopwords = [word for word in words if word not in stop_words_pt]
-    
+
     return ' '.join(words_without_stopwords) # Retorna texto limpo
 
 
