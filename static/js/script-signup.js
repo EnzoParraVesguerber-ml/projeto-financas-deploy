@@ -21,45 +21,48 @@ function createFlashMessage(message, category) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Exibe mensagem de sucesso vinda da página de cadastro, se houver
-    const flashDataJSON = sessionStorage.getItem('flashMessage');
-    if (flashDataJSON) {
-        const flashData = JSON.parse(flashDataJSON);
-        createFlashMessage(flashData.message, flashData.category);
-        sessionStorage.removeItem('flashMessage');
-    }
+    const signupForm = document.getElementById('signup-form');
 
-    const loginForm = document.getElementById('login-form');
-    if(loginForm) {
-        loginForm.addEventListener('submit', async (event) => {
+    if(signupForm) {
+        signupForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            const formData = new FormData(loginForm);
-            const submitButton = loginForm.querySelector('.submit-button');
-            submitButton.textContent = 'Entrando...';
+            const formData = new FormData(signupForm);
+            const password = formData.get('senha');
+            const confirmPassword = formData.get('confirmar_senha');
+
+            if (password !== confirmPassword) {
+                createFlashMessage('As senhas não coincidem.', 'danger');
+                return;
+            }
+
+            const submitButton = signupForm.querySelector('.submit-button');
+            submitButton.textContent = 'Cadastrando...';
             submitButton.disabled = true;
 
             try {
-                const response = await fetch(`${API_URL}/autenticar`, {
+                 const response = await fetch(`${API_URL}/registrar`, {
                     method: 'POST',
-                    body: new URLSearchParams(formData) // Envia como form-urlencoded
+                    body: new URLSearchParams(formData), // Envia como form-urlencoded
                 });
 
                 const result = await response.json();
 
                 if (response.ok) {
-                    // Armazena informações de login no localStorage
-                    localStorage.setItem('isLoggedIn', 'true');
-                    localStorage.setItem('userName', result.user_name);
-                    window.location.href = 'dashboard.html';
+                    // Armazena a mensagem de sucesso para exibir na página de login
+                    sessionStorage.setItem('flashMessage', JSON.stringify({
+                        message: result.message || 'Conta criada com sucesso! Por favor, faça login.',
+                        category: 'success'
+                    }));
+                    window.location.href = 'login.html';
                 } else {
-                    createFlashMessage(result.error || 'Email ou senha incorretos.', 'danger');
+                    createFlashMessage(result.error || 'Ocorreu um erro no cadastro.', 'danger');
                 }
             } catch (error) {
-                console.error('Erro de autenticação:', error);
-                createFlashMessage('Erro de conexão com o servidor. Tente novamente mais tarde.', 'danger');
+                console.error('Erro no cadastro:', error);
+                createFlashMessage('Erro de conexão ao tentar registrar. Tente novamente.', 'danger');
             } finally {
-                submitButton.textContent = 'Entrar';
+                submitButton.textContent = 'Cadastrar-se';
                 submitButton.disabled = false;
             }
         });

@@ -48,9 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok) {
-                    // Armazena informações de login no localStorage
+                    // Armazena informações de login no localStorage para uso em outras páginas
                     localStorage.setItem('isLoggedIn', 'true');
                     localStorage.setItem('userName', result.user_name);
+                    
+                    // Armazena uma mensagem flash para ser exibida no dashboard
+                    sessionStorage.setItem('flashMessage', JSON.stringify({
+                        message: `Bem-vindo(a) de volta, ${result.user_name}!`,
+                        category: 'success'
+                    }));
+
                     window.location.href = 'dashboard.html';
                 } else {
                     createFlashMessage(result.error || 'Email ou senha incorretos.', 'danger');
