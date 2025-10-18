@@ -4,11 +4,12 @@
     <meta charset="utf-8">  <!-- Define a codificação de caracteres para UTF-8, suportando acentuação e caracteres especiais -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Garante responsividade em dispositivos móveis -->
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}"> <!-- Importa o CSS base para todo o site -->
+    <!-- Importa o CSS base para todo o site -->
+    <link rel="stylesheet" href="static/css/base.css">
 
     {% block head %}
         <!-- Bloco sobrescrevível por outros templates para adicionar CSS/título específico -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style-inicial.css') }}">
+        <link rel="stylesheet" href="static/css/style-inicial.css">
 
         <title>JEBY Finanças</title>
     {% endblock %}
@@ -17,18 +18,17 @@
     <header class="top-box"> <!-- Cabeçalho fixo no topo da página -->
         <div class="logo">
             {% if request.endpoint in ['dashboard', 'resultados_page'] %}
-                {# Se o usuário estiver no dashboard ou na página de resultados, o logo leva para o dashboard #}
                 <!-- Se estiver no dashboard ou resultados, o logo leva para o dashboard -->
-                <a href="{{ url_for('dashboard') }}"><span>JEBY </span>Finanças</a>
+                <a href="dashboard.html"><span>JEBY </span>Finanças</a>
             {% else %}
                 <!-- Em outras páginas, o logo leva para a home -->
-                <a href="{{ url_for('home') }}"><span>JEBY </span>Finanças</a>
+                <a href="index.html"><span>JEBY </span>Finanças</a>
             {% endif %}
         </div>
         <div class="menu-container"> <!-- Container para o menu de navegação -->
             <div class="trigger-box">Menu de Navegação</div> <!-- texto do menu para desktop -->
             <div id="trigger-box-phone" class="trigger-box">
-                <img src="{{ url_for('static', filename='img/Menu Aberto.svg') }}" alt="Menu Icone">
+                <img src="static/img/Menu Aberto.svg" alt="Menu Icone">
             </div>
             <div class="btns-log"> <!-- Área dos botões de login e logout -->
                 {% if session['usuario_logado'] %} 
@@ -68,11 +68,11 @@
     <footer class="footer">
         <p>© 2025 JEBY-Todos os direitos reservados.</p>
         <a href="https://github.com/BrunoLT/Projeto-Finan-as.git" target="_blank" class="github-link">
-            <img src="{{ url_for('static', filename='img/github-icon.svg') }}" alt="GitHub Repository"> <!-- Link para o repositório do projeto -->
+            <img src="static/img/github-icon.svg" alt="GitHub Repository"> </a> <!-- Link para o repositório do projeto -->
         </a>
     </footer>
     
     <!-- Script JS base para funcionalidades globais -->
-    <script src="{{ url_for('static', filename='js/base.js') }}"></script> 
+    <script src="static/js/base.js"></script>
     </body>
 </html>

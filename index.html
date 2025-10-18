@@ -3,7 +3,7 @@
 {% block head %}
     {{ super() }}
     <!-- Inclui o CSS específico para a página inicial -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-inicial.css') }}">
+    <link rel="stylesheet" href="static/css/style-inicial.css">
     <title>Projeto Educação Financeira</title> <!-- Define o título da aba do navegador para esta página. -->
 {% endblock %}
 
@@ -27,7 +27,7 @@
         <!-- Uploud do extrato -->
         <div class="second-section-opcions">
             <h2>
-                <img src="{{ url_for('static', filename='img/analyse-icon.svg') }}" alt="Ícone de Análise">
+                <img src="static/img/analyse-icon.svg" alt="Ícone de Análise">
                 1. Envie o seu Extrato
             </h2>
             <p>Exporte seu extrato bancário em formato .csv ou .xlsx e faça o upload de forma segura na nossa plataforma.</p>
@@ -35,7 +35,7 @@
         <!-- Análise com IA -->
         <div class="second-section-opcions">
             <h2>
-                <img src="{{ url_for('static', filename='img/robot-icon.svg') }}" alt="Ícone de Robô para IA">
+                <img src="static/img/robot-icon.svg" alt="Ícone de Robô para IA">
                 2. Análise com I.A.
             </h2>
             <p>Nossa inteligência Artificial processa suas transações e as categoriza automaticamente em segundos.</p>
@@ -43,7 +43,7 @@
         <!-- Visualização dos dados -->
         <div class="second-section-opcions">
             <h2>
-                <img src="{{ url_for('static', filename='img/graph-icon.svg') }}" alt="Ícone de Gráfico">
+                <img src="static/img/graph-icon.svg" alt="Ícone de Gráfico">
                 3. Visualize seus Dados
             </h2>
             <p>Receba um dashboard interativo com gráficos e insights para entender para onde seu dinheiro está realmente indo.</p>
@@ -78,5 +78,5 @@
 </main>
 
 <!-- Inclui o JavaScript específico para a página inicial -->
-<script src="{{ url_for('static', filename='js/script-inicial.js') }}"></script>
+<script src="static/js/script-inicial.js"></script>
 {% endblock %}

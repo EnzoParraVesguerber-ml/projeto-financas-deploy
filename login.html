@@ -1,18 +1,18 @@
 {% extends "base.html" %} <!-- Extende o template base.html como base-->
 {% block head %}
     {{ super() }}  <!-- Insere o conteúdo do bloco 'head' definido em base.html, como meta tags e links globais. -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-login.css') }}"> <!-- Inclui o CSS específico para esta página -->
+    <link rel="stylesheet" href="static/css/style-login.css"> <!-- Inclui o CSS específico para esta página -->
     <title>Login - JEBY Finanças</title> <!-- Define o título da aba do navegador para esta página -->
 {% endblock %}
 {% block content %}
 <main class="major"> <!-- Área principal da página, usada para centralizar o conteúdo de login -->
     <div class="login-box"> <!-- Caixa visual que agrupa o formulário de login e informações relacionadas -->
         <h2>
-            <img src="{{ url_for('static', filename='img/key-icon.svg') }}" alt="Ícone de Chave">
+            <img src="static/img/key-icon.svg" alt="Ícone de Chave">
             Login para sua conta
         </h2>
         <!-- Formulário de login -->
-        <form action="{{ url_for('autenticar') }}" method="POST">
+        <form action="#" id="login-form">
             {{ form.hidden_tag() }} <!-- Insere campos ocultos do Flask-WTF -->
             <div class="input-group">  
                 <label for="email">E-mail:</label> <!-- Rótulo do campo de e-mail, melhora acessibilidade -->
@@ -30,5 +30,5 @@
 </main>
 
 <!-- Inclui o JavaScript específico para a página de login -->
-<script src="{{ url_for('static', filename='js/script-login.js') }}"></script>
+<script src="static/js/script-login.js"></script>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %} <!-- Extende o template base.html -->
 {% block head %}
     {{ super() }}  <!-- Insere o conteúdo do bloco 'head' definido em base.html, como meta tags e links globais -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-input.css') }}"> <!-- Inclui o CSS específico para esta página -->
+    <link rel="stylesheet" href="static/css/style-input.css"> <!-- Inclui o CSS específico para esta página -->
     <title>Dashboard - JEBY Finanças</title> <!-- Define o título da aba do navegador para esta página -->
 {% endblock %}
 {% block content %}
@@ -11,7 +11,7 @@
                 <!-- Seção de upload de extrato -->
                 <section id="upload" class="upload-box">
                     <h2>
-                        <img src="{{ url_for('static', filename='img/upload-icon.svg') }}" alt="Ícone de Upload">
+                        <img src="static/img/upload-icon.svg" alt="Ícone de Upload">
                         1. Análise de Extrato
                     </h2>
                     <p>Escolha o tipo de análise e envie seu extrato (.csv ou .xlsx).</p>
@@ -19,7 +19,7 @@
                     <!-- Switch para escolher o tipo de análise -->
                     <div class="switch-container">
                         <span class="switch-label" data-value="ai">
-                            <img src="{{ url_for('static', filename='img/IA-icon.svg') }}" alt="Ícone IA">
+                            <img src="static/img/IA-icon.svg" alt="Ícone IA">
                             Usar IA
                         </span>
                         <label class="switch">
@@ -27,7 +27,7 @@
                             <span class="slider"></span>
                         </label>
                         <span class="switch-label active" data-value="labeled">
-                            <img src="{{ url_for('static', filename='img/rotuled-icon.svg') }}" alt="Ícone Rotulado">
+                            <img src="static/img/rotuled-icon.svg" alt="Ícone Rotulado">
                             Já Rotulado
                         </span>
                     </div>
@@ -45,7 +45,7 @@
                 <!-- Seção de metas mensais -->
                 <section class="upload-box">
                     <h2>
-                        <img src="{{ url_for('static', filename='img/bullseye-icon.svg') }}" alt="Ícone de Alvo">
+                        <img src="static/img/bullseye-icon.svg" alt="Ícone de Alvo">
                         2. Suas Metas Mensais
                     </h2>
                     <p>Defina limites de gastos para as categorias do seu extrato e acompanhe seu progresso.</p>
@@ -54,74 +54,74 @@
                             <!-- Cada grid representa uma categoria de meta -->
                             <div class="form-group">
                                 <label for="goal-casa" title="Casa e Vestuário">
-                                    <img src="{{ url_for('static', filename='img/home-icon.svg') }}">Casa e Vestuário
+                                    <img src="static/img/home-icon.svg">Casa e Vestuário
                                 </label>
                                 <input type="number" id="goal-casa" name="goal_casa_vestuario" placeholder="R$ 0">
                             </div>
                             <!-- Repetição de blocos para cada categoria -->
                             <div class="form-group">
                                 <label for="goal-veiculo" title="Veículo">
-                                    <img src="{{ url_for('static', filename='img/car-icon.svg') }}">Veículo
+                                    <img src="static/img/car-icon.svg">Veículo
                                 </label>
                                 <input type="number" id="goal-veiculo" name="goal_veiculo" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-cuidados" title="Cuidados Pessoais">
-                                    <img src="{{ url_for('static', filename='img/health-care-icon.svg') }}">Cuidados Pessoais
+                                    <img src="static/img/health-care-icon.svg">Cuidados Pessoais
                                 </label>
                                 <input type="number" id="goal-cuidados" name="goal_cuidados_pessoais" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-supermercado" title="Supermercado">
-                                    <img src="{{ url_for('static', filename='img/market-icon.svg') }}">Supermercado
+                                    <img src="static/img/market-icon.svg">Supermercado
                                 </label>
                                 <input type="number" id="goal-supermercado" name="goal_supermercado" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-alimentacao" title="Alimentação">
-                                    <img src="{{ url_for('static', filename='img/food-icon.svg') }}">Alimentação
+                                    <img src="static/img/food-icon.svg">Alimentação
                                 </label>
                                 <input type="number" id="goal-alimentacao" name="goal_alimentacao" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-outros" title="Outros">
-                                    <img src="{{ url_for('static', filename='img/others-icon.svg') }}">Outros
+                                    <img src="static/img/others-icon.svg">Outros
                                 </label>
                                 <input type="number" id="goal-outros" name="goal_outros" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-educacao" title="Educação">
-                                    <img src="{{ url_for('static', filename='img/book-icon.svg') }}">Educação
+                                    <img src="static/img/book-icon.svg">Educação
                                 </label>
                                 <input type="number" id="goal-educacao" name="goal_educacao" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-saude" title="Saúde">
-                                    <img src="{{ url_for('static', filename='img/capsules-icon.svg') }}">Saúde
+                                    <img src="static/img/capsules-icon.svg">Saúde
                                 </label>
                                 <input type="number" id="goal-saude" name="goal_saude" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-lazer" title="Lazer e Eletrônicos">
-                                    <img src="{{ url_for('static', filename='img/phone-icon.svg') }}">Lazer e Eletrônicos
+                                    <img src="static/img/phone-icon.svg">Lazer e Eletrônicos
                                 </label>
                                 <input type="number" id="goal-lazer" name="goal_lazer_eletronicos" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-pet" title="Pet">
-                                    <img src="{{ url_for('static', filename='img/pet-icon.svg') }}">Pet
+                                    <img src="static/img/pet-icon.svg">Pet
                                 </label>
                                 <input type="number" id="goal-pet" name="goal_pet" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-servicos" title="Serviços e Taxas">
-                                    <img src="{{ url_for('static', filename='img/tax-icon.svg') }}">Serviços e Taxas
+                                    <img src="static/img/tax-icon.svg">Serviços e Taxas
                                 </label>
                                 <input type="number" id="goal-servicos" name="goal_servicos_taxas" placeholder="R$ 0">
                             </div>
                             <div class="form-group">
                                 <label for="goal-transporte" title="Transporte">
-                                    <img src="{{ url_for('static', filename='img/bus-icon.svg') }}">Transporte
+                                    <img src="static/img/bus-icon.svg">Transporte
                                 </label>
                                 <input type="number" id="goal-transporte" name="goal_transporte" placeholder="R$ 0">
                             </div>
@@ -141,5 +141,5 @@
         <div id="analysis-results" class="analysis-results-area"></div>
     </main>
     <!-- Inclui o JavaScript específico para a página de input -->
-    <script src="{{ url_for('static', filename='js/script-input.js') }}"></script>
+    <script src="static/js/script-input.js"></script>
 {% endblock %}

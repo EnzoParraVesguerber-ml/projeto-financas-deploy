@@ -1,7 +1,7 @@
 {% extends "base.html" %} <!-- Extende o template base.html -->
 {% block head %}
     {{ super() }} <!-- Insere o conteúdo do bloco 'head' definido em base.html, como meta tags e links globais. -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-resultados.css') }}"> <!-- Inclui o CSS específico para esta página -->
+    <link rel="stylesheet" href="static/css/style-resultados.css"> <!-- Inclui o CSS específico para esta página -->
     <title>Resultados da Análise - JEBY Finanças</title> <!-- Define o título da aba do navegador para esta página -->
 {% endblock %}
 {% block content %}
@@ -12,7 +12,7 @@
                     <!-- Seção: Gastos por Categoria -->
                     <section class="results-box">
                         <h2>
-                            <img src="{{ url_for('static', filename='img/graph-icon.svg') }}" alt="Ícone de Gráfico"> <!-- Ícone ilustrativos -->
+                            <img src="static/img/graph-icon.svg" alt="Ícone de Gráfico"> <!-- Ícone ilustrativos -->
                             Gastos por Categoria
                         </h2>
                         <div class="chart-container">
@@ -23,7 +23,7 @@
                     <!-- Seção: Total Gasto vs Meta Total -->
                     <section class="results-box">
                         <h2>
-                            <img src="{{ url_for('static', filename='img/analyse-icon.svg') }}" alt="Ícone de Análise">
+                            <img src="static/img/analyse-icon.svg" alt="Ícone de Análise">
                             Total Gasto vs. Meta Total
                         </h2>
                         <div class="chart-container">
@@ -34,7 +34,7 @@
                     <!-- Seção: Gasto vs. Meta (Detalhado) -->
                     <section class="results-box">
                         <h2>
-                            <img src="{{ url_for('static', filename='img/search-icon.svg') }}" alt="Ícone de Alvo">
+                            <img src="static/img/search-icon.svg" alt="Ícone de Alvo">
                             Gasto vs. Meta (Detalhado)
                         </h2>
                         <div class="chart-container">
@@ -45,7 +45,7 @@
                     <!-- Seção: Sobra ou Excesso por Categoria -->
                     <section class="results-box">
                         <h2>
-                            <img src="{{ url_for('static', filename='img/excess-icon.svg') }}" alt="Ícone de Cifrão">
+                            <img src="static/img/excess-icon.svg" alt="Ícone de Cifrão">
                             Sobra ou Excesso por Categoria
                         </h2>
                         <div class="chart-container">
@@ -60,5 +60,5 @@
         <!-- Importa a biblioteca Chart.js para renderização dos gráficos -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <!-- Importa o script JS específico para manipulação dos gráficos de resultados -->
-        <script src="{{ url_for('static', filename='js/script-resultados.js') }}"></script>
+        <script src="static/js/script-resultados.js"></script>
 {% endblock %}
