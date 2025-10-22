@@ -3,16 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS Base -->
     <link rel="stylesheet" href="static/css/base.css">
-    <!-- CSS Específico da Página -->
     <link rel="stylesheet" href="static/css/style-input.css">
     <title>Dashboard - JEBY Finanças</title>
-</head>
+
+    <style>
+        
+    </style>
+    </head>
 <body>
     <header class="top-box">
         <div class="logo">
-            <!-- Em páginas internas, o logo leva para o dashboard -->
             <a href="dashboard.html"><span>JEBY </span>Finanças</a>
         </div>
         <div class="menu-container">
@@ -21,8 +22,7 @@
                 <img src="static/img/Menu Aberto.svg" alt="Menu Icone">
             </div>
             <div class="btns-log">
-                 <!-- O JS irá controlar qual destes é visível -->
-                <button id="login-btn" class="login-btn" >Login</button>
+                 <button id="login-btn" class="login-btn" >Login</button>
                 <button id="signup-btn" class="signup-btn" >Sign Up</button>
                  <div class="user-info" >
                     <span id="user-name">Olá!</span>
@@ -32,13 +32,11 @@
         </div>
     </header>
 
-    <!-- Container para mensagens flash que o JS vai criar -->
     <div class="flash-messages-container"></div>
 
     <main>
         <div class="dashboard">
             <div class="dashboard-grid">
-                <!-- Seção de upload de extrato -->
                 <section id="upload" class="upload-box">
                     <h2>
                         <img src="static/img/upload-icon.svg" alt="Ícone de Upload">
@@ -46,7 +44,6 @@
                     </h2>
                     <p>Escolha o tipo de análise e envie seu extrato (.csv ou .xlsx).</p>
 
-                    <!-- Switch para escolher o tipo de análise -->
                     <div class="switch-container">
                         <span class="switch-label active" data-value="ai">
                             <img src="static/img/IA-icon.svg" alt="Ícone IA">
@@ -62,7 +59,6 @@
                         </span>
                     </div>
 
-                    <!-- Formulário de upload de arquivo -->
                     <form action="#" method="POST" enctype="multipart/form-data">
                         <label for="file-upload" class="file-upload-label">
                             Escolher arquivo
@@ -70,9 +66,80 @@
                         <input type="file" id="file-upload" name="file-upload" accept=".csv, .xlsx" required>
                         <span id="file-name">Nenhum arquivo selecionado</span>
                     </form>
-                </section>
 
-                <!-- Seção de metas mensais -->
+                    <div class="example-format-container">
+                        <h4>Ei! Seu arquivo .csv ou .xlsx deve ter este formato:</h4>
+                        
+                        <p><strong>Para análise "Usar IA":</strong></p>
+                        <table class="example-table">
+                            <thead>
+                                <tr>
+                                    <th>Descricao</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Padaria Pão Bom</td>
+                                    <td>25,50</td>
+                                </tr>
+                                <tr>
+                                    <td>Uber Viagem</td>
+                                    <td>12,75</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><strong>Para análise "Já Rotulado":</strong></p>
+                        <table class="example-table">
+                            <thead>
+                                <tr>
+                                    <th>Descricao</th>
+                                    <th>Valor</th>
+                                    <th>Categoria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Oficina Mecânica Auto Certo</td>
+                                    <td>364,41</td>
+                                    <td>Transporte</td>
+                                </tr>
+                                <tr>
+                                    <td>Supermercado Compre Bem</td>
+                                    <td>943,94</td>
+                                    <td>Educação</td>
+                                </tr>
+                                 <tr>
+                                    <td>Petshop Mundo Animal</td>
+                                    <td>467,38</td>
+                                    <td>Veículo</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p style="font-size: 0.85em; font-style: italic;">* Use ponto e vírgula (;) como separador para arquivos .csv e vírgula (,) ou ponto (.) para decimais.</p>
+                        
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+                        <p><strong>Ei, teste com esse aqui e veja que funciona!</strong> (Arquivo "Já Rotulado"):</p>
+                        
+                        <a href="static/examples/synthetic_transactions (1).csv" download="exemplo_transacoes_rotulado.csv" class="download-example-btn">
+                            <img src="static/img/upload-icon.svg" alt="" style="width: 14px; height: 14px; margin-right: 5px; filter: invert(1);">
+                            Baixar Arquivo de Exemplo
+                        </a>
+                    </div>
+                    </section>
+
                 <section class="upload-box">
                     <h2>
                         <img src="static/img/bullseye-icon.svg" alt="Ícone de Alvo">
