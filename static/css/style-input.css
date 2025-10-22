@@ -292,19 +292,21 @@ input:checked + .slider:before {
 .example-format-container {
     margin-top: 25px;
     padding: 20px;
-    background-color: #fdfdfd;
-    border: 1px dashed #004a91; /* Uma cor que combine com o tema */
+    /* Use uma cor de fundo sutil do tema, talvez um tom mais claro do form-bg */
+    background-color: var(--form-bg-color); /* Alterado */
+    border: 1px dashed var(--primary-color); /* Usa a cor primária para a borda */
     border-radius: 8px;
+    color: var(--text-color); /* Define a cor do texto padrão para o container */
 }
 .example-format-container h4 {
     margin-top: 0;
-    color: #333;
+    color: var(--heading-color); /* Cor do título */
     font-size: 1.1em;
     font-weight: 600;
 }
 .example-format-container p {
     font-size: 0.95em;
-    color: #555;
+    color: var(--text-color); /* Cor do parágrafo */
     margin-bottom: 10px;
 }
 .example-table {
@@ -312,26 +314,30 @@ input:checked + .slider:before {
     border-collapse: collapse;
     margin-bottom: 15px;
     font-size: 0.9em;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Sombra sutil */
+    border: 1px solid var(--input-border-color); /* Adiciona borda externa na tabela */
 }
 .example-table th, .example-table td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--input-border-color); /* Borda interna com cor do tema */
     padding: 8px;
     text-align: left;
 }
 .example-table th {
-    background-color: #f4f4f4;
-    color: #333;
+    /* Fundo do cabeçalho um pouco mais escuro que o fundo do input */
+    background-color: var(--input-bg-color);
+    color: var(--heading-color); /* Cor do texto do cabeçalho */
     font-weight: 600;
 }
 .example-table td {
-    background-color: #fff;
+    /* Fundo das células um pouco mais claro ou igual ao form-bg */
+    background-color: var(--form-bg-color);
+    color: var(--text-color); /* Cor do texto das células */
 }
 .download-example-btn {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #007bff; /* Cor do botão principal (exemplo) */
-    color: #ffffff;
+    background-color: var(--primary-color); /* Usa a cor primária */
+    color: var(--bg-color); /* Cor de fundo principal para contraste */
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
@@ -341,7 +347,28 @@ input:checked + .slider:before {
     cursor: pointer;
 }
 .download-example-btn:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-hover); /* Usa a cor de hover primária */
+}
+
+/* Adiciona um estilo para o texto do link dentro do parágrafo, se necessário */
+.example-format-container p strong {
+    color: var(--heading-color); /* Destaca o texto em negrito */
+}
+
+/* Ajusta a cor do texto do aviso sobre separador e decimais */
+.example-format-container p[style*="font-style: italic"] {
+    color: var(--text-color);
+    opacity: 0.8; /* Levemente mais claro */
+}
+
+/* Ajusta a cor da linha horizontal */
+.example-format-container hr {
+    border-top: 1px solid var(--input-border-color); /* Cor da linha */
+}
+
+/* Ajusta a cor do ícone SVG no botão de download (se ele não estiver herdando) */
+.download-example-btn img {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(21%) saturate(1637%) hue-rotate(185deg) brightness(97%) contrast(98%); /* Tenta inverter para cor escura do bg */
 }
 
 /* Para tablets e telas menores */
